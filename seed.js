@@ -1,4 +1,6 @@
 const LorenIpsum = require('lorem-ipsum').LoremIpsum;
+var faker = require('faker');
+
 // create a neighborhoods stats generator
 const neighborhoodStatsGenerator = function() {
   return {
@@ -20,6 +22,26 @@ const neighborhoodStatsGenerator = function() {
     'wildlife': Math.random().toFixed(2),
   };
 };
+
+// generate randomDate
+const randomDate = function() {
+  var start = new Date(2015, 0, 1);
+  var end = new Date();
+  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toLocaleDateString('en-US');
+};
+// console.log('random date', randomDate());
+
+// create wordGenerator function
+const textGenerator = new LorenIpsum({
+  sentencesPerParagraph: {
+    max: 4,
+    min: 2
+  },
+  wordsPerSentence: {
+    max: 16,
+    min: 4
+  }
+});
 
 // create array of 10 neighborhoods
 const neighborhoods = [
@@ -74,8 +96,8 @@ const neighborhoods = [
     'stats': neighborhoodStatsGenerator()
   }
 ];
-
 // console.log('neighborhood array', neighborhoods);
+
 
 // create 100 listings with random neighboorhoods
 const generateListings = function() {
@@ -89,20 +111,8 @@ const generateListings = function() {
   }
   return listings;
 };
-
 // console.log('listing array', generateListings());
 
-// create wordGenerator function
-const textGenerator = new LorenIpsum({
-  sentencesPerParagraph: {
-    max: 4,
-    min: 2
-  },
-  wordsPerSentence: {
-    max: 16,
-    min: 4
-  }
-});
 
 // create list of 50 users
 const generateUsers = function() {
@@ -110,7 +120,7 @@ const generateUsers = function() {
   for (var i = 1; i < 51; i++) {
     var user = {
       id: i,
-      name: textGenerator.generateWords(2),
+      name: faker.name.findName(),
       'user_type': 'Resident',
       'dog_owner': Math.random() < 0.5,
       parent: Math.random() < 0.5,
@@ -119,19 +129,9 @@ const generateUsers = function() {
   }
   return users;
 };
-
 // console.log('generate users', generateUsers());
 
-// generate randomDate
 
-
-const randomDate = function() {
-  var start = new Date(2015, 0, 1);
-  var end = new Date();
-  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toLocaleDateString('en-US');
-};
-
-// console.log('random date', randomDate());
 
 // create list of reviews
 const generateReviews = function(neighborhoodID, number) {
@@ -151,5 +151,4 @@ const generateReviews = function(neighborhoodID, number) {
   }
   return reviews;
 };
-
-console.log(generateReviews(1, 10));
+// console.log(generateReviews(1, 10));

@@ -9,6 +9,7 @@
   },
   "scripts": {},
   "dependencies": {
+    "faker": "^5.1.0",
     "lorem-ipsum": "^2.0.3"
   },
   "devDependencies": {
