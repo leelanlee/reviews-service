@@ -133,7 +133,7 @@ const generateReviews = function(neighborhoodID, number) {
   for (var i = 1; i < number; i++) {
     var review = {
       'user_id': Math.floor(Math.random() * (50 - 1 + 1)) + 1,
-      'neighboorhood_id': neighborhoodID,
+      'neighborhood_id': neighborhoodID,
       'review_date': randomDate(),
       'full_text': textGenerator.generateParagraphs(1),
       likes: Math.floor(Math.random() * (150 - 1 + 1)) + 1,
@@ -204,7 +204,7 @@ const insertOneReviewer = function(reviwerObj) {
 const insertOneReview = function(reviewObj) {
   var queryDetails = [reviewObj.user_id, reviewObj.neighborhood_id, reviewObj.review_date, reviewObj.full_text, reviewObj.likes, reviewObj.community, reviewObj.commute];
   return new Promise((resolve, reject) => {
-    db.connection.query('INSERT INTO users (userid, neighborhood_id, review_date, full_text, likes, community, commute) Values (?, ?, ?, ?, ?, ?, ?)', queryDetails, (err, result) => {
+    db.connection.query('INSERT INTO reviews (userid, neighborhood_id, review_date, full_text, likes, community, commute) Values (?, ?, ?, ?, ?, ?, ?)', queryDetails, (err, result) => {
       if (err) {
         reject(err);
       } else {
