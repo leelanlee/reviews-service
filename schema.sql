@@ -6,7 +6,6 @@ USE neighborhoodReviews;
 CREATE TABLE neighborhoods (
   id INT NOT NULL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
-  full_text VARCHAR(255) NOT NULL,
   dog_friendly DECIMAL NOT NULL,
   grocery_stores DECIMAL NOT NULL,
   neighbors_friendly DECIMAL NOT NULL,

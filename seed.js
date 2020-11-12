@@ -44,7 +44,7 @@ const textGenerator = new LorenIpsum({
 });
 
 // create array of 10 neighborhoods
-const neighborhoods = [
+const neighborhood = [
   {
     'id': 1,
     'name': 'SoMA',
@@ -99,7 +99,7 @@ const neighborhoods = [
 // console.log('neighborhood array', neighborhoods);
 
 
-// create 100 listings with random neighboorhoods
+// create 100 listings LINKING random neighboorhoods
 const generateListings = function() {
   var listings = [];
   for (var i = 1; i < 101; i++) {
@@ -152,3 +152,22 @@ const generateReviews = function(neighborhoodID, number) {
   return reviews;
 };
 // console.log(generateReviews(1, 10));
+
+const insertOneNeighbor = function(neighborObj) {
+  var queryDetails = [neighborObj.id, neighborObj.name, neighborObj.stats.dog_friendly, neighborObj.stats.grocery_stores, neighborObj.stats.neighbors_friendly, neighborObj.stats.parking_easy, neighborObj.stats.yard, neighborObj.stats.community_events, neighborObj.stats.sidewalks, neighborObj.stats.walk_night, neighborObj.stats.five_years, neighborObj.stats.kids_outside, neighborObj.stats.car, neighborObj.stats.resturants, neighborObj.stats.streets, neighborObj.stats.holiday, neighborObj.stats.quiet, neighborObj.stats.wildlife];
+
+  return new Promise((resolve, reject) => {
+    db.connection.query('INSERT INTO neighboorhoods (id, name, dog_friendly, grocery_stores, neighbors_friendly, parking_easy, yard, community_events, sidewalks, walk_night, five_years, kids_outside, car, resturants, streets, holiday, quiet, wildlife) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', queryDetails, (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+const insertPromises = neighboorhoods.map(neighborhood => insertOneNeighbor(neighborhood));
+Promise.all(insertPromises)
+  .then(results => console.log(results))
+  .catch(err => console.log(err));
