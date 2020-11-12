@@ -1,5 +1,8 @@
 const LorenIpsum = require('lorem-ipsum').LoremIpsum;
-var faker = require('faker');
+const faker = require('faker');
+const db = require('./db/connection.js');
+
+//************ Helper Functions ******************************************************************/
 
 // create a neighborhoods stats generator
 const neighborhoodStatsGenerator = function() {
@@ -15,7 +18,7 @@ const neighborhoodStatsGenerator = function() {
     'five_years': Math.random().toFixed(2),
     'kids_outside': Math.random().toFixed(2),
     'car': Math.random().toFixed(2),
-    'resturants': Math.random().toFixed(2),
+    'restaurants': Math.random().toFixed(2),
     'streets': Math.random().toFixed(2),
     'holiday': Math.random().toFixed(2),
     'quiet': Math.random().toFixed(2),
@@ -29,7 +32,6 @@ const randomDate = function() {
   var end = new Date();
   return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toLocaleDateString('en-US');
 };
-// console.log('random date', randomDate());
 
 // create wordGenerator function
 const textGenerator = new LorenIpsum({
@@ -43,55 +45,49 @@ const textGenerator = new LorenIpsum({
   }
 });
 
+//************ Generating dummy data per schema table ********************************************************/
+
+
 // create array of 10 neighborhoods
 const neighborhood = [
   {
-    'id': 1,
     'name': 'SoMA',
     'stats': neighborhoodStatsGenerator()
   },
   {
-    'id': 2,
     'name': 'Pacific Heights',
     'stats': neighborhoodStatsGenerator()
   },
   {
-    'id': 3,
     'name': 'Castro',
     'stats': neighborhoodStatsGenerator()
   },
   {
-    'id': 4,
     'name': 'Chinatown',
     'stats': neighborhoodStatsGenerator()
   },
   {
-    'id': 5,
     'name': 'Marina',
     'stats': neighborhoodStatsGenerator()
   },
   {
-    'id': 6,
     'name': 'Hayes Valley',
     'stats': neighborhoodStatsGenerator()
   },
   {
-    'id': 7,
+
     'name': 'Bayview',
     'stats': neighborhoodStatsGenerator()
   },
   {
-    'id': 8,
     'name': 'Mission',
     'stats': neighborhoodStatsGenerator()
   },
   {
-    'id': 9,
     'name': 'Outer Richmond',
     'stats': neighborhoodStatsGenerator()
   },
   {
-    'id': 10,
     'name': 'Noe Valley',
     'stats': neighborhoodStatsGenerator()
   }
@@ -104,7 +100,6 @@ const generateListings = function() {
   var listings = [];
   for (var i = 1; i < 101; i++) {
     var listing = {
-      id: i,
       'neighboorhood_id': Math.floor(Math.random() * (10 - 1 + 1)) + 1,
     };
     listings.push(listing);
@@ -119,7 +114,6 @@ const generateUsers = function() {
   var users = [];
   for (var i = 1; i < 51; i++) {
     var user = {
-      id: i,
       name: faker.name.findName(),
       'user_type': 'Resident',
       'dog_owner': Math.random() < 0.5,
@@ -138,7 +132,6 @@ const generateReviews = function(neighborhoodID, number) {
   const reviews = [];
   for (var i = 1; i < number; i++) {
     var review = {
-      id: i,
       'user_id': Math.floor(Math.random() * (50 - 1 + 1)) + 1,
       'neighboorhood_id': neighborhoodID,
       'review_date': randomDate(),
@@ -153,11 +146,26 @@ const generateReviews = function(neighborhoodID, number) {
 };
 // console.log(generateReviews(1, 10));
 
+// All reviews for each of the ten neighborhoods
+const allReviewsForTenNeighborhoods = function() {
+  var allReviews = [];
+  for (var i = 1; i < 11; i++) {
+    var numberOfReviews = Math.floor(Math.random() * (200 - 1 + 1)) + 1;
+    var reviews = generateReviews(i, numberOfReviews);
+    allReviews = allReviews.concat(reviews);
+  }
+  return allReviews;
+};
+
+// console.log('ALL', allReviewsForTenNeighborhoods());
+
+//*********** Queries! *********************************************************************************//
+
 const insertOneNeighbor = function(neighborObj) {
-  var queryDetails = [neighborObj.id, neighborObj.name, neighborObj.stats.dog_friendly, neighborObj.stats.grocery_stores, neighborObj.stats.neighbors_friendly, neighborObj.stats.parking_easy, neighborObj.stats.yard, neighborObj.stats.community_events, neighborObj.stats.sidewalks, neighborObj.stats.walk_night, neighborObj.stats.five_years, neighborObj.stats.kids_outside, neighborObj.stats.car, neighborObj.stats.resturants, neighborObj.stats.streets, neighborObj.stats.holiday, neighborObj.stats.quiet, neighborObj.stats.wildlife];
+  var queryDetails = [neighborObj.name, neighborObj.stats.dog_friendly, neighborObj.stats.grocery_stores, neighborObj.stats.neighbors_friendly, neighborObj.stats.parking_easy, neighborObj.stats.yard, neighborObj.stats.community_events, neighborObj.stats.sidewalks, neighborObj.stats.walk_night, neighborObj.stats.five_years, neighborObj.stats.kids_outside, neighborObj.stats.car, neighborObj.stats.restaurants, neighborObj.stats.streets, neighborObj.stats.holiday, neighborObj.stats.quiet, neighborObj.stats.wildlife];
 
   return new Promise((resolve, reject) => {
-    db.connection.query('INSERT INTO neighboorhoods (id, name, dog_friendly, grocery_stores, neighbors_friendly, parking_easy, yard, community_events, sidewalks, walk_night, five_years, kids_outside, car, resturants, streets, holiday, quiet, wildlife) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', queryDetails, (err, result) => {
+    db.connection.query('INSERT INTO neighborhoods (name, dog_friendly, grocery_stores, neighbors_friendly, parking_easy, yard, community_events, sidewalks, walk_night, five_years, kids_outside, car, restaurants, streets, holiday, quiet, wildlife) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', queryDetails, (err, result) => {
       if (err) {
         reject(err);
       } else {
@@ -167,7 +175,67 @@ const insertOneNeighbor = function(neighborObj) {
   });
 };
 
-const insertPromises = neighboorhoods.map(neighborhood => insertOneNeighbor(neighborhood));
-Promise.all(insertPromises)
-  .then(results => console.log(results))
+const insertOneListing = function(listingObj) {
+  var queryDetails = [listingObj.neighboorhood_id];
+  return new Promise((resolve, reject) => {
+    db.connection.query('INSERT INTO listings (neighborhood_id) Values (?)', queryDetails, (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+const insertOneReviewer = function(reviwerObj) {
+  var queryDetails = [reviwerObj.name, reviwerObj.user_type, reviwerObj.dog_owner, reviwerObj.parent];
+  return new Promise((resolve, reject) => {
+    db.connection.query('INSERT INTO users (name, user_type, dog_owner, parent) Values (?, ?, ?, ?)', queryDetails, (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+const insertOneReview = function(reviewObj) {
+  var queryDetails = [reviewObj.user_id, reviewObj.neighborhood_id, reviewObj.review_date, reviewObj.full_text, reviewObj.likes, reviewObj.community, reviewObj.commute];
+  return new Promise((resolve, reject) => {
+    db.connection.query('INSERT INTO users (userid, neighborhood_id, review_date, full_text, likes, community, commute) Values (?, ?, ?, ?, ?, ?, ?)', queryDetails, (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+
+//*********** Seeding the database *********************************************************************************//
+
+const insertNeighborhoodPromises = neighborhood.map(neighborhood => insertOneNeighbor(neighborhood));
+Promise.all(insertNeighborhoodPromises)
+  .then(results => console.log('Seeding db neighboorhood success'))
+  .catch(err => console.log(err));
+
+const oneHundredListings = generateListings();
+const insertListingsPromises = oneHundredListings.map(listing => insertOneListing(listing));
+Promise.all(insertListingsPromises)
+  .then(results => console.log('Seeding db listings success'))
+  .catch(err => console.log(err));
+
+const fiftyReviewers = generateUsers();
+const insertReviwersPromises = fiftyReviewers.map(reviewer => insertOneReviewer(reviewer));
+Promise.all(insertReviwersPromises)
+  .then(results => console.log('Seeding db reviewers success'))
+  .catch(err => console.log(err));
+
+const allReviews = allReviewsForTenNeighborhoods();
+const insertAllReviewsPromises = allReviews.map(review => insertOneReview(review));
+Promise.all(insertAllReviewsPromises)
+  .then(results => console.log('Seeding db reviews success'))
   .catch(err => console.log(err));
