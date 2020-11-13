@@ -7,9 +7,11 @@
   "engines": {
     "node": ">=6.13.0"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "dependencies": {
+    "faker": "^5.1.0",
+    "lorem-ipsum": "^2.0.3",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
