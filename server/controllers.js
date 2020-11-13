@@ -4,7 +4,7 @@ module.exports = {
   getAllStats: (req, res) => {
     var id = req.params.id;
     console.log('id', id);
-    db.connection.query('Select * from neighborhoods where id = ?', [id], (err, result) => {
+    db.connection.query('Select * from neighborhoods where id = (Select neighborhood_id from listings where listings.id = ?)', [id], (err, result) => {
       if (err) {
         console.log('getAllStats error', err);
         res.status(404).json(err);
@@ -43,7 +43,7 @@ module.exports = {
   getAllReviews: (req, res) => {
     var id = req.params.id;
     var category = req.query.category;
-    var query = 'Select * from reviews INNER JOIN users ON reviews.userid = users.id where reviews.neighborhood_id = ?';
+    var query = 'Select * from reviews INNER JOIN users ON reviews.userid = users.id where reviews.neighborhood_id = (Select neighborhood_id from listings where listings.id = ?)';
     if (category === 'parent') {
       query += ' AND users.parent = 1';
     } else if (category === 'dog_owner') {
