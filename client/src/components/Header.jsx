@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Header = () => {
+const Header = (props) => {
   return (
-    <div>
-      <h3>What Locals Say about</h3>
-      <div>
-        <span>At least Trulia users voted on each feature.</span>
+    <div className="header">
+      <h3>What Locals Say about {props.neighborhoodName}</h3>
+      <div className="locals">
+        <span>At least {props.reviewsTotal} Trulia users voted on each feature.</span>
       </div>
     </div>
   );
