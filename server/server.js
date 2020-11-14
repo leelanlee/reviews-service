@@ -7,7 +7,7 @@ const port = 8010;
 
 const db = require('../db/connection.js');
 
-const publicDir = path.join(__dirname, '../public');
+const publicDir = path.join(__dirname, '../client/public');
 
 app.use(bodyParser.json());
 app.use(express.static(publicDir));
