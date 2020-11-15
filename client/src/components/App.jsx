@@ -10,6 +10,7 @@ class App extends React.Component {
     this.state = {
       reviewsTotal: 0,
       neighborhoodName: '',
+      stats: {},
     };
   }
 
@@ -34,6 +35,7 @@ class App extends React.Component {
         console.log('Get request stats success');
         this.setState({
           neighborhoodName: result.data[0].name,
+          stats: result.data[0].stats,
         });
       })
       .catch((err) => console.log(err));
@@ -46,7 +48,7 @@ class App extends React.Component {
           <Header neighborhoodName={this.state.neighborhoodName} reviewsTotal={this.state.reviewsTotal}/>
         </div>
         <div>
-          <Stats />
+          <Stats stats={this.state.stats}/>
         </div>
       </div>
     );

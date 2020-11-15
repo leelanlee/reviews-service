@@ -1,68 +1,68 @@
 .flexbox-container {
   display: flex;
-  align-items: flex-start
+  justify-content: flex-start;
 }
 
 .flexbox-item {
-  width: 300px;
+  width: 33%;
   margin: 10px;
 }
 
 .flexbox-item-1 {
   font-size: 16px;
   min-height: 40px;
-  display: flex;
-  flex: 1;
-  align-items: center;
   border: 3px solid;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .stats-percentage {
-  margin-right: 2px;
+  /* margin-right: 2px; */
   border-radius: 8px;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-color: rgb(224, 247, 248);
-  width: 33%;
-  padding: 4px 4px;
+  /* width: 33%; */
+  /* padding: 4px 4px; */
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .thumbs-up {
   width: 28px;
   height: 28px;
-  display: inline-block;
 }
 
 .percentage {
   width: 28px;
   height: 28px;
   color: rgb(0, 120, 130);
-  display: inline-block;
-  align-items: center;
-  flex-direction: column;
+  margin-left: 20px;
+  margin-right: 35px;
 }
 
 
 .stats-category {
-  margin-right: 10px;
   border-radius: 8px;
   width: 50%;
-  padding: 4px 8px;
+  /* padding: 4px 8px; */
   display: flex;
   align-items: center;
-
 }
+
 .icon {
+  /* display: flex;
+  align-items: center; */
+  margin-right: 10px;
   width: 28px;
   height: 28px;
-  display: inline-block;
 }
 
 .stats-info {
-  width: 28px;
-  height: 28px;
-  display: inline-block;
+  /* display: flex;
+  align-items: center; */
+  /* width: 28px;
+  height: 28px; */
   font-size: 16px;
   color: rgb(59, 65, 68);
 }
