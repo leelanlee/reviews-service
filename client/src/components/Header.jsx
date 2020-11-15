@@ -1,4 +1,6 @@
+/* eslint-disable arrow-body-style */
 import React from 'react';
+import './Header.css';
 
 const Header = (props) => {
   return (
@@ -10,6 +12,5 @@ const Header = (props) => {
     </div>
   );
 };
-
 
 export default Header;

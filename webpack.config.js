@@ -2,10 +2,11 @@ const path = require('path');
 var SRC_DIR = path.join(__dirname, 'client/src/index.jsx');
 
 module.exports = {
+  mode: 'development',
   entry: SRC_DIR,
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'client/public'),
   },
   watch: true,
   module: {
@@ -19,8 +20,14 @@ module.exports = {
             presets: ['@babel/preset-env', '@babel/preset-react']
           }
         }
-      }
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
     ]
   },
-  mode: 'development',
+  resolve: {
+    extensions: [".js", ".json", ".jsx", ".css"],
+  },
 };

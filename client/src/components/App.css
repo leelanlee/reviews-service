@@ -1,0 +1,15 @@
+.neighborhood {
+  width: 95%;
+  border-radius: 8px;
+  background-color: rgb(245, 246, 247);
+  padding: 16px;
+  font-family: TruliaSans;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  color: rgb(59, 65, 68);
+}

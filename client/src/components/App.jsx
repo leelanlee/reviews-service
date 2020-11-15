@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from './Header.jsx';
+import Stats from './Stats';
 import axios from 'axios';
+import './App.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -40,7 +42,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="neighborhood">
-        <Header neighborhoodName={this.state.neighborhoodName} reviewsTotal={this.state.reviewsTotal}/>
+        <div className="neighborhood">
+          <Header neighborhoodName={this.state.neighborhoodName} reviewsTotal={this.state.reviewsTotal}/>
+        </div>
+        <div>
+          <Stats />
+        </div>
       </div>
     );
   }
