@@ -10,7 +10,7 @@ const db = require('../db/connection.js');
 const publicDir = path.join(__dirname, '../client/public');
 
 app.use(bodyParser.json());
-app.use(express.static(publicDir));
+app.use('/api/listings/:id', express.static(publicDir));
 
 app.get('/api/listings/:id/neighborhood_stats', controller.getAllStats);
 
