@@ -1,12 +1,14 @@
 import React from 'react';
-import Header from './Header.jsx';
-import Stats from './Stats.jsx';
+import PropTypes from 'prop-types';
 import axios from 'axios';
+import Header from './Header';
+import Stats from './Stats';
+import Reviews from './Reviews';
 import './App.css';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       reviewsTotal: 0,
       neighborhoodName: '',
@@ -50,6 +52,7 @@ class App extends React.Component {
         <div>
           <Stats stats={this.state.stats}/>
         </div>
+        <Reviews />
       </div>
     );
   }

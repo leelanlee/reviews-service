@@ -2,12 +2,19 @@
 import React from 'react';
 import './Header.css';
 
-const Header = (props) => {
+const Header = ({ neighborhoodName, reviewsTotal }) => {
   return (
     <div className="header">
-      <h3>What Locals Say about {props.neighborhoodName}</h3>
+      <h3>
+        What Locals Say about
+        {neighborhoodName}
+      </h3>
       <div className="locals">
-        <span>At least {props.reviewsTotal} Trulia users voted on each feature.</span>
+        <span>
+          At least
+          {reviewsTotal}
+          Trulia users voted on each feature.
+        </span>
       </div>
     </div>
   );

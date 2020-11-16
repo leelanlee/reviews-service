@@ -1,5 +1,5 @@
 import React from 'react';
-import './Stats.css';
+// import './Stats.css';
 import PropTypes from 'prop-types';
 
 const StatsItem = ({ percentage, details }) => (
