@@ -17,7 +17,7 @@ class App extends React.Component {
   componentDidMount() {
     axios({
       method: 'get',
-      url: 'http://localhost:8010/api/listings/2/neighborhood_reviews'
+      url: 'http://localhost:8010/api/listings/3/neighborhood_reviews',
     })
       .then(result => {
         console.log('Get request reviews success');
@@ -29,7 +29,7 @@ class App extends React.Component {
 
     axios({
       method: 'get',
-      url: 'http://localhost:8010/api/listings/2/neighborhood_stats'
+      url: 'http://localhost:8010/api/listings/3/neighborhood_stats',
     })
       .then(result => {
         console.log('Get request stats success');

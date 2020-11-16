@@ -10,8 +10,10 @@ class Stats extends React.Component {
     super(props);
     this.state = {
       seeAll: false,
+      hover: true,
     };
     this.handleButtonClick = this.handleButtonClick.bind(this);
+    this.handleButtonHover = this.handleButtonHover.bind(this);
   }
 
   handleButtonClick() {
@@ -19,7 +21,12 @@ class Stats extends React.Component {
       seeAll: !this.state.seeAll,
     });
   }
-
+  handleButtonHover() {
+    console.log(this.state.hover);
+    this.setState({
+      hover: !this.state.hover,
+    })
+  }
   render() {
     return (
       <div>
@@ -52,7 +59,7 @@ class Stats extends React.Component {
             </div>
           </div>
         : null}
-        <button className="stats-btn" type="button" onClick={this.handleButtonClick}>See All</button>
+        <button className={this.state.hover ? "stats-btn" : "stats-btn color-btn"} type="button" onClick={this.handleButtonClick} onMouseEnter={this.handleButtonHover} onMouseLeave={this.handleButtonHover}>See All</button>
       </div>
     );
   }
