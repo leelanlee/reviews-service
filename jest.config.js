@@ -75,7 +75,7 @@ module.exports = {
   // ],
 
   // An array of file extensions your modules use
-  moduleFileExtensions: ['js', 'jsx'],
+  moduleFileExtensions: ['js', 'jsx', 'css'],
 
   // A map from regular expressions to module names or to arrays of module names
   // that allow to stub out resources with a single module
@@ -179,6 +179,7 @@ module.exports = {
   // A map from regular expressions to paths to transformers
   transform: {
     '\\.jsx$': 'babel-jest',
+    '\\.js$': 'babel-jest',
   },
 
   // eslint-disable-next-line max-len
