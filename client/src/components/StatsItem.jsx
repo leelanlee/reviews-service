@@ -15,7 +15,7 @@ const StatsItem = ({ percentage, details }) => (
     </div>
     <div className="stats-category">
       <div className="icon">
-        <svg className="svg" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d={details.icon} fill="#C3D600" fillRule="evenodd"></path>
+        <svg className="svg" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d={details.icon} fill={details.fill} fillRule="evenodd"></path>
         </svg>
       </div>
       <div className="stats-info">{details.message}</div>

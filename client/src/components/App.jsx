@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './Header.jsx';
-import Stats from './Stats';
+import Stats from './Stats.jsx';
 import axios from 'axios';
 import './App.css';
 
