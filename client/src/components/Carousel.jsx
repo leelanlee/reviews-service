@@ -77,10 +77,10 @@ class Carousel extends React.Component {
         {this.state.reviews.length > 0 ? <div className="carousel-container">
           <div className="track">
           <div className="flexbox-container-carousel row current-row">
+            {this.renderCarouselItemAtIndex(0)}
             {this.renderCarouselItemAtIndex(1)}
             {this.renderCarouselItemAtIndex(2)}
             {this.renderCarouselItemAtIndex(3)}
-            {this.renderCarouselItemAtIndex(4)}
           </div>
           <div className="flexbox-container-carousel row">
             {this.renderCarouselItemAtIndex(4)}
