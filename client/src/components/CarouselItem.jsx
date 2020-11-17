@@ -10,8 +10,8 @@ const CarouselItem = (props) => (
     <div className="review">
     {props.review.likes}
     </div>
-    <div className="likes">
-      42
+    <div className="text fade">
+      {props.review.full_text}
     </div>
   </div>
 );
