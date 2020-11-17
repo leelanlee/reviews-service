@@ -35,6 +35,7 @@
 .track{
   padding: 0;
   margin: 0;
+  transition: transform 250ms;
 }
 
 .row{
