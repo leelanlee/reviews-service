@@ -1,34 +1,48 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
+import CarouselItem from './CarouselItem';
 import './Carousel.css';
 import axios from 'axios';
 
 class Carousel extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    console.log(props.selected)
+    super(props);
+    this.state = {
+      reviews: [],
+    }
   }
 
   componentDidMount() {
     axios({
       method: 'get',
       url: `${window.location}neighborhood_reviews`,
-      // params: {
-      //   category: props.selected.toLowerCase(),
-      // }
     })
       .then(result => {
-        console.log('Get request reviews success');
+        console.log('GGGet request reviews success');
+        this.setState({
+          reviews: result.data,
+        });
       })
       .catch((err) => console.log(err));
   }
 
   render() {
     return (
-    <div>
-      <h3>
-        What Locals Say about
-      </h3>
-    </div>
+      <div className="carousel">
+        <div className="flexbox-container-carousel figure">
+          <CarouselItem />
+          <CarouselItem />
+          <CarouselItem />
+          <CarouselItem />
+        </div>
+        <div className="flexbox-container-carousel figure">
+          <CarouselItem />
+          <CarouselItem />
+          <CarouselItem />
+          <CarouselItem />
+        </div>
+      </div>
     );
   }
 }

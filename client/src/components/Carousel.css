@@ -1,0 +1,27 @@
+.flexbox-container-carousel {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.flexbox-item-carousel {
+  margin: 16px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 25%;
+  height: 345px;
+  background-color: rgb(0, 173, 187);
+  border-radius: 8px;
+}
+
+/* .carousel {
+  overflow: hidden;
+  width: 500%;
+  animation: 20s slider linear infinite;
+}
+
+.figure {
+  position: relative;
+  animation: 20s slider infinite;
+} */

@@ -2,13 +2,13 @@ import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import './Reviews.css';
-import Carousel from './Carousel';
+import Carousel from './Carousel.jsx';
 
 class Reviews extends React.Component {
   constructor() {
     super();
     this.state = {
-      selected: '',
+      selected: 'All',
       hover: true,
     };
     this.handleReviewsClick = this.handleReviewsClick.bind(this);
@@ -38,7 +38,7 @@ class Reviews extends React.Component {
           <span><button type="button" className={this.state.hover ? "reviews-btn" : "reviews-btn colorReviews5-btn"} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonHover} onMouseLeave={this.handleButtonHover}>Commute</button></span>
         </div>
         <div>
-          <Carousel selected={this.state.selected}/>
+          <Carousel selected={this.state.selected} />
         </div>
       </div>
     );
