@@ -6,13 +6,12 @@ import axios from 'axios';
 
 class Carousel extends React.Component {
   constructor(props) {
-    console.log(props.selected)
     super(props);
     this.state = {
       reviews: [],
     };
-    this.handleRightButtonClick = this.handleRightButtonClick.bind(this);
-    this.handleLeftButtonClick = this.handleLeftButtonClick.bind(this);
+    // this.handleRightButtonClick = this.handleRightButtonClick.bind(this);
+    // this.handleLeftButtonClick = this.handleLeftButtonClick.bind(this);
   }
 
   componentDidMount() {
@@ -21,7 +20,7 @@ class Carousel extends React.Component {
       url: `${window.location}neighborhood_reviews`,
     })
       .then(result => {
-        console.log('GGGet request reviews success');
+        console.log(result.data);
         this.setState({
           reviews: result.data,
         });
@@ -63,20 +62,20 @@ class Carousel extends React.Component {
         <button className="carousel-btn carousel-btn-left" onClick={this.handleLeftButtonClick}>
           <img src="https://www.pngfind.com/pngs/m/141-1415532_png-file-svg-carousel-button-left-right-transparent.png" />
         </button>
-        <div className="carousel-container">
+        {this.state.reviews.length > 0 ? <div className="carousel-container">
           <div className="flexbox-container-carousel row current-row">
-            <CarouselItem />
-            <CarouselItem />
-            <CarouselItem />
-            <CarouselItem />
+            <CarouselItem review={this.state.reviews[0]}/>
+            <CarouselItem review={this.state.reviews[1]}/>
+            <CarouselItem review={this.state.reviews[2]}/>
+            <CarouselItem review={this.state.reviews[3]}/>
           </div>
           <div className="flexbox-container-carousel row">
-            <CarouselItem />
-            <CarouselItem />
-            <CarouselItem />
-            <CarouselItem />
+            <CarouselItem review={this.state.reviews[4]}/>
+            <CarouselItem review={this.state.reviews[5]}/>
+            <CarouselItem review={this.state.reviews[6]}/>
+            <CarouselItem review={this.state.reviews[7]}/>
           </div>
-        </div>
+        </div> : null }
         <button className="carousel-btn carousel-btn-right">
           <img src="https://www.pngfind.com/pngs/m/141-1415532_png-file-svg-carousel-button-left-right-transparent.png" onClick={this.handleRightButtonClick}/>
         </button>

@@ -2,13 +2,13 @@ import React from 'react';
 import './Carousel.css';
 import PropTypes from 'prop-types';
 
-const CarouselItem = () => (
+const CarouselItem = (props) => (
   <div className="flexbox-item-carousel">
     <div className="reviewer-details">
-      Mr. Sue
+      {props.review.username}
     </div>
     <div className="review">
-      Hi
+    {props.review.likes}
     </div>
     <div className="likes">
       42

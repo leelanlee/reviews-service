@@ -19,13 +19,14 @@
   position: relative;
   height: 400px;
   width: 100%;
-  object-fit: cover;
+  /* object-fit: cover; */
 }
 
 .carousel-container{
   height: 100%;
   position: relative;
   transition: transform 250ms;
+  /* display: flex; */
 }
 
 .row{
