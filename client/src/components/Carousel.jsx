@@ -1,8 +1,10 @@
+/* eslint-disable no-console */
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable arrow-body-style */
 import React from 'react';
+import axios from 'axios';
 import CarouselItem from './CarouselItem';
 import './Carousel.css';
-import axios from 'axios';
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -22,9 +24,9 @@ class Carousel extends React.Component {
       url: `${window.location}neighborhood_reviews`,
       params: {
         category: 'parent',
-      }
+      },
     })
-      .then(result => {
+      .then((result) => {
         console.log('results', result.data);
         this.setState({
           reviews: result.data,
@@ -33,65 +35,65 @@ class Carousel extends React.Component {
           const rowSet = Array.from(container.children);
           const rowWidth = rowSet[0].getBoundingClientRect().width;
           rowSet[0].style.left = 0;
-          rowSet[1].style.left =  rowWidth + 'px';
+          rowSet[1].style.left = `${rowWidth}px`;
           this.setState({
-            rowSet: rowSet,
-            container: container,
+            rowSet,
+            container,
           });
         });
       })
       .catch((err) => console.log(err));
-
   }
 
   handleRightButtonClick() {
-    const currentRow = this.state.rowSet[0];
+    // const currentRow = this.state.rowSet[0];
     const nextRow = this.state.rowSet[1];
 
     const amountToMove = nextRow.style.left;
-    this.state.container.style.transform = 'translateX(-' + amountToMove + ')';
-  };
+    this.state.container.style.transform = `translateX(-${amountToMove})`;
+  }
 
   handleLeftButtonClick() {
-    const currentRow = this.state.rowSet[1];
-    const nextRow = this.state.rowSet[0];
+    // const currentRow = this.state.rowSet[1];
+    // const nextRow = this.state.rowSet[0];
 
-    const amountToMove = nextRow.style.left;
-    this.state.container.style.transform = 'translateX(' + '2px' + ')';
-  };
+    // const amountToMove = nextRow.style.left;
+    this.state.container.style.transform = 'translateX(' + '1px' + ')';
+  }
 
   renderCarouselItemAtIndex(index, color) {
     if (this.state.reviews[index] === undefined) {
       return null;
-    } else {
-      return <CarouselItem review={this.state.reviews[index]}/>
     }
+    return <CarouselItem review={this.state.reviews[index]} color={color} />;
   }
 
   render() {
     return (
       <div className="carousel">
-        <button className="carousel-btn carousel-btn-left" onClick={this.handleLeftButtonClick}>
-          <img src="https://www.pngfind.com/pngs/m/141-1415532_png-file-svg-carousel-button-left-right-transparent.png" />
+        <button className="carousel-btn carousel-btn-left" onClick={this.handleLeftButtonClick} type="button">
+          <img src="https://www.pngfind.com/pngs/m/141-1415532_png-file-svg-carousel-button-left-right-transparent.png" alt="" />
         </button>
-        {this.state.reviews.length > 0 ? <div className="carousel-container">
-          <div className="track">
-          <div className="flexbox-container-carousel row current-row">
-            {this.renderCarouselItemAtIndex(0)}
-            {this.renderCarouselItemAtIndex(1)}
-            {this.renderCarouselItemAtIndex(2)}
-            {this.renderCarouselItemAtIndex(3)}
+        {this.state.reviews.length > 0 ? (
+          <div className="carousel-container">
+            <div className="track">
+              <div className="flexbox-container-carousel row current-row">
+                {this.renderCarouselItemAtIndex(0, 'rgb(30, 173, 187)')}
+                {this.renderCarouselItemAtIndex(1, 'rgb(250,140,104)')}
+                {this.renderCarouselItemAtIndex(2, 'rgb(206,182,255)')}
+                {this.renderCarouselItemAtIndex(3, 'rgb(116,6,49)')}
+              </div>
+              <div className="flexbox-container-carousel row">
+                {this.renderCarouselItemAtIndex(4, 'rgb(242,196,48)')}
+                {this.renderCarouselItemAtIndex(5, 'rgb(5,34,134)')}
+                {this.renderCarouselItemAtIndex(6, 'rgb(254,94,63)')}
+                {this.renderCarouselItemAtIndex(7, 'rgb(7,173,187)')}
+              </div>
+            </div>
           </div>
-          <div className="flexbox-container-carousel row">
-            {this.renderCarouselItemAtIndex(4)}
-            {this.renderCarouselItemAtIndex(5)}
-            {this.renderCarouselItemAtIndex(6)}
-            {this.renderCarouselItemAtIndex(7)}
-          </div>
-          </div>
-        </div> : null }
-        <button className="carousel-btn carousel-btn-right">
-          <img src="https://www.pngfind.com/pngs/m/141-1415532_png-file-svg-carousel-button-left-right-transparent.png" onClick={this.handleRightButtonClick}/>
+        ) : null }
+        <button className="carousel-btn carousel-btn-right" type="button" onClick={this.handleRightButtonClick}>
+          <img src="https://www.pngfind.com/pngs/m/141-1415532_png-file-svg-carousel-button-left-right-transparent.png" alt="" />
         </button>
       </div>
     );

@@ -3,7 +3,8 @@ import './Carousel.css';
 import PropTypes from 'prop-types';
 
 const CarouselItem = (props) => (
-  <div className="flexbox-item-carousel">
+
+  <div className="flexbox-item-carousel" style={{backgroundColor: props.color}}>
     <div className="reviewer-details">
       {props.review.username}
     </div>
