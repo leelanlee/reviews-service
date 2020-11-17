@@ -9,10 +9,10 @@ class Reviews extends React.Component {
     super();
     this.state = {
       selected: 'All',
-      hover: true,
     };
     this.handleReviewsClick = this.handleReviewsClick.bind(this);
-    this.handleButtonHover = this.handleButtonHover.bind(this);
+    this.handleOnButtonHover = this.handleButtonOnHover.bind(this);
+    this.handleaOffButtonHover = this.handleButtonOffHover.bind(this);
   }
 
   handleReviewsClick(e) {
@@ -21,21 +21,24 @@ class Reviews extends React.Component {
     });
   }
 
-  handleButtonHover() {
-    this.setState({
-      hover: !this.state.hover,
-    });
+  handleButtonOnHover(e) {
+    e.target.style.background = 'rgb(133, 133, 133)';
   }
+
+  handleButtonOffHover(e) {
+    e.target.style.background = 'rgb(245, 246, 247)';
+  }
+
 
   render() {
     return (
       <div>
         <div className='reviews-bar'>
-          <span><button type="button" className={this.state.hover ? "reviews-btn" : "reviews-btn colorReviews1-btn"} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonHover} onMouseLeave={this.handleButtonHover}>All</button></span>
-          <span><button type="button" className={this.state.hover ? "reviews-btn" : "reviews-btn colorReviews2-btn"} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonHover} onMouseLeave={this.handleButtonHover}>Community</button></span>
-          <span><button type="button" className={this.state.hover ? "reviews-btn" : "reviews-btn colorReviews3-btn"} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonHover} onMouseLeave={this.handleButtonHover}>Dog Owners</button></span>
-          <span><button type="button" className={this.state.hover ? "reviews-btn" : "reviews-btn colorReviews4-btn"} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonHover} onMouseLeave={this.handleButtonHover}>Parents</button></span>
-          <span><button type="button" className={this.state.hover ? "reviews-btn" : "reviews-btn colorReviews5-btn"} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonHover} onMouseLeave={this.handleButtonHover}>Commute</button></span>
+          <span><button type="button" className="reviews-btn" onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>All</button></span>
+          <span><button type="button" className="reviews-btn" onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Community</button></span>
+          <span><button type="button" className="reviews-btn" onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Dog Owners</button></span>
+          <span><button type="button" className="reviews-btn" onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Parents</button></span>
+          <span><button type="button" className="reviews-btn" onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Commute</button></span>
         </div>
         <div>
           <Carousel selected={this.state.selected} />
