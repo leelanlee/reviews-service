@@ -30,18 +30,26 @@ class Carousel extends React.Component {
   render() {
     return (
       <div className="carousel">
-        <div className="flexbox-container-carousel figure">
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
+        <button className="carousel-btn carousel-btn-left">
+          <img src="https://www.pngfind.com/pngs/m/141-1415532_png-file-svg-carousel-button-left-right-transparent.png" />
+        </button>
+        <div className="carousel-track-container">
+          <div className="flexbox-container-carousel row">
+            <CarouselItem />
+            <CarouselItem />
+            <CarouselItem />
+            <CarouselItem />
+          </div>
+          <div className="flexbox-container-carousel row">
+            <CarouselItem />
+            <CarouselItem />
+            <CarouselItem />
+            <CarouselItem />
+          </div>
         </div>
-        <div className="flexbox-container-carousel figure">
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
-        </div>
+        <button className="carousel-btn carousel-btn-left">
+          <img src="https://www.pngfind.com/pngs/m/141-1415532_png-file-svg-carousel-button-left-right-transparent.png" />
+        </button>
       </div>
     );
   }
