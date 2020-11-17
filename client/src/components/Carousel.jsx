@@ -20,9 +20,12 @@ class Carousel extends React.Component {
     axios({
       method: 'get',
       url: `${window.location}neighborhood_reviews`,
+      params: {
+        category: 'parent',
+      }
     })
       .then(result => {
-        console.log(result.data);
+        console.log('results', result.data);
         this.setState({
           reviews: result.data,
         }, () => {
@@ -57,8 +60,15 @@ class Carousel extends React.Component {
     this.state.container.style.transform = 'translateX(' + '2px' + ')';
   };
 
-  render() {
+  renderCarouselItemAtIndex(index, color) {
+    if (this.state.reviews[index] === undefined) {
+      return null;
+    } else {
+      return <CarouselItem review={this.state.reviews[index]}/>
+    }
+  }
 
+  render() {
     return (
       <div className="carousel">
         <button className="carousel-btn carousel-btn-left" onClick={this.handleLeftButtonClick}>
@@ -67,16 +77,16 @@ class Carousel extends React.Component {
         {this.state.reviews.length > 0 ? <div className="carousel-container">
           <div className="track">
           <div className="flexbox-container-carousel row current-row">
-            <CarouselItem review={this.state.reviews[0]}/>
-            <CarouselItem review={this.state.reviews[1]}/>
-            <CarouselItem review={this.state.reviews[2]}/>
-            <CarouselItem review={this.state.reviews[3]}/>
+            {this.renderCarouselItemAtIndex(1)}
+            {this.renderCarouselItemAtIndex(2)}
+            {this.renderCarouselItemAtIndex(3)}
+            {this.renderCarouselItemAtIndex(4)}
           </div>
           <div className="flexbox-container-carousel row">
-            <CarouselItem review={this.state.reviews[4]}/>
-            <CarouselItem review={this.state.reviews[5]}/>
-            <CarouselItem review={this.state.reviews[6]}/>
-            <CarouselItem review={this.state.reviews[7]}/>
+            {this.renderCarouselItemAtIndex(4)}
+            {this.renderCarouselItemAtIndex(5)}
+            {this.renderCarouselItemAtIndex(6)}
+            {this.renderCarouselItemAtIndex(7)}
           </div>
           </div>
         </div> : null }
