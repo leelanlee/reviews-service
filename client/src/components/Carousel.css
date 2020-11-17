@@ -19,10 +19,13 @@
   position: relative;
   height: 400px;
   width: 100%;
+  object-fit: cover;
 }
 
-.carousel-track-container{
-
+.carousel-container{
+  height: 100%;
+  position: relative;
+  transition: transform 250ms;
 }
 
 .row{
@@ -37,9 +40,20 @@
   position: absolute;
   top: 50%;
   transform: translate(-50%);
-  border-radius: 18px;
+  border-radius: 10px;
+  border-color: transparent;
+  cursor: pointer;
 }
 
+.carousel-btn-left {
+  left: -2px;
+  z-index: 1;
+  position: relative;
+}
+
+.carousel-btn-right{
+  right: -40px;
+}
 .carousel-btn img {
   width: 12px;
 
