@@ -3,6 +3,7 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import CarouselItem from './CarouselItem';
+import Modal from './Modal';
 import styles from './Carousel.css';
 
 class Carousel extends React.Component {
@@ -11,6 +12,7 @@ class Carousel extends React.Component {
     this.state = {
       rowSet: [],
       container: [],
+      modal: false,
     };
     this.handleRightButtonClick = this.handleRightButtonClick.bind(this);
     this.handleLeftButtonClick = this.handleLeftButtonClick.bind(this);
@@ -57,6 +59,7 @@ class Carousel extends React.Component {
   render() {
     console.log('HEY', this.props.reviews)
     return (
+      <div>
       <div className={styles.carousel}>
         <button className={`${styles['carousel-btn']} ${styles['carousel-btn-left']}`} onClick={this.handleLeftButtonClick} type="button">
           <img src="https://www.pngfind.com/pngs/m/141-1415532_png-file-svg-carousel-button-left-right-transparent.png" alt="" />
@@ -80,6 +83,8 @@ class Carousel extends React.Component {
         <button className={`${styles['carousel-btn']} ${styles['carousel-btn-right']}`} type="button" onClick={this.handleRightButtonClick}>
           <img src="https://www.pngfind.com/pngs/m/141-1415532_png-file-svg-carousel-button-left-right-transparent.png" alt="" />
         </button>
+      </div>
+      {this.state.modal === true ? <Modal /> : null}
       </div>
     );
   }
