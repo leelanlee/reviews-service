@@ -3,7 +3,7 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import CarouselItem from './CarouselItem';
-import './Carousel.css';
+import styles from './Carousel.css';
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -17,7 +17,8 @@ class Carousel extends React.Component {
   }
 
   componentDidMount() {
-    const container = document.querySelector('.track');
+    console.log(styles.track);
+    const container = document.querySelector(styles.track);
     const rowSet = Array.from(container.children);
     const rowWidth = rowSet[0].getBoundingClientRect().width;
     rowSet[0].style.left = 0;
@@ -53,19 +54,19 @@ class Carousel extends React.Component {
 
   render() {
     return (
-      <div className="carousel">
-        <button className="carousel-btn carousel-btn-left" onClick={this.handleLeftButtonClick} type="button">
+      <div className={styles.carousel}>
+        <button className={`${styles['carousel-btn']} ${styles['carousel-btn-left']}`} onClick={this.handleLeftButtonClick} type="button">
           <img src="https://www.pngfind.com/pngs/m/141-1415532_png-file-svg-carousel-button-left-right-transparent.png" alt="" />
         </button>
-          <div className="carousel-container">
-            <div className="track">
-              <div className="flexbox-container-carousel row current-row">
+          <div className={styles['carousel-container']}>
+            <div className={styles.track}>
+              <div className={`${styles['flexbox-container-carousel']} ${styles.row}`}>
                 {this.renderCarouselItemAtIndex(0, 'rgb(30, 173, 187)')}
                 {this.renderCarouselItemAtIndex(1, 'rgb(250,140,104)')}
                 {this.renderCarouselItemAtIndex(2, 'rgb(206,182,255)')}
                 {this.renderCarouselItemAtIndex(3, 'rgb(116,6,49)')}
               </div>
-              <div className="flexbox-container-carousel row">
+              <div className={`${styles['flexbox-container-carousel']} ${styles.row}`}>
                 {this.renderCarouselItemAtIndex(4, 'rgb(242,196,48)')}
                 {this.renderCarouselItemAtIndex(5, 'rgb(5,34,134)')}
                 {this.renderCarouselItemAtIndex(6, 'rgb(254,94,63)')}
@@ -73,7 +74,7 @@ class Carousel extends React.Component {
               </div>
             </div>
           </div>
-        <button className="carousel-btn carousel-btn-right" type="button" onClick={this.handleRightButtonClick}>
+        <button className={`${styles['carousel-btn']} ${styles['carousel-btn-right']}`} type="button" onClick={this.handleRightButtonClick}>
           <img src="https://www.pngfind.com/pngs/m/141-1415532_png-file-svg-carousel-button-left-right-transparent.png" alt="" />
         </button>
       </div>
