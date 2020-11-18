@@ -11,6 +11,7 @@ class App extends React.Component {
     super();
     this.state = {
       reviewsTotal: 0,
+      reviews: [],
       neighborhoodName: '',
       stats: {},
     };
@@ -25,20 +26,19 @@ class App extends React.Component {
         console.log('Get request reviews success');
         this.setState({
           reviewsTotal: result.data.length,
+          reviews: result.data,
         });
-      })
-      .catch((err) => console.log(err));
-
-    axios({
-      method: 'get',
-      url: `${window.location}neighborhood_stats`,
-    })
-      .then(result => {
-        console.log('Get request stats success');
-        this.setState({
-          neighborhoodName: result.data[0].name,
-          stats: result.data[0].stats,
-        });
+        axios({
+          method: 'get',
+          url: `${window.location}neighborhood_stats`,
+        })
+          .then(result => {
+            console.log('Get request stats success');
+            this.setState({
+              neighborhoodName: result.data[0].name,
+              stats: result.data[0].stats,
+            });
+          });
       })
       .catch((err) => console.log(err));
   }
@@ -52,7 +52,7 @@ class App extends React.Component {
         <div>
           <Stats stats={this.state.stats}/>
         </div>
-        <Reviews />
+        <Reviews reviews={this.state.reviews}/>
       </div>
     );
   }

@@ -5,8 +5,8 @@ import './Reviews.css';
 import Carousel from './Carousel.jsx';
 
 class Reviews extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       selected: 'All',
     };
@@ -16,8 +16,15 @@ class Reviews extends React.Component {
   }
 
   handleReviewsClick(e) {
+    var selectedCategory = e.target.innerHTML.toLowerCase();
+    if (selectedCategory === 'dog owners') {
+      selectedCategory = 'dog_owner';
+    } else if (selectedCategory === 'parents') {
+      selectedCategory = 'parent';
+    }
+    console.log('buttonClick selected', selectedCategory);
     this.setState({
-      selected: e.target.innerHTML,
+      selected: e.target.selectedCategory,
     });
   }
 
@@ -41,7 +48,7 @@ class Reviews extends React.Component {
           <span><button type="button" className="reviews-btn" onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Commute</button></span>
         </div>
         <div>
-          <Carousel selected={this.state.selected} />
+          <Carousel selected={this.state.selected} reviews={this.props.reviews} />
         </div>
       </div>
     );
