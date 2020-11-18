@@ -1,14 +1,14 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
-import './Header.css';
+import styles from './Header.css';
 
 const Header = ({ neighborhoodName, reviewsTotal }) => {
   return (
-    <div className="header">
+    <div className={styles.header}>
       <h3>
         What Locals Say about {neighborhoodName}
       </h3>
-      <div className="locals">
+      <div className={styles.locals}>
         <span>
           At least {reviewsTotal} Trulia users voted on each feature.
         </span>

@@ -2,13 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
 
 
-.flexbox-container-carousel {
+.flexboxContainerCarousel {
   display: flex;
   justify-content: space-evenly;
   width: 100%;
 }
 
-.flexbox-item-carousel {
+.flexboxItemCarousel {
   margin: 16px 8px;
   display: flex;
   flex-direction: column;
@@ -60,7 +60,7 @@
   /* object-fit: cover; */
 }
 
-.carousel-container{
+.carouselContainer{
   height: 100%;
   position: relative;
   transition: transform 250ms;
@@ -82,7 +82,7 @@
   object-fit: cover;
 }
 
-.carousel-btn {
+.carouselbtn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -91,16 +91,16 @@
   cursor: pointer;
 }
 
-.carousel-btn-left {
+.carouselbtnleft {
   left: -2px;
   z-index: 1;
   position: relative;
 }
 
-.carousel-btn-right{
+.carouselbtnright{
   right: -40px;
 }
-.carousel-btn img {
+.carouselbtn img {
   width: 12px;
 
 }

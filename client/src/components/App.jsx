@@ -4,7 +4,7 @@ import axios from 'axios';
 import Header from './Header';
 import Stats from './Stats';
 import Reviews from './Reviews';
-import './App.css';
+import styles from './App.css';
 
 class App extends React.Component {
   constructor() {
@@ -44,9 +44,10 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(styles.neighborhood);
     return (
-      <div className="neighborhood">
-        <div className="neighborhood">
+      <div className={styles.neighborhood}>
+        <div className={styles.neighborhood}>
           <Header neighborhoodName={this.state.neighborhoodName} reviewsTotal={this.state.reviewsTotal}/>
         </div>
         <div>
