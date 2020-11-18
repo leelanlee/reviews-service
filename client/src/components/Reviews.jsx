@@ -25,7 +25,7 @@ class Reviews extends React.Component {
   }
 
   handleReviewsClick(e) {
-    var selectedCategory = e.target.innerHTML.toLowerCase();
+    let selectedCategory = e.target.innerHTML.toLowerCase();
     if (selectedCategory === 'dog owners') {
       selectedCategory = 'dog_owner';
     } else if (selectedCategory === 'parents') {
@@ -38,13 +38,12 @@ class Reviews extends React.Component {
         category: selectedCategory,
       },
     })
-    .then(result => {
-      console.log('buttonClick selected', selectedCategory);
-      this.setState({
-        selected: selectedCategory,
-        reviews: result.data,
+      .then((result) => {
+        this.setState({
+          selected: selectedCategory,
+          reviews: result.data,
+        });
       });
-    })
   }
 
   handleButtonOnHover(e) {

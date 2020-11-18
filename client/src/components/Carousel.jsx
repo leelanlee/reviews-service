@@ -2,7 +2,6 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable arrow-body-style */
 import React from 'react';
-import axios from 'axios';
 import CarouselItem from './CarouselItem';
 import './Carousel.css';
 
@@ -28,31 +27,6 @@ class Carousel extends React.Component {
       container,
     });
   }
-  // componentDidMount() {
-  //   axios({
-  //     method: 'get',
-  //     url: `${window.location}neighborhood_reviews`,
-  //     params: {
-  //       category: this.props.selected,
-  //     },
-  //   })
-  //     .then((result) => {
-  //       console.log('results', result.data);
-  //       this.setState({
-  //       }, () => {
-  //         const container = document.querySelector('.track');
-  //         const rowSet = Array.from(container.children);
-  //         const rowWidth = rowSet[0].getBoundingClientRect().width;
-  //         rowSet[0].style.left = 0;
-  //         rowSet[1].style.left = `${rowWidth}px`;
-  //         this.setState({
-  //           rowSet,
-  //           container,
-  //         });
-  //       });
-  //     })
-  //     .catch((err) => console.log(err));
-  // }
 
   handleRightButtonClick() {
     // const currentRow = this.state.rowSet[0];
