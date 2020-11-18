@@ -54,18 +54,18 @@ class Carousel extends React.Component {
   render() {
     return (
       <div className="carousel">
-        <button className="carouselbtn carouselbtnleft" onClick={this.handleLeftButtonClick} type="button">
+        <button className="carousel-btn carousel-btn-left" onClick={this.handleLeftButtonClick} type="button">
           <img src="https://www.pngfind.com/pngs/m/141-1415532_png-file-svg-carousel-button-left-right-transparent.png" alt="" />
         </button>
-          <div className="carouselContainer">
+          <div className="carousel-container">
             <div className="track">
-              <div className="flexboxContainerCarousel row">
+              <div className="flexbox-container-carousel row current-row">
                 {this.renderCarouselItemAtIndex(0, 'rgb(30, 173, 187)')}
                 {this.renderCarouselItemAtIndex(1, 'rgb(250,140,104)')}
                 {this.renderCarouselItemAtIndex(2, 'rgb(206,182,255)')}
                 {this.renderCarouselItemAtIndex(3, 'rgb(116,6,49)')}
               </div>
-              <div className="flexboxContainerCarousel row">
+              <div className="flexbox-container-carousel row">
                 {this.renderCarouselItemAtIndex(4, 'rgb(242,196,48)')}
                 {this.renderCarouselItemAtIndex(5, 'rgb(5,34,134)')}
                 {this.renderCarouselItemAtIndex(6, 'rgb(254,94,63)')}
@@ -73,7 +73,7 @@ class Carousel extends React.Component {
               </div>
             </div>
           </div>
-        <button className="carouselbtn carouselbtnright" type="button" onClick={this.handleRightButtonClick}>
+        <button className="carousel-btn carousel-btn-right" type="button" onClick={this.handleRightButtonClick}>
           <img src="https://www.pngfind.com/pngs/m/141-1415532_png-file-svg-carousel-button-left-right-transparent.png" alt="" />
         </button>
       </div>

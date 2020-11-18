@@ -1,17 +1,17 @@
 import React from 'react';
-import styles from './Carousel.css';
+import './Carousel.css';
 import PropTypes from 'prop-types';
 
 const CarouselItem = (props) => (
 
-  <div className={styles.flexboxItemCarousel} style={{backgroundColor: props.color}}>
-    <div className={styles.reviewerDetails}>
+  <div className="flexbox-item-carousel" style={{backgroundColor: props.color}}>
+    <div className="reviewer-details">
       {props.review.username}
     </div>
-    <div className={styles.review}>
+    <div className="review">
     {props.review.likes}
     </div>
-    <div className={`${styles.text} ${styles.fade}`}>
+    <div className="text fade">
       {props.review.full_text}
     </div>
   </div>
