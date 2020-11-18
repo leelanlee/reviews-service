@@ -10,7 +10,6 @@ class Carousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviews: [],
       rowSet: [],
       container: [],
     };
@@ -19,31 +18,41 @@ class Carousel extends React.Component {
   }
 
   componentDidMount() {
-    axios({
-      method: 'get',
-      url: `${window.location}neighborhood_reviews`,
-      params: {
-        category: 'parent',
-      },
-    })
-      .then((result) => {
-        console.log('results', result.data);
-        this.setState({
-          reviews: result.data,
-        }, () => {
-          const container = document.querySelector('.track');
-          const rowSet = Array.from(container.children);
-          const rowWidth = rowSet[0].getBoundingClientRect().width;
-          rowSet[0].style.left = 0;
-          rowSet[1].style.left = `${rowWidth}px`;
-          this.setState({
-            rowSet,
-            container,
-          });
-        });
-      })
-      .catch((err) => console.log(err));
+    const container = document.querySelector('.track');
+    const rowSet = Array.from(container.children);
+    const rowWidth = rowSet[0].getBoundingClientRect().width;
+    rowSet[0].style.left = 0;
+    rowSet[1].style.left = `${rowWidth}px`;
+    this.setState({
+      rowSet,
+      container,
+    });
   }
+  // componentDidMount() {
+  //   axios({
+  //     method: 'get',
+  //     url: `${window.location}neighborhood_reviews`,
+  //     params: {
+  //       category: this.props.selected,
+  //     },
+  //   })
+  //     .then((result) => {
+  //       console.log('results', result.data);
+  //       this.setState({
+  //       }, () => {
+  //         const container = document.querySelector('.track');
+  //         const rowSet = Array.from(container.children);
+  //         const rowWidth = rowSet[0].getBoundingClientRect().width;
+  //         rowSet[0].style.left = 0;
+  //         rowSet[1].style.left = `${rowWidth}px`;
+  //         this.setState({
+  //           rowSet,
+  //           container,
+  //         });
+  //       });
+  //     })
+  //     .catch((err) => console.log(err));
+  // }
 
   handleRightButtonClick() {
     // const currentRow = this.state.rowSet[0];
@@ -62,10 +71,10 @@ class Carousel extends React.Component {
   }
 
   renderCarouselItemAtIndex(index, color) {
-    if (this.state.reviews[index] === undefined) {
+    if (this.props.reviews[index] === undefined) {
       return null;
     }
-    return <CarouselItem review={this.state.reviews[index]} color={color} />;
+    return <CarouselItem review={this.props.reviews[index]} color={color} />;
   }
 
   render() {
@@ -74,7 +83,6 @@ class Carousel extends React.Component {
         <button className="carousel-btn carousel-btn-left" onClick={this.handleLeftButtonClick} type="button">
           <img src="https://www.pngfind.com/pngs/m/141-1415532_png-file-svg-carousel-button-left-right-transparent.png" alt="" />
         </button>
-        {this.state.reviews.length > 0 ? (
           <div className="carousel-container">
             <div className="track">
               <div className="flexbox-container-carousel row current-row">
@@ -91,7 +99,6 @@ class Carousel extends React.Component {
               </div>
             </div>
           </div>
-        ) : null }
         <button className="carousel-btn carousel-btn-right" type="button" onClick={this.handleRightButtonClick}>
           <img src="https://www.pngfind.com/pngs/m/141-1415532_png-file-svg-carousel-button-left-right-transparent.png" alt="" />
         </button>

@@ -8,11 +8,20 @@ class Reviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: 'All',
+      selected: 'all',
+      reviews: this.props.reviews,
     };
     this.handleReviewsClick = this.handleReviewsClick.bind(this);
     this.handleOnButtonHover = this.handleButtonOnHover.bind(this);
     this.handleaOffButtonHover = this.handleButtonOffHover.bind(this);
+  }
+
+  componentDidUpdate(lastProps) {
+    if (lastProps.reviews.length === 0 && this.props.reviews.length !== 0) {
+      this.setState({
+        reviews: this.props.reviews,
+      });
+    }
   }
 
   handleReviewsClick(e) {
@@ -22,10 +31,20 @@ class Reviews extends React.Component {
     } else if (selectedCategory === 'parents') {
       selectedCategory = 'parent';
     }
-    console.log('buttonClick selected', selectedCategory);
-    this.setState({
-      selected: e.target.selectedCategory,
-    });
+    axios({
+      method: 'get',
+      url: `${window.location}neighborhood_reviews`,
+      params: {
+        category: selectedCategory,
+      },
+    })
+    .then(result => {
+      console.log('buttonClick selected', selectedCategory);
+      this.setState({
+        selected: selectedCategory,
+        reviews: result.data,
+      });
+    })
   }
 
   handleButtonOnHover(e) {
@@ -38,6 +57,7 @@ class Reviews extends React.Component {
 
 
   render() {
+    console.log(this.state)
     return (
       <div>
         <div className='reviews-bar'>
@@ -48,7 +68,7 @@ class Reviews extends React.Component {
           <span><button type="button" className="reviews-btn" onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Commute</button></span>
         </div>
         <div>
-          <Carousel selected={this.state.selected} reviews={this.props.reviews} />
+          <Carousel selected={this.state.selected} reviews={this.state.reviews} />
         </div>
       </div>
     );
