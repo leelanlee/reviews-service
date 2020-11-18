@@ -67,7 +67,7 @@ module.exports = {
           var resultObj = {
             username: result[i].name,
             'user_type': result[i].user_type,
-            'review_date': result[i].review_da,
+            'review_date': result[i].review_date,
             'full_text': result[i].full_text,
             likes: result[i].likes,
             category: {
