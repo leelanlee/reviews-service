@@ -1,13 +1,17 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
-import './Header.css';
+import styles from './Header.css';
 
-const Header = (props) => {
+const Header = ({ neighborhoodName, reviewsTotal }) => {
   return (
-    <div className="header">
-      <h3>What Locals Say about {props.neighborhoodName}</h3>
-      <div className="locals">
-        <span>At least {props.reviewsTotal} Trulia users voted on each feature.</span>
+    <div className={styles.header}>
+      <h3>
+        What Locals Say about {neighborhoodName}
+      </h3>
+      <div className={styles.locals}>
+        <span>
+          At least {reviewsTotal} Trulia users voted on each feature.
+        </span>
       </div>
     </div>
   );

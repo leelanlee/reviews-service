@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+.reviewsBar {
+  padding: 24px 0px 0px;
+}
+
+
+.reviewsbtn {
+  font-family: 'Roboto', sans-serif;
+  border-radius: 8px;
+  margin: 1px;
+  border-color: rgb(245, 246, 247);;
+  background-color: rgb(245, 246, 247);
+  border-style: none;
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+  white-space: nowrap;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+

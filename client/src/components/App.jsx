@@ -1,14 +1,17 @@
 import React from 'react';
-import Header from './Header.jsx';
-import Stats from './Stats.jsx';
+import PropTypes from 'prop-types';
 import axios from 'axios';
-import './App.css';
+import Header from './Header';
+import Stats from './Stats';
+import Reviews from './Reviews';
+import styles from './App.css';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       reviewsTotal: 0,
+      reviews: [],
       neighborhoodName: '',
       stats: {},
     };
@@ -17,39 +20,40 @@ class App extends React.Component {
   componentDidMount() {
     axios({
       method: 'get',
-      url: 'http://localhost:8010/api/listings/3/neighborhood_reviews',
+      url: `${window.location}neighborhood_reviews`,
     })
       .then(result => {
         console.log('Get request reviews success');
         this.setState({
           reviewsTotal: result.data.length,
+          reviews: result.data,
         });
-      })
-      .catch((err) => console.log(err));
-
-    axios({
-      method: 'get',
-      url: 'http://localhost:8010/api/listings/3/neighborhood_stats',
-    })
-      .then(result => {
-        console.log('Get request stats success');
-        this.setState({
-          neighborhoodName: result.data[0].name,
-          stats: result.data[0].stats,
-        });
+        axios({
+          method: 'get',
+          url: `${window.location}neighborhood_stats`,
+        })
+          .then(result => {
+            console.log('Get request stats success');
+            this.setState({
+              neighborhoodName: result.data[0].name,
+              stats: result.data[0].stats,
+            });
+          });
       })
       .catch((err) => console.log(err));
   }
 
   render() {
+    console.log(styles.neighborhood);
     return (
-      <div className="neighborhood">
-        <div className="neighborhood">
+      <div className={styles.neighborhood}>
+        <div className={styles.neighborhood}>
           <Header neighborhoodName={this.state.neighborhoodName} reviewsTotal={this.state.reviewsTotal}/>
         </div>
         <div>
           <Stats stats={this.state.stats}/>
         </div>
+        <Reviews reviews={this.state.reviews}/>
       </div>
     );
   }
