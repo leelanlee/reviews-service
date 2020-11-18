@@ -18,9 +18,9 @@ class Stats extends React.Component {
 
   handleButtonClick() {
     if (!this.state.seeAll) {
-      document.querySelector('.stats-btn').innerHTML = 'See Less';
+      document.querySelector(`.${styles.statsbtn}`).innerHTML = 'See Less';
     } else {
-      document.querySelector('.stats-btn').innerHTML = 'See More';
+      document.querySelector(`.${styles.statsbtn}`).innerHTML = 'See More';
     }
     this.setState({
       seeAll: !this.state.seeAll,
@@ -71,7 +71,7 @@ class Stats extends React.Component {
 
           )
           : null}
-        <button type="button" onClick={this.handleButtonClick} onMouseEnter={this.handleButtonHover} onMouseLeave={this.handleButtonHover}>See All</button>
+        <button type="button" className={styles.statsbtn} onClick={this.handleButtonClick} onMouseEnter={this.handleButtonHover} onMouseLeave={this.handleButtonHover}>See All</button>
       </div>
     );
   }
