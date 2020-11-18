@@ -17,9 +17,11 @@ class Carousel extends React.Component {
   }
 
   componentDidMount() {
-    console.log(styles.track);
-    const container = document.querySelector(styles.track);
+    console.log('track', styles.track);
+    const container = document.querySelector(`.${styles.track}`);
+    console.log('CONTAINER', container);
     const rowSet = Array.from(container.children);
+    console.log('ROWSET', rowSet);
     const rowWidth = rowSet[0].getBoundingClientRect().width;
     rowSet[0].style.left = 0;
     rowSet[1].style.left = `${rowWidth}px`;
