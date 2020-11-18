@@ -55,6 +55,7 @@ class Carousel extends React.Component {
   }
 
   render() {
+    console.log('HEY', this.props.reviews)
     return (
       <div className={styles.carousel}>
         <button className={`${styles['carousel-btn']} ${styles['carousel-btn-left']}`} onClick={this.handleLeftButtonClick} type="button">

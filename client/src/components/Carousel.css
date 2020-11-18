@@ -23,6 +23,30 @@
   border-radius: 8px;
 }
 
+.reviewer-details{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.avatar{
+  border-radius: 200px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(134, 144, 153);
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 4px;
+}
+
+.username{
+  font-size: 16px;
+}
 .text{
   font-family: 'Roboto', sans-serif;
   overflow: hidden;
@@ -88,7 +112,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  border-radius: 10px;
+  border-radius: 200px;
   border-color: transparent;
   cursor: pointer;
 }
@@ -106,4 +130,3 @@
   width: 12px;
 
 }
-
