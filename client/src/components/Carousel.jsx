@@ -72,7 +72,7 @@ class Carousel extends React.Component {
     if (this.props.reviews[index] === undefined) {
       return null;
     }
-    return <CarouselItem review={this.props.reviews[index]} color={color} />;
+    return <CarouselItem review={this.props.reviews[index]} color={color} handleReviewModal={this.props.handleReviewModal}/>;
   }
 
   toggleModal() {

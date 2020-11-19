@@ -66,7 +66,7 @@ class Reviews extends React.Component {
           <span><button type="button" className={styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Commute</button></span>
         </div>
         <div>
-          <Carousel selected={this.state.selected} reviews={this.state.reviews} />
+          <Carousel selected={this.state.selected} reviews={this.state.reviews} handleReviewModal={this.props.handleReviewModal}/>
         </div>
       </div>
     );

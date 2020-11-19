@@ -4,6 +4,7 @@ import axios from 'axios';
 import Header from './Header';
 import Stats from './Stats';
 import Reviews from './Reviews';
+import ReviewModal from './ReviewModal.jsx'
 import styles from '../styles/App.css';
 
 class App extends React.Component {
@@ -14,7 +15,10 @@ class App extends React.Component {
       reviews: [],
       neighborhoodName: '',
       stats: {},
+      reviewModal: false,
+      reviewCard: {},
     };
+    this.handleReviewModal = this.handleReviewModal.bind(this);
   }
 
   componentDidMount() {
@@ -43,6 +47,12 @@ class App extends React.Component {
       .catch((err) => console.log(err));
   }
 
+  handleReviewModal(review) {
+    this.setState({
+      reviewModal: true,
+      reviewCard: review,
+    })
+  }
   render() {
     console.log(styles.neighborhood);
     return (
@@ -53,7 +63,8 @@ class App extends React.Component {
         <div>
           <Stats stats={this.state.stats}/>
         </div>
-        <Reviews reviews={this.state.reviews}/>
+        <Reviews reviews={this.state.reviews} handleReviewModal={this.handleReviewModal}/>
+        {this.state.reviewModal ? <ReviewModal review={this.state.reviewCard} on={this.state.reviewModal}/> : null}
       </div>
     );
   }
