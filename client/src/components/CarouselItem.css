@@ -85,7 +85,7 @@
   /* left: 0; */
   width: 100%;
   height: 1.5em;
-  background: linear-gradient(to bottom, rgba(0, 173, 187, 0), rgb(30, 173, 187) 50%);
+  /* background: linear-gradient(to bottom, rgba(0, 173, 187, 0), rgb(30, 173, 187) 50%); */
 }
 
 .other {

@@ -40,7 +40,7 @@ class Carousel extends React.Component {
     const amountToMove = nextRow.style.left;
     this.state.container.style.transform = `translateX(-${amountToMove})`;
     this.setState({
-      modal: true,
+      modal: false,
     });
   }
 
@@ -65,7 +65,7 @@ class Carousel extends React.Component {
       <div>
       <div className={styles.carousel}>
         <button className={`${styles['carousel-btn']} ${styles['carousel-btn-left']}`} onClick={this.handleLeftButtonClick} type="button">
-          <img src="https://cdn.onlinewebfonts.com/svg/img_72543.png" alt="" />
+          <img src="https://www.flaticon.com/svg/static/icons/svg/60/60775.svg" alt="" />
         </button>
           <div className={styles['carousel-container']}>
             <div className={styles.track}>
@@ -84,7 +84,7 @@ class Carousel extends React.Component {
             </div>
           </div>
         <button className={`${styles['carousel-btn']} ${styles['carousel-btn-right']}`} type="button" onClick={this.handleRightButtonClick}>
-        <img src="https://lh3.googleusercontent.com/proxy/581_GDlEXYvfd2QsXfnA6ZZQ1OxJl3rD1z86q7KlZHE_nKRes7n_OMSkNWRuym9gqZnuAH3t_HsXYio4utb2zjMgo5POraUcm10g8o6nt2uVDAOKnM5E878GqG1vodjyD0IGeIZCN5OzLSSQSe3vK4t5lGREOQ" alt="" />
+        <img src="https://www.flaticon.com/svg/static/icons/svg/60/60758.svg" alt="" />
         </button>
       </div>
       {this.state.modal === true ? <Modal modal={true} reviews={this.props.reviews}/> : null}
