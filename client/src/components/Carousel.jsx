@@ -14,6 +14,7 @@ class Carousel extends React.Component {
       container: [],
       modal: false,
       leftButton: false,
+      carousel: 1,
     };
     this.handleRightButtonClick = this.handleRightButtonClick.bind(this);
     this.handleLeftButtonClick = this.handleLeftButtonClick.bind(this);
@@ -40,8 +41,14 @@ class Carousel extends React.Component {
 
     const amountToMove = nextRow.style.left;
     this.state.container.style.transform = `translateX(-${amountToMove})`;
+    if (this.state.carousel === 2) {
+      this.setState({
+        modal: true,
+        leftButton: true,
+      });
+    }
     this.setState({
-      modal: false,
+      carousel: 2,
       leftButton: true,
     });
   }
@@ -54,6 +61,7 @@ class Carousel extends React.Component {
     this.state.container.style.transform = 'translateX(' + '1px' + ')';
     this.setState({
       leftButton: false,
+      carousel: 1,
     });
   }
 
