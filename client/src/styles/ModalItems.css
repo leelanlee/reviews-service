@@ -76,6 +76,7 @@
   display: flex;
   width: 100%;
   justify-content: space-evenly;
+  align-items: baseline;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -86,7 +87,7 @@
   min-width: 32px;
   min-height: 32px;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: left;
   overflow: hidden;
   margin-left: 15%;
@@ -104,11 +105,13 @@
   font-size: 16px;
   line-height: 1.5;
   justify-self: center;
-  align-self: auto;
+  align-self: center;
+  margin-left: 10px;
 }
 
 .flag{
   font-size: 16px;
-  line-height: 1.5;
+  margin: auto auto;
   margin-right: 15%;
+  align-self: top;
 }
