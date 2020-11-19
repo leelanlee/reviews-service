@@ -24,7 +24,7 @@
 }
 
 .reviewer-details{
-  margin-top: 10px;
+  margin-top: 24px;
   display: flex;
   width: 100%;
   justify-content: center;
@@ -70,6 +70,8 @@
 }
 
 .text{
+  margin-top: 30px;
+  margin-bottom: 5px;
   font-family: 'Roboto', sans-serif;
   overflow: hidden;
   line-height: 1.2;
@@ -97,7 +99,46 @@
   background: linear-gradient(to bottom, rgba(0, 173, 187, 0), rgb(30, 173, 187) 50%);
 }
 
+.other {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
+.likes{
+  width: 75%;
+  height: 38px;
+  min-width: 32px;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  overflow: hidden;
+  margin-left: 15%;
+}
+
+.smile{
+  justify-self: center;
+  /* z-index: 1; */
+  min-height: 30px;
+  min-width: 30px;
+  /* min-height: 24px; */
+}
+
+.likesCount{
+  font-size: 16px;
+  line-height: 1.5;
+  justify-self: center;
+  align-self: auto;
+}
+
+.flag{
+  font-size: 16px;
+  line-height: 1.5;
+  margin-right: 15%;
+}
 
 .carousel {
   position: relative;
@@ -132,23 +173,26 @@
 
 .carousel-btn {
   position: absolute;
-  top: 50%;
+  min-height: 30px;
+  max-height: 30px;
+  top: 55%;
   transform: translateY(-50%);
   border-radius: 200px;
   border-color: transparent;
+  background-color: white;
   cursor: pointer;
 }
 
 .carousel-btn-left {
-  left: -2px;
+  left: -5px;
   z-index: 1;
   position: relative;
 }
 
 .carousel-btn-right{
-  right: -40px;
+  right: -5px;
 }
 .carousel-btn img {
   width: 12px;
-
+  background-color: white;
 }

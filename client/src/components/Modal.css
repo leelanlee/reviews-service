@@ -7,6 +7,7 @@
   z-index: 2;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px) grayscale(50%);
+
 }
 
 .modalContainer {
@@ -20,4 +21,14 @@
   border-radius: 8px;
   transform: translate(-50%, -50%);
   overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: auto;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 60px;
+  grid-auto-flow: row;
+
 }
