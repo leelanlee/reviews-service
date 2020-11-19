@@ -18,14 +18,15 @@ class Carousel extends React.Component {
     };
     this.handleRightButtonClick = this.handleRightButtonClick.bind(this);
     this.handleLeftButtonClick = this.handleLeftButtonClick.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   componentDidMount() {
-    console.log('track', styles.track);
+    // console.log('track', styles.track);
     const container = document.querySelector(`.${styles.track}`);
-    console.log('CONTAINER', container);
+    // console.log('CONTAINER', container);
     const rowSet = Array.from(container.children);
-    console.log('ROWSET', rowSet);
+    // console.log('ROWSET', rowSet);
     const rowWidth = rowSet[0].getBoundingClientRect().width;
     rowSet[0].style.left = 0;
     rowSet[1].style.left = `${rowWidth}px`;
@@ -66,6 +67,7 @@ class Carousel extends React.Component {
     });
   }
 
+
   renderCarouselItemAtIndex(index, color) {
     if (this.props.reviews[index] === undefined) {
       return null;
@@ -73,8 +75,13 @@ class Carousel extends React.Component {
     return <CarouselItem review={this.props.reviews[index]} color={color} />;
   }
 
-  render() {
+  toggleModal() {
+    this.setState({
+      modal: false,
+    });
+  }
 
+  render() {
     return (
       <div>
       <div className={styles.carousel}>
@@ -101,7 +108,7 @@ class Carousel extends React.Component {
         <img src="https://www.flaticon.com/svg/static/icons/svg/60/60758.svg" alt="" />
         </button>
       </div>
-      {this.state.modal === true ? <Modal modal={true} reviews={this.props.reviews}/> : null}
+      {this.state.modal === true ? <Modal reviews={this.props.reviews} toggleModal={this.toggleModal}/> : null}
       </div>
     );
   }

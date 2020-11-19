@@ -19,8 +19,8 @@ class Modal extends React.Component {
 
   render() {
     return (
-    <div className={this.props.modal === true ? styles.modalBackground : null}>
-      <div className={this.props.modal === true ? styles.modalContainer : null}>
+    <div className={styles.modalBackground} onClick={() => this.props.toggleModal()}>
+      <div className={styles.modalContainer}>
         <div className={styles.gridContainer}>
        {this.props.reviews.map(review => <ModalItem review={review} color={this.randomColor()} />)}
         </div>
