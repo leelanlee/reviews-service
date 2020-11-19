@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/ModalItem.css';
+import styles from '../styles/ModalItems.css';
 import PropTypes from 'prop-types';
 import TimeAgo from 'react-timeago';
 

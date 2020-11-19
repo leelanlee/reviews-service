@@ -93,3 +93,14 @@
 .colorbtn {
   background-color:rgb(205, 209, 212);
 }
+
+.methodology {
+  margin-top: 10px;
+  color: rgb(134, 144, 153);
+  font-size: 12px;
+  line-height: 1.33;
+}
+
+.learnMore {
+  color: rgb(0, 120, 130);
+}

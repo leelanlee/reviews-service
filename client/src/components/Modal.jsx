@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../styles/Modal.css';
-import CarouselItem from './CarouselItem';
+import ModalItem from './ModalItems';
 
 class Modal extends React.Component {
   constructor(props) {
@@ -10,32 +10,19 @@ class Modal extends React.Component {
     };
   }
 
-  // renderCarouselItemAtIndex(index, color) {
-  //   if (this.props.reviews[index] === undefined) {
-  //     return null;
-  //   }
-  //   return <CarouselItem review={this.props.reviews[index]} color={color} />;
-  // }
-
-  // createGridOfReviews(reviews) {
-
-  //   <div className={styles['flexbox-container-grid']}>
-  //   </div>
-
-  //   var count = 0;
-  //   for (var i = 0; i < reviews.length; i++) {
-  //     if (count === 0) {
-
-  //     }
-  //   }
-  // }
+  randomColor() {
+    var colorArr = ['rgb(30, 173, 187)', 'rgb(250,140,104)', 'rgb(206,182,255)', 'rgb(116,6,49)', 'rgb(242,196,48)', 'rgb(5,34,134)', 'rgb(254,94,63)', 'rgb(7,173,187)']
+    var randomIndex = Math.floor(Math.random() * (7 - 0 + 1) + 0)
+    var selectedColor = colorArr[randomIndex];
+    return selectedColor;
+  }
 
   render() {
     return (
     <div className={this.props.modal === true ? styles.modalBackground : null}>
       <div className={this.props.modal === true ? styles.modalContainer : null}>
         <div className={styles.gridContainer}>
-       {this.props.reviews.map(review => <CarouselItem review={review} color={'red'} />)}
+       {this.props.reviews.map(review => <ModalItem review={review} color={this.randomColor()} />)}
         </div>
       </div>
     </div>
