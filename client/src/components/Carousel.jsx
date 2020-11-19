@@ -4,7 +4,7 @@
 import React from 'react';
 import CarouselItem from './CarouselItem';
 import Modal from './Modal';
-import styles from './Carousel.css';
+import styles from '../styles/Carousel.css';
 
 class Carousel extends React.Component {
   constructor(props) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './CarouselItem.css';
+import styles from '../styles/CarouselItem.css';
 import PropTypes from 'prop-types';
 import TimeAgo from 'react-timeago';
 

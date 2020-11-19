@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Modal.css';
+import styles from '../styles/Modal.css';
 import CarouselItem from './CarouselItem';
 
 class Modal extends React.Component {
@@ -35,7 +35,7 @@ class Modal extends React.Component {
     <div className={this.props.modal === true ? styles.modalBackground : null}>
       <div className={this.props.modal === true ? styles.modalContainer : null}>
         <div className={styles.gridContainer}>
-       {this.props.reviews.map(review => {<CarouselItem review={review} color={'red'} />})}
+       {this.props.reviews.map(review => <CarouselItem review={review} color={'red'} />)}
         </div>
       </div>
     </div>

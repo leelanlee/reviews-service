@@ -4,7 +4,7 @@ import axios from 'axios';
 import Header from './Header';
 import Stats from './Stats';
 import Reviews from './Reviews';
-import styles from './App.css';
+import styles from '../styles/App.css';
 
 class App extends React.Component {
   constructor() {
