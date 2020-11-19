@@ -44,7 +44,7 @@
   position: absolute;
   min-height: 30px;
   max-height: 30px;
-  top: 55%;
+  top: 50%;
   transform: translateY(-50%);
   border-radius: 200px;
   border-color: transparent;
@@ -64,4 +64,8 @@
 .carousel-btn img {
   width: 12px;
   background-color: white;
+}
+
+.hiddenBtn {
+ display: none;
 }

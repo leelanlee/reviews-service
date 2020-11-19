@@ -13,6 +13,7 @@ class Carousel extends React.Component {
       rowSet: [],
       container: [],
       modal: false,
+      leftButton: false,
     };
     this.handleRightButtonClick = this.handleRightButtonClick.bind(this);
     this.handleLeftButtonClick = this.handleLeftButtonClick.bind(this);
@@ -41,6 +42,7 @@ class Carousel extends React.Component {
     this.state.container.style.transform = `translateX(-${amountToMove})`;
     this.setState({
       modal: false,
+      leftButton: true,
     });
   }
 
@@ -50,6 +52,9 @@ class Carousel extends React.Component {
 
     // const amountToMove = nextRow.style.left;
     this.state.container.style.transform = 'translateX(' + '1px' + ')';
+    this.setState({
+      leftButton: false,
+    });
   }
 
   renderCarouselItemAtIndex(index, color) {
@@ -64,8 +69,8 @@ class Carousel extends React.Component {
     return (
       <div>
       <div className={styles.carousel}>
-        <button className={`${styles['carousel-btn']} ${styles['carousel-btn-left']}`} onClick={this.handleLeftButtonClick} type="button">
-          <img src="https://www.flaticon.com/svg/static/icons/svg/60/60775.svg" alt="" />
+        <button className={this.state.leftButton ? `${styles['carousel-btn']} ${styles['carousel-btn-left']}` : styles.hiddenBtn} onClick={this.handleLeftButtonClick} type="button">
+          <img className={this.state.leftButton ? null : styles.hiddenBtn} src="https://www.flaticon.com/svg/static/icons/svg/60/60775.svg" alt="" />
         </button>
           <div className={styles['carousel-container']}>
             <div className={styles.track}>
