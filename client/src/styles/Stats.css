@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
+
 .flexboxContainer {
   display: flex;
   justify-content: flex-start;
@@ -5,7 +7,8 @@
 
 .flexboxItem {
   width: 33%;
-  margin: 10px;
+  margin-bottom: 15px;
+  margin-top: 10px;
 }
 
 .flexboxItem1 {
@@ -13,7 +16,8 @@
   min-height: 40px;
   /* border: 3px solid; */
   display: flex;
-  justify-content: space-evenly;
+  justify-content: left;
+
 }
 
 .statsPercentage {
@@ -68,7 +72,9 @@
   /* width: 28px;
   height: 28px; */
   max-height: 28px;
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
+  font-weight: normal;
   color: rgb(59, 65, 68);
 }
 
