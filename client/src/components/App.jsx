@@ -17,6 +17,7 @@ class App extends React.Component {
       stats: {},
       reviewModal: false,
       reviewCard: {},
+      reviewColor: '',
     };
     this.handleReviewModal = this.handleReviewModal.bind(this);
   }
@@ -47,10 +48,11 @@ class App extends React.Component {
       .catch((err) => console.log(err));
   }
 
-  handleReviewModal(review) {
+  handleReviewModal(review, color) {
     this.setState({
       reviewModal: true,
       reviewCard: review,
+      reviewColor: color,
     })
   }
   render() {
@@ -64,7 +66,7 @@ class App extends React.Component {
           <Stats stats={this.state.stats}/>
         </div>
         <Reviews reviews={this.state.reviews} handleReviewModal={this.handleReviewModal}/>
-        {this.state.reviewModal ? <ReviewModal review={this.state.reviewCard} on={this.state.reviewModal}/> : null}
+        {this.state.reviewModal ? <ReviewModal review={this.state.reviewCard} color={this.state.reviewColor} on={this.state.reviewModal}/> : null}
       </div>
     );
   }

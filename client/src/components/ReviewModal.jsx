@@ -18,7 +18,7 @@ class ReviewModal extends React.Component {
       <div className={styles.modalReviewBackground}>
         <div className={styles.modalReviewContainer}>
           <div className={styles.gridReviewContainer}>
-          <CarouselItem review={this.state.review} />
+          <CarouselItem review={this.props.review} color={this.props.color}/>
           </div>
         </div>
       </div>
