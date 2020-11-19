@@ -22,13 +22,12 @@ class Modal extends React.Component {
     <div className={styles.modalBackground} onClick={() => this.props.toggleModal()}>
       <div className={styles.modalContainer}>
         <div className={styles.gridContainer}>
-       {this.props.reviews.length > 1 ? this.props.reviews.map((review, index) => <ModalItem review={review} key={index} color={this.randomColor()} />) : null} />}
+       {this.props.reviews.length > 1 ? this.props.reviews.map((review, index) => <ModalItem review={review} key={index} color={this.randomColor()} />) : null}
         </div>
       </div>
     </div>
     );
   }
-
 }
 
 export default Modal;

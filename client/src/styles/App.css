@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 .neighborhood {
-  width: 95%;
+  max-width: 992px;
   border-radius: 8px;
   background-color: rgb(245, 246, 247);
   padding: 16px;

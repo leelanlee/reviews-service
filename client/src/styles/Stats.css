@@ -7,8 +7,8 @@
 
 .flexboxItem {
   width: 33%;
-  margin-bottom: 15px;
-  margin-top: 10px;
+  margin-bottom: 18px;
+  margin-top: 15px;
 }
 
 .flexboxItem1 {
@@ -21,7 +21,7 @@
 }
 
 .statsPercentage {
-  /* margin-right: 2px; */
+  margin-right: 10px;
   border-radius: 8px;
   /* overflow: hidden; */
   background-color: rgb(224, 247, 248);
@@ -31,11 +31,13 @@
   align-items: center;
   justify-content: flex-start;
   max-height: 28px;
+  max-width: 80%;
 }
 
 .thumbsUp {
   width: 28px;
   max-height: 28px;
+  margin-left:10px;
 }
 
 .percentage {
