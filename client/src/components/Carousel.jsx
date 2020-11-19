@@ -41,6 +41,7 @@ class Carousel extends React.Component {
 
     const amountToMove = nextRow.style.left;
     this.state.container.style.transform = `translateX(-${amountToMove})`;
+
     if (this.state.carousel === 2) {
       this.setState({
         modal: true,
@@ -58,7 +59,7 @@ class Carousel extends React.Component {
     // const nextRow = this.state.rowSet[0];
 
     // const amountToMove = nextRow.style.left;
-    this.state.container.style.transform = 'translateX(' + '1px' + ')';
+    this.state.container.style.transform = 'translateX(' + '0px' + ')';
     this.setState({
       leftButton: false,
       carousel: 1,
@@ -73,7 +74,7 @@ class Carousel extends React.Component {
   }
 
   render() {
-    console.log('HEY', this.props.reviews)
+
     return (
       <div>
       <div className={styles.carousel}>
