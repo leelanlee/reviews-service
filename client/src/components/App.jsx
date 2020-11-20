@@ -4,7 +4,8 @@ import axios from 'axios';
 import Header from './Header';
 import Stats from './Stats';
 import Reviews from './Reviews';
-import styles from './App.css';
+import ReviewModal from './ReviewModal.jsx'
+import styles from '../styles/App.css';
 
 class App extends React.Component {
   constructor() {
@@ -14,7 +15,12 @@ class App extends React.Component {
       reviews: [],
       neighborhoodName: '',
       stats: {},
+      reviewModal: false,
+      reviewCard: {},
+      reviewColor: '',
     };
+    this.handleReviewModal = this.handleReviewModal.bind(this);
+    this.toggleReviewModalOff = this.toggleReviewModalOff.bind(this);
   }
 
   componentDidMount() {
@@ -43,6 +49,20 @@ class App extends React.Component {
       .catch((err) => console.log(err));
   }
 
+  handleReviewModal(review, color) {
+    this.setState({
+      reviewModal: true,
+      reviewCard: review,
+      reviewColor: color,
+    });
+  }
+  toggleReviewModalOff() {
+    this.setState({
+      reviewModal: false,
+    })
+  }
+
+
   render() {
     console.log(styles.neighborhood);
     return (
@@ -53,7 +73,8 @@ class App extends React.Component {
         <div>
           <Stats stats={this.state.stats}/>
         </div>
-        <Reviews reviews={this.state.reviews}/>
+        <Reviews reviews={this.state.reviews} handleReviewModal={this.handleReviewModal} toggle={true}/>
+        {this.state.reviewModal ? <ReviewModal review={this.state.reviewCard} color={this.state.reviewColor} on={this.state.reviewModal} toggleReviewModalOff={this.toggleReviewModalOff}/> : null}
       </div>
     );
   }

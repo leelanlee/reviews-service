@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
-import styles from './Stats.css';
+import styles from '../styles/Stats.css';
 import PropTypes from 'prop-types';
 import statsDetails from '../stats';
 import StatsItem from './StatsItem';
@@ -72,6 +72,9 @@ class Stats extends React.Component {
           )
           : null}
         <button type="button" className={styles.statsbtn} onClick={this.handleButtonClick} onMouseEnter={this.handleButtonHover} onMouseLeave={this.handleButtonHover}>See All</button>
+        <div className={styles.methodology}>
+          <span className={styles.learnMore}>Learn more</span> about our methodology.
+        </div>
       </div>
     );
   }

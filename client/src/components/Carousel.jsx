@@ -3,7 +3,8 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import CarouselItem from './CarouselItem';
-import styles from './Carousel.css';
+import GridModal from './GridModal';
+import styles from '../styles/Carousel.css';
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -11,17 +12,22 @@ class Carousel extends React.Component {
     this.state = {
       rowSet: [],
       container: [],
+      modal: false,
+      leftButton: false,
+      carousel: 1,
+      moreReviews: false,
     };
     this.handleRightButtonClick = this.handleRightButtonClick.bind(this);
     this.handleLeftButtonClick = this.handleLeftButtonClick.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   componentDidMount() {
-    console.log('track', styles.track);
+    // console.log('track', styles.track);
     const container = document.querySelector(`.${styles.track}`);
-    console.log('CONTAINER', container);
+    // console.log('CONTAINER', container);
     const rowSet = Array.from(container.children);
-    console.log('ROWSET', rowSet);
+    // console.log('ROWSET', rowSet);
     const rowWidth = rowSet[0].getBoundingClientRect().width;
     rowSet[0].style.left = 0;
     rowSet[1].style.left = `${rowWidth}px`;
@@ -37,6 +43,18 @@ class Carousel extends React.Component {
 
     const amountToMove = nextRow.style.left;
     this.state.container.style.transform = `translateX(-${amountToMove})`;
+
+    if (this.state.carousel === 2) {
+      this.setState({
+        modal: true,
+        leftButton: true,
+      });
+    }
+    this.setState({
+      carousel: 2,
+      leftButton: true,
+      moreReviews: true,
+    });
   }
 
   handleLeftButtonClick() {
@@ -44,21 +62,32 @@ class Carousel extends React.Component {
     // const nextRow = this.state.rowSet[0];
 
     // const amountToMove = nextRow.style.left;
-    this.state.container.style.transform = 'translateX(' + '1px' + ')';
+    this.state.container.style.transform = 'translateX(' + '0px' + ')';
+    this.setState({
+      leftButton: false,
+      carousel: 1,
+    });
+  }
+
+  toggleModal() {
+    this.setState({
+      modal: false,
+    });
   }
 
   renderCarouselItemAtIndex(index, color) {
     if (this.props.reviews[index] === undefined) {
       return null;
     }
-    return <CarouselItem review={this.props.reviews[index]} color={color} />;
+    return <CarouselItem review={this.props.reviews[index]} color={color} handleReviewModal={this.props.handleReviewModal}/>;
   }
 
   render() {
     return (
+      <div>
       <div className={styles.carousel}>
-        <button className={`${styles['carousel-btn']} ${styles['carousel-btn-left']}`} onClick={this.handleLeftButtonClick} type="button">
-          <img src="https://www.pngfind.com/pngs/m/141-1415532_png-file-svg-carousel-button-left-right-transparent.png" alt="" />
+        <button className={this.state.leftButton ? `${styles['carousel-btn']} ${styles['carousel-btn-left']}` : styles.hiddenBtn} onClick={this.handleLeftButtonClick} type="button">
+          <img className={this.state.leftButton ? null : styles.hiddenBtn} src="https://www.flaticon.com/svg/static/icons/svg/60/60775.svg" alt="" />
         </button>
           <div className={styles['carousel-container']}>
             <div className={styles.track}>
@@ -77,8 +106,10 @@ class Carousel extends React.Component {
             </div>
           </div>
         <button className={`${styles['carousel-btn']} ${styles['carousel-btn-right']}`} type="button" onClick={this.handleRightButtonClick}>
-          <img src="https://www.pngfind.com/pngs/m/141-1415532_png-file-svg-carousel-button-left-right-transparent.png" alt="" />
+        {this.state.moreReviews === false ? <img src="https://www.flaticon.com/svg/static/icons/svg/60/60758.svg" alt="" /> : `+` }
         </button>
+      </div>
+      {this.state.modal === true ? <GridModal reviews={this.props.reviews} toggleModal={this.toggleModal}/> : null}
       </div>
     );
   }

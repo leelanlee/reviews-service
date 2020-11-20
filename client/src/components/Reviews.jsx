@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import styles from './Reviews.css';
+import styles from '../styles/Reviews.css';
 import Carousel from './Carousel.jsx';
 
 class Reviews extends React.Component {
@@ -10,6 +10,7 @@ class Reviews extends React.Component {
     this.state = {
       selected: 'all',
       reviews: this.props.reviews,
+      toggle: this.props.toggle,
     };
     this.handleReviewsClick = this.handleReviewsClick.bind(this);
     this.handleOnButtonHover = this.handleButtonOnHover.bind(this);
@@ -47,7 +48,7 @@ class Reviews extends React.Component {
   }
 
   handleButtonOnHover(e) {
-    e.target.style.background = 'rgb(133, 133, 133)';
+    e.target.style.background = 'rgb(222, 224, 227)';
   }
 
   handleButtonOffHover(e) {
@@ -56,18 +57,17 @@ class Reviews extends React.Component {
 
 
   render() {
-    console.log(this.state)
     return (
       <div>
         <div className={styles.reviewsBar}>
-          <span><button type="button" className={styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>All</button></span>
+          <span><button type="button" className={`${styles.reviewsbtn} ${styles.selectedBtn}`} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>All</button></span>
           <span><button type="button" className={styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Community</button></span>
           <span><button type="button" className={styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Dog Owners</button></span>
           <span><button type="button" className={styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Parents</button></span>
           <span><button type="button" className={styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Commute</button></span>
         </div>
         <div>
-          <Carousel selected={this.state.selected} reviews={this.state.reviews} />
+          {this.state.toggle ? <Carousel selected={this.state.selected} reviews={this.state.reviews} handleReviewModal={this.props.handleReviewModal}/> : null}
         </div>
       </div>
     );

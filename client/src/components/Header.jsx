@@ -1,6 +1,6 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
-import styles from './Header.css';
+import styles from '../styles/Header.css';
 
 const Header = ({ neighborhoodName, reviewsTotal }) => {
   return (
