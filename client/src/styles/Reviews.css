@@ -22,3 +22,21 @@
   padding: 8px 16px;
   cursor: pointer;
 }
+
+.selectedBtn {
+  margin: 0px;
+  border-radius: 8px;
+  border-width: 1px;
+  border-style: solid;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+  white-space: nowrap;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 8px 16px;
+  color: rgb(59, 65, 68);
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(205, 209, 212);
+}

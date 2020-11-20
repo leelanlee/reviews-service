@@ -60,7 +60,7 @@ class Reviews extends React.Component {
     return (
       <div>
         <div className={styles.reviewsBar}>
-          <span><button type="button" className={styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>All</button></span>
+          <span><button type="button" className={`${styles.reviewsbtn} ${styles.selectedBtn}`} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>All</button></span>
           <span><button type="button" className={styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Community</button></span>
           <span><button type="button" className={styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Dog Owners</button></span>
           <span><button type="button" className={styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Parents</button></span>
