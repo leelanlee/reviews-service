@@ -39,12 +39,12 @@ describe('<Carousel />', () => {
   ];
 
   it('assert exists', () => {
-    const wrapper = mount(<Carousel />); // mount
+    const wrapper = shallow(<Carousel reviews={[]} />, { disableLifecycleMethods: true }); // mount
     expect(wrapper.exists()).toBe(true);
   });
   it('expect 5 CarouselItem to exist', () => {
-    const wrapper = shallow(<Carousel />);
-    wrapper.setState({ reviews: propReviews });
+    const wrapper = shallow(<Carousel reviews={propReviews}/>, { disableLifecycleMethods: true });
+    wrapper.setProps({ reviews: propReviews });
     expect(wrapper.find(CarouselItem)).toHaveLength(5);
   });
 });
