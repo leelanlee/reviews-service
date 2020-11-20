@@ -3,7 +3,7 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import CarouselItem from './CarouselItem';
-import Modal from './Modal';
+import GridModal from './GridModal';
 import styles from '../styles/Carousel.css';
 
 class Carousel extends React.Component {
@@ -108,7 +108,7 @@ class Carousel extends React.Component {
         <img src="https://www.flaticon.com/svg/static/icons/svg/60/60758.svg" alt="" />
         </button>
       </div>
-      {this.state.modal === true ? <Modal reviews={this.props.reviews} toggleModal={this.toggleModal}/> : null}
+      {this.state.modal === true ? <GridModal reviews={this.props.reviews} toggleModal={this.toggleModal}/> : null}
       </div>
     );
   }

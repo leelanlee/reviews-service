@@ -20,6 +20,7 @@ class App extends React.Component {
       reviewColor: '',
     };
     this.handleReviewModal = this.handleReviewModal.bind(this);
+    this.toggleReviewModalOff = this.toggleReviewModalOff.bind(this);
   }
 
   componentDidMount() {
@@ -53,8 +54,15 @@ class App extends React.Component {
       reviewModal: true,
       reviewCard: review,
       reviewColor: color,
+    });
+  }
+  toggleReviewModalOff() {
+    this.setState({
+      reviewModal: false,
     })
   }
+
+
   render() {
     console.log(styles.neighborhood);
     return (
@@ -66,7 +74,7 @@ class App extends React.Component {
           <Stats stats={this.state.stats}/>
         </div>
         <Reviews reviews={this.state.reviews} handleReviewModal={this.handleReviewModal}/>
-        {this.state.reviewModal ? <ReviewModal review={this.state.reviewCard} color={this.state.reviewColor} on={this.state.reviewModal}/> : null}
+        {this.state.reviewModal ? <ReviewModal review={this.state.reviewCard} color={this.state.reviewColor} on={this.state.reviewModal} toggleReviewModalOff={this.toggleReviewModalOff}/> : null}
       </div>
     );
   }

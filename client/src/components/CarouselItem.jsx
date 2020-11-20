@@ -1,7 +1,7 @@
 import React from 'react';
-import Modal from './Modal.jsx'
+import GridModal from './GridModal.jsx'
 import styles from '../styles/CarouselItem.css';
-import modalStyles from '../styles/Modal.css';
+import modalStyles from '../styles/GridModal.css';
 // import PropTypes from 'prop-types';
 import TimeAgo from 'react-timeago';
 
