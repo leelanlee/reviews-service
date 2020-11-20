@@ -13,7 +13,7 @@
 .modalReviewContainer {
   width: 40%;
   height: 50%;
-  margin: auto auto;
+  /* margin: auto auto; */
   left: 50%;
   top: 50%;
   position: absolute;
@@ -28,7 +28,7 @@
 .gridReviewContainer {
   display: grid;
   overflow: hidden;
-  grid-template-columns: 100%;
+  /* grid-template-columns: 100%; */
 
 
 }

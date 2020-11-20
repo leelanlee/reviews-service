@@ -25,6 +25,11 @@
   overflow-x: auto;
 }
 
+
+.modalButtons {
+  margin-left: 20px;
+}
+
 .gridContainer {
   display: grid;
   overflow: hidden;

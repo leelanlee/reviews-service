@@ -10,6 +10,7 @@ class Reviews extends React.Component {
     this.state = {
       selected: 'all',
       reviews: this.props.reviews,
+      toggle: this.props.toggle,
     };
     this.handleReviewsClick = this.handleReviewsClick.bind(this);
     this.handleOnButtonHover = this.handleButtonOnHover.bind(this);
@@ -47,7 +48,7 @@ class Reviews extends React.Component {
   }
 
   handleButtonOnHover(e) {
-    e.target.style.background = 'rgb(133, 133, 133)';
+    e.target.style.background = 'rgb(222, 224, 227)';
   }
 
   handleButtonOffHover(e) {
@@ -66,7 +67,7 @@ class Reviews extends React.Component {
           <span><button type="button" className={styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Commute</button></span>
         </div>
         <div>
-          <Carousel selected={this.state.selected} reviews={this.state.reviews} handleReviewModal={this.props.handleReviewModal}/>
+          {this.state.toggle ? <Carousel selected={this.state.selected} reviews={this.state.reviews} handleReviewModal={this.props.handleReviewModal}/> : null}
         </div>
       </div>
     );

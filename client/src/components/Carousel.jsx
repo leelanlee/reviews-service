@@ -15,6 +15,7 @@ class Carousel extends React.Component {
       modal: false,
       leftButton: false,
       carousel: 1,
+      moreReviews: false,
     };
     this.handleRightButtonClick = this.handleRightButtonClick.bind(this);
     this.handleLeftButtonClick = this.handleLeftButtonClick.bind(this);
@@ -52,6 +53,7 @@ class Carousel extends React.Component {
     this.setState({
       carousel: 2,
       leftButton: true,
+      moreReviews: true,
     });
   }
 
@@ -105,7 +107,7 @@ class Carousel extends React.Component {
             </div>
           </div>
         <button className={`${styles['carousel-btn']} ${styles['carousel-btn-right']}`} type="button" onClick={this.handleRightButtonClick}>
-        <img src="https://www.flaticon.com/svg/static/icons/svg/60/60758.svg" alt="" />
+        {this.state.moreReviews === false ? <img src="https://www.flaticon.com/svg/static/icons/svg/60/60758.svg" alt="" /> : `+` }
         </button>
       </div>
       {this.state.modal === true ? <GridModal reviews={this.props.reviews} toggleModal={this.toggleModal}/> : null}

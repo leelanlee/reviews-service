@@ -73,7 +73,7 @@ class App extends React.Component {
         <div>
           <Stats stats={this.state.stats}/>
         </div>
-        <Reviews reviews={this.state.reviews} handleReviewModal={this.handleReviewModal}/>
+        <Reviews reviews={this.state.reviews} handleReviewModal={this.handleReviewModal} toggle={true}/>
         {this.state.reviewModal ? <ReviewModal review={this.state.reviewCard} color={this.state.reviewColor} on={this.state.reviewModal} toggleReviewModalOff={this.toggleReviewModalOff}/> : null}
       </div>
     );

@@ -66,10 +66,12 @@
 
 .carousel-btn-right{
   right: -5px;
+  font-size: 18px;
 }
 .carousel-btn img {
   width: 12px;
   background-color: white;
+  font-weight: bold;
 }
 
 .hiddenBtn {
