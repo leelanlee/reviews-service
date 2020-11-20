@@ -99,6 +99,8 @@
   color: rgb(59, 65, 68);
   background-color: rgb(255, 255, 255);
   border-color: rgb(205, 209, 212);
+  outline: none;
+  box-shadow: none!important;
 }
 
 .colorbtn {

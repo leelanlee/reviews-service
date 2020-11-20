@@ -56,6 +56,8 @@
   border-color: transparent;
   background-color: white;
   cursor: pointer;
+  outline: none;
+  box-shadow: none!important;
 }
 
 .carousel-btn-left {
