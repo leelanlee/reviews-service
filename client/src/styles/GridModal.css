@@ -25,9 +25,27 @@
   overflow-x: auto;
 }
 
+.navModal{
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
 
 .modalButtons {
-  margin-left: 20px;
+  margin-top: 10px;
+  margin-right: 30px;
+  border-radius: 30px;
+  padding: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: rgb(205, 209, 212);
+  color: rgb(255, 255, 255);
 }
 
 .gridContainer {
@@ -35,5 +53,6 @@
   overflow: hidden;
   grid-template-columns: 25% 25% 25% 25%;
   grid-auto-flow: row;
+  row-gap: -40px;
 
 }

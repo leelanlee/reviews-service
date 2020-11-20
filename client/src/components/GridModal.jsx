@@ -21,11 +21,12 @@ class Modal extends React.Component {
   }
 
   render() {
-
     return (
     <div className={styles.modalBackground} onClick={() => this.props.toggleModal()}>
       <div className={styles.modalContainer}>
-
+        <div className={styles.navModal}>
+          <button className={styles.modalButtons} type="button">X</button>
+        </div>
         <div className={styles.gridContainer}>
        {this.props.reviews.length > 1 ? this.props.reviews.map((review, index) => <ModalItem review={review} key={index} color={this.randomColor()} />) : null}
         </div>
