@@ -46,7 +46,7 @@ class CarouselItem extends React.Component {
           </div>
           <div className={styles.flag}>Flag</div>
         </div>
-        {this.state.modal === true ? <Modal reviews={this.props.review} /> : null}
+        {this.state.modal === true ? <GridModal reviews={this.props.review} /> : null}
       </div>
 
     )
