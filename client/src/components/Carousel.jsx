@@ -67,6 +67,11 @@ class Carousel extends React.Component {
       leftButton: false,
       carousel: 1,
     });
+    if (this.state.carousel === 2) {
+      this.setState({
+        moreReviews: false,
+      });
+    }
   }
 
   toggleModal() {
