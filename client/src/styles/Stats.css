@@ -118,3 +118,7 @@
 .learnMore {
   color: rgb(0, 120, 130);
 }
+
+button:active {
+  background-color: grey;
+}

@@ -9,7 +9,6 @@ class Reviews extends React.Component {
     super(props);
     this.state = {
       reviews: this.props.reviews,
-      toggle: this.props.toggle,
       button: 'all',
     };
     this.handleReviewsClick = this.handleReviewsClick.bind(this);
@@ -26,10 +25,9 @@ class Reviews extends React.Component {
   }
 
   handleReviewsClick(e) {
-    var hi = document.querySelectorAll(`.${styles.reviewsbtn}`);
-    console.log(hi);
-    for (var i = 0; i < hi.length; i++) {
-      hi[i].style.background = 'rgb(245, 246, 247)';
+    var allButtons = document.querySelectorAll(`.${styles.reviewsbtn}`);
+    for (var i = 0; i < allButtons.length; i++) {
+      allButtons[i].style.background = 'rgb(245, 246, 247)';
     }
     e.target.style.background = "white";
     this.setState({
@@ -81,7 +79,7 @@ class Reviews extends React.Component {
           <span><button type="button" className={this.state.button === 'commute' ? `${styles.reviewsbtn} ${styles.selectedBtn}` : styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Commute</button></span>
         </div>
         <div>
-          {this.state.toggle ? <Carousel reviews={this.state.reviews} handleReviewModal={this.props.handleReviewModal}/> : null}
+          <Carousel reviews={this.state.reviews} handleReviewModal={this.props.handleReviewModal}/>
         </div>
       </div>
     );
