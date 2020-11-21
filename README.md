@@ -1,13 +1,7 @@
 # Project Name
 
-> Project description
+> This projects features a mock version of Turila's neighborhood reviews. Users can see neighborhood stats and filter reviews based on a variety of categories.
 
-## Related Projects
-
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
 
 ## Table of Contents
 
@@ -17,23 +11,21 @@
 
 ## Usage
 
-> Some usage instructions
+> npm run seedDb to see the database
+> npm start to start the server
+> npm run
 
 ## Requirements
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
+- Node 14.15.0
 
 ## Development
 
 ### Installing Dependencies
 
 From within the root directory:
-
 ```sh
-npm install -g webpack
 npm install
+
 ```
 
