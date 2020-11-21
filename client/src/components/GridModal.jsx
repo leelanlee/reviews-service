@@ -33,13 +33,17 @@ class Modal extends React.Component {
     e.target.style.color = 'rgb(255, 255, 255)'
   }
 
+  handleModalFadeOut(e) {
+    document.getElementById('#fade').fadeOut('slow');
+
+  }
 
   render() {
     return (
     <div className={styles.modalBackground} onClick={() => this.props.toggleModal()}>
-      <div className={styles.modalContainer}>
+      <div id="fade" className={styles.modalContainer}>
         <div className={styles.navModal}>
-          <button className={styles.modalButtons} type="button" onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>X</button>
+          <button className={styles.modalButtons} type="button" onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover} onClick={() => this.handleModalFadeOut}>X</button>
         </div>
         <div className={styles.gridContainer}>
        {this.props.reviews.length > 1 ? this.props.reviews.map((review, index) => <ModalItem review={review} key={index} color={this.randomColor()} />) : null}
