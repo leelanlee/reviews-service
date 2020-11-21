@@ -21,6 +21,8 @@
   line-height: 1.5;
   padding: 8px 16px;
   cursor: pointer;
+  outline: none;
+  box-shadow: none!important;
 }
 
 .selectedBtn {
@@ -36,7 +38,17 @@
   font-size: 16px;
   line-height: 1.5;
   padding: 8px 16px;
-  color: rgb(59, 65, 68);
+  color: rgb(0, 120, 130);
   background-color: rgb(255, 255, 255);
   border-color: rgb(205, 209, 212);
+  outline: none;
+  box-shadow: none!important;
+}
+
+.hoverBtn{
+  background-color: rgb(245, 246, 247);
+}
+
+.base{
+  background-color: rgb(245, 246, 247);
 }

@@ -56,6 +56,8 @@
   border-color: transparent;
   background-color: white;
   cursor: pointer;
+  outline: none;
+  box-shadow: none!important;
 }
 
 .carousel-btn-left {
@@ -77,3 +79,12 @@
 .hiddenBtn {
  display: none;
 }
+
+/* button:active{
+  background:olive;
+} */
+
+
+/* .button:focus{
+  background: grey;
+} */

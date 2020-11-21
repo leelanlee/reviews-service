@@ -8,13 +8,13 @@ class Reviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: 'all',
       reviews: this.props.reviews,
       toggle: this.props.toggle,
+      button: 'all',
     };
     this.handleReviewsClick = this.handleReviewsClick.bind(this);
-    this.handleOnButtonHover = this.handleButtonOnHover.bind(this);
-    this.handleaOffButtonHover = this.handleButtonOffHover.bind(this);
+    this.handleButtonOnHover = this.handleButtonOnHover.bind(this);
+    this.handleButtonOffHover = this.handleButtonOffHover.bind(this);
   }
 
   componentDidUpdate(lastProps) {
@@ -26,12 +26,22 @@ class Reviews extends React.Component {
   }
 
   handleReviewsClick(e) {
+    var hi = document.querySelectorAll(`.${styles.reviewsbtn}`);
+    console.log(hi);
+    for (var i = 0; i < hi.length; i++) {
+      hi[i].style.background = 'rgb(245, 246, 247)';
+    }
+    e.target.style.background = "white";
+    this.setState({
+      button: e.target.innerHTML.toLowerCase(),
+    });
     let selectedCategory = e.target.innerHTML.toLowerCase();
     if (selectedCategory === 'dog owners') {
       selectedCategory = 'dog_owner';
     } else if (selectedCategory === 'parents') {
       selectedCategory = 'parent';
     }
+
     axios({
       method: 'get',
       url: `${window.location}neighborhood_reviews`,
@@ -41,33 +51,37 @@ class Reviews extends React.Component {
     })
       .then((result) => {
         this.setState({
-          selected: selectedCategory,
           reviews: result.data,
         });
       });
   }
 
   handleButtonOnHover(e) {
-    e.target.style.background = 'rgb(222, 224, 227)';
+    console.log('on', this.state.button)
+    if (e.target.innerHTML.toLowerCase() !== this.state.button) {
+      e.target.style.background = 'rgb(222, 224, 227)';
+    }
   }
 
   handleButtonOffHover(e) {
-    e.target.style.background = 'rgb(245, 246, 247)';
+    console.log('off', this.state.button)
+    if (e.target.innerHTML.toLowerCase() !== this.state.button) {
+      e.target.style.background = 'rgb(245, 246, 247)';
+    }
   }
-
 
   render() {
     return (
       <div>
         <div className={styles.reviewsBar}>
-          <span><button type="button" className={`${styles.reviewsbtn} ${styles.selectedBtn}`} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>All</button></span>
-          <span><button type="button" className={styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Community</button></span>
-          <span><button type="button" className={styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Dog Owners</button></span>
-          <span><button type="button" className={styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Parents</button></span>
-          <span><button type="button" className={styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Commute</button></span>
+          <span><button id="all" type="button" className={this.state.button === 'all' ? `${styles.reviewsbtn} ${styles.selectedBtn}` : styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>All</button></span>
+          <span><button type="button" className={this.state.button === 'community' ? `${styles.reviewsbtn} ${styles.selectedBtn}` : styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Community</button></span>
+          <span><button type="button" className={this.state.button === 'dog owners' ? `${styles.reviewsbtn} ${styles.selectedBtn}` : styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Dog Owners</button></span>
+          <span><button type="button" className={this.state.button === 'parents' ? `${styles.reviewsbtn} ${styles.selectedBtn}` : styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Parents</button></span>
+          <span><button type="button" className={this.state.button === 'commute' ? `${styles.reviewsbtn} ${styles.selectedBtn}` : styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Commute</button></span>
         </div>
         <div>
-          {this.state.toggle ? <Carousel selected={this.state.selected} reviews={this.state.reviews} handleReviewModal={this.props.handleReviewModal}/> : null}
+          {this.state.toggle ? <Carousel reviews={this.state.reviews} handleReviewModal={this.props.handleReviewModal}/> : null}
         </div>
       </div>
     );

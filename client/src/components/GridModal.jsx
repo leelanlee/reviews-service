@@ -8,7 +8,11 @@ class Modal extends React.Component {
     super(props);
     this.state = {
       status: false,
+
     };
+
+    this.handleOnButtonHover = this.handleButtonOnHover.bind(this);
+    this.handleaOffButtonHover = this.handleButtonOffHover.bind(this);
   }
 
   randomColor() {
@@ -18,12 +22,28 @@ class Modal extends React.Component {
     return selectedColor;
   }
 
+
+  handleButtonOnHover(e) {
+    e.target.style.background = 'white';
+    e.target.style.color = 'rgb(205, 209, 212)';
+  }
+
+  handleButtonOffHover(e) {
+    e.target.style.background = 'rgb(205,209,212)';
+    e.target.style.color = 'rgb(255, 255, 255)'
+  }
+
+  handleModalFadeOut(e) {
+    document.getElementById('#fade').fadeOut('slow');
+
+  }
+
   render() {
     return (
     <div className={styles.modalBackground} onClick={() => this.props.toggleModal()}>
-      <div className={styles.modalContainer}>
+      <div id="fade" className={styles.modalContainer}>
         <div className={styles.navModal}>
-          <button className={styles.modalButtons} type="button">X</button>
+          <button className={styles.modalButtons} type="button" onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover} onClick={() => this.handleModalFadeOut}>X</button>
         </div>
         <div className={styles.gridContainer}>
        {this.props.reviews.length > 1 ? this.props.reviews.map((review, index) => <ModalItem review={review} key={index} color={this.randomColor()} />) : null}

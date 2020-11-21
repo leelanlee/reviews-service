@@ -37,10 +37,13 @@ class Carousel extends React.Component {
     });
   }
 
-  handleRightButtonClick() {
+  handleRightButtonClick(e) {
     // const currentRow = this.state.rowSet[0];
-    const nextRow = this.state.rowSet[1];
+    // e.target.setAttribute("id", "button");
+    // e.target.style.focus = "red";
 
+
+    const nextRow = this.state.rowSet[1];
     const amountToMove = nextRow.style.left;
     this.state.container.style.transform = `translateX(-${amountToMove})`;
 
@@ -57,16 +60,22 @@ class Carousel extends React.Component {
     });
   }
 
-  handleLeftButtonClick() {
+  handleLeftButtonClick(e) {
     // const currentRow = this.state.rowSet[1];
     // const nextRow = this.state.rowSet[0];
 
     // const amountToMove = nextRow.style.left;
+
     this.state.container.style.transform = 'translateX(' + '0px' + ')';
     this.setState({
       leftButton: false,
       carousel: 1,
     });
+    if (this.state.carousel === 2) {
+      this.setState({
+        moreReviews: false,
+      });
+    }
   }
 
   toggleModal() {
@@ -86,7 +95,7 @@ class Carousel extends React.Component {
     return (
       <div>
       <div className={styles.carousel}>
-        <button className={this.state.leftButton ? `${styles['carousel-btn']} ${styles['carousel-btn-left']}` : styles.hiddenBtn} onClick={this.handleLeftButtonClick} type="button">
+        <button id="yyo" className={this.state.leftButton ? `${styles['carousel-btn']} ${styles['carousel-btn-left']}` : styles.hiddenBtn} onClick={this.handleLeftButtonClick} type="button">
           <img className={this.state.leftButton ? null : styles.hiddenBtn} src="https://www.flaticon.com/svg/static/icons/svg/60/60775.svg" alt="" />
         </button>
           <div className={styles['carousel-container']}>
