@@ -57,11 +57,12 @@ class Carousel extends React.Component {
     });
   }
 
-  handleLeftButtonClick() {
+  handleLeftButtonClick(e) {
     // const currentRow = this.state.rowSet[1];
     // const nextRow = this.state.rowSet[0];
 
     // const amountToMove = nextRow.style.left;
+
     this.state.container.style.transform = 'translateX(' + '0px' + ')';
     this.setState({
       leftButton: false,

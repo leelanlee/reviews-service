@@ -46,6 +46,13 @@
   border: none;
   background-color: rgb(205, 209, 212);
   color: rgb(255, 255, 255);
+  outline: none;
+  box-shadow: none!important;
+}
+
+.modalButtonClick {
+  background-color: white;
+  color: rgb(205, 209, 212);
 }
 
 .gridContainer {
