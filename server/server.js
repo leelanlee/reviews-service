@@ -10,11 +10,11 @@ const db = require('../db/connection.js');
 const publicDir = path.join(__dirname, '../client/public');
 
 app.use(bodyParser.json());
-app.use('/api/listings/:id', express.static(publicDir));
+app.use('/reviews/:id', express.static(publicDir));
 
-app.get('/api/listings/:id/neighborhood_stats', controller.getAllStats);
+app.get('*/:id/neighborhood_stats', controller.getAllStats);
 
-app.get('/api/listings/:id/neighborhood_reviews', controller.getAllReviews);
+app.get('*/:id/neighborhood_reviews', controller.getAllReviews);
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);

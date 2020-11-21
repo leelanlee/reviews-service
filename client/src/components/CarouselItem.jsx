@@ -15,7 +15,6 @@ class CarouselItem extends React.Component {
   }
 
   handleModalToggle(){
-    console.log('hey')
     this.setState({
       modal: true,
     })
@@ -48,7 +47,6 @@ class CarouselItem extends React.Component {
         </div>
         {this.state.modal === true ? <GridModal reviews={this.props.review} /> : null}
       </div>
-
     )
   }
 };
