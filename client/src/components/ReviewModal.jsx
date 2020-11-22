@@ -1,10 +1,13 @@
 import React from 'react';
 import styles from '../styles/ReviewModal.css';
-import CarouselItem from './CarouselItem';
+import ModalItems from './ModalItems';
 
 class ReviewModal extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      modalHeight: true,
+    }
   }
 
 
@@ -12,7 +15,7 @@ class ReviewModal extends React.Component {
     return (
       <div className={styles.modalReviewBackground} onClick={() => this.props.toggleReviewModalOff()}>
         <div className={styles.modalReviewContainer}>
-          <CarouselItem review={this.props.review} color={this.props.color}/>
+          <ModalItems review={this.props.review} color={this.props.color} height={true}/>
         </div>
       </div>
     );
