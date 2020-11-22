@@ -14,8 +14,9 @@
 
 .modalContainer {
   width: 90%;
-  height: 1200px;
+  height: 1100px;
   margin: 0 0;
+  padding: 20px;
   top: 5%;
   left: 5%;
   /* left: 50%;
