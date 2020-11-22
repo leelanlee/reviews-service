@@ -1,25 +1,26 @@
 .modalReviewBackground {
-  position: absolute;
+  margin: 0 auto;
+  position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 0;
+  z-index: 4;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px) grayscale(50%);
 
 }
 
 .modalReviewContainer {
-  width: 40%;
-  height: 50%;
-  /* margin: auto auto; */
-  left: 50%;
-  top: 50%;
+  max-width: 100%;
+  height: 110%;
+  margin: auto auto;
+  /* left: 88%;
+  top: 80%; */
   position: absolute;
   background-color: transparent;
   border-radius: 8px;
-  transform: translate(-50%, -50%);
+  transform: translate(40%, 30%);
   overflow: hidden;
   /* overflow-y: scroll;
   overflow-x: auto; */
