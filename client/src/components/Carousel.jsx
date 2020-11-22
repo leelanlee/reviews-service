@@ -95,8 +95,8 @@ class Carousel extends React.Component {
     return (
       <div>
       <div className={styles.carousel}>
-        <button id="yyo" className={this.state.leftButton ? `${styles['carousel-btn']} ${styles['carousel-btn-left']}` : styles.hiddenBtn} onClick={this.handleLeftButtonClick} type="button">
-          <img className={this.state.leftButton ? null : styles.hiddenBtn} src="https://www.flaticon.com/svg/static/icons/svg/60/60775.svg" alt="" />
+        <button id="yo" className={this.state.leftButton ? `${styles['carousel-btn']} ${styles['carousel-btn-left']}` : styles.hiddenBtn} onClick={this.handleLeftButtonClick} type="button">
+          <div className={this.state.leftButton ? styles.arrow : styles.hiddenBtn}> <svg viewBox="7 5 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M14.292 16.494l7.147 7.056-1.869 1.893-9.067-8.951 9.069-8.927 1.866 1.896z" fill="#000"></path></svg></div>
         </button>
           <div className={styles['carousel-container']}>
             <div className={styles.track}>
@@ -115,7 +115,7 @@ class Carousel extends React.Component {
             </div>
           </div>
         <button className={`${styles['carousel-btn']} ${styles['carousel-btn-right']}`} type="button" onClick={this.handleRightButtonClick}>
-        {this.state.moreReviews === false ? <img src="https://www.flaticon.com/svg/static/icons/svg/60/60758.svg" alt="" /> : `+` }
+        {this.state.moreReviews === false ? <div className={styles.arrow}><svg viewBox="5 5 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.65 16.513l-7.147-7.055 1.868-1.893 9.068 8.951-9.069 8.927-1.866-1.896z" fill="#000"></path></svg></div> : `+` }
         </button>
       </div>
       {this.state.modal === true ? <GridModal reviews={this.props.reviews} toggleModal={this.toggleModal}/> : null}

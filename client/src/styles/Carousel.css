@@ -80,6 +80,16 @@
  display: none;
 }
 
+.arrow{
+  font-size: 20px;
+  min-width: 16px;
+  min-height: 30px;
+}
+
+svg{
+  size: 60px;
+}
+
 /* button:active{
   background:olive;
 } */
