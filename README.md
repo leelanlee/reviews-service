@@ -9,23 +9,14 @@
 1. [Requirements](#requirements)
 1. [Development](#development)
 
-## Usage
+## Set-up
 
-> npm run seedDb to see the database
-> npm start to start the server
-> npm run
+1. `npm install`
+2. `npm run webpack` to run webpack
+3. `npm start` to run the express-server
 
 ## Requirements
 
 - Node 14.15.0
 
-## Development
-
-### Installing Dependencies
-
-From within the root directory:
-```sh
-npm install
-
-```
 
