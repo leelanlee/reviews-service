@@ -25,7 +25,7 @@ const ModalItem = (props) => {
           </div>
         </div>
       </div>
-      <div className={`${styles.text} ${styles.fade}`}>
+      <div className={props.height ? `${styles.text} ${styles.textModal} ${styles.fade}` : `${styles.text} ${styles.fade}`}>
         "{props.review.full_text}"
       </div>
       <div className={styles.other}>

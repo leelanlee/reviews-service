@@ -15,7 +15,8 @@
   margin-top: 24px;
   display: flex;
   width: 100%;
-  justify-content: center;
+  justify-content: left;
+  margin-left: 20%;
 }
 
 .avatar{
@@ -75,6 +76,11 @@
   height: 10em; /* exactly three lines */
 }
 
+.textModal{
+  margin-top: 10px;
+  min-height: 400px;
+}
+
 .other {
   display: flex;
   width: 100%;
@@ -93,7 +99,7 @@
   align-items: baseline;
   justify-content: left;
   overflow: hidden;
-  margin-left: 15%;
+  margin-left: 10%;
 }
 
 .smile{

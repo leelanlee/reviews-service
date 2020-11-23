@@ -23,11 +23,8 @@ class Carousel extends React.Component {
   }
 
   componentDidMount() {
-    // console.log('track', styles.track);
     const container = document.querySelector(`.${styles.track}`);
-    // console.log('CONTAINER', container);
     const rowSet = Array.from(container.children);
-    // console.log('ROWSET', rowSet);
     const rowWidth = rowSet[0].getBoundingClientRect().width;
     rowSet[0].style.left = 0;
     rowSet[1].style.left = `${rowWidth}px`;
@@ -39,10 +36,6 @@ class Carousel extends React.Component {
 
   handleRightButtonClick(e) {
     // const currentRow = this.state.rowSet[0];
-    // e.target.setAttribute("id", "button");
-    // e.target.style.focus = "red";
-
-
     const nextRow = this.state.rowSet[1];
     const amountToMove = nextRow.style.left;
     this.state.container.style.transform = `translateX(-${amountToMove})`;
@@ -63,10 +56,8 @@ class Carousel extends React.Component {
   handleLeftButtonClick(e) {
     // const currentRow = this.state.rowSet[1];
     // const nextRow = this.state.rowSet[0];
-
     // const amountToMove = nextRow.style.left;
-
-    this.state.container.style.transform = 'translateX(' + '0px' + ')';
+    this.state.container.style.transform = 'translate(0px)';
     this.setState({
       leftButton: false,
       carousel: 1,
