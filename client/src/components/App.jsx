@@ -70,7 +70,7 @@ class App extends React.Component {
         <div className={styles.neighborhood}>
           <Header neighborhoodName={this.state.neighborhoodName} reviewsTotal={this.state.reviewsTotal}/>
         </div>
-        <div>
+        <div className={styles.stats}>
           <Stats stats={this.state.stats}/>
         </div>
         <Reviews reviews={this.state.reviews} handleReviewModal={this.handleReviewModal} toggle={true}/>

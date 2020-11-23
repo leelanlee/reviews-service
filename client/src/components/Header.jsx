@@ -5,7 +5,7 @@ import styles from '../styles/Header.css';
 const Header = ({ neighborhoodName, reviewsTotal }) => {
   return (
     <div className={styles.header}>
-      <h3>
+      <h3 className={styles.headerText}>
         What Locals Say about {neighborhoodName}
       </h3>
       <div className={styles.locals}>

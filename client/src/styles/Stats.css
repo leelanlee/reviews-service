@@ -117,4 +117,18 @@
 
 .learnMore {
   color: rgb(0, 120, 130);
+  cursor: pointer;
+}
+
+button:active {
+  background-color: grey;
+}
+
+a:link{
+  text-decoration: none;
+  color:  rgb(0, 120, 130);
+}
+
+a:visited{
+  color: rgb(0, 120, 130);
 }
