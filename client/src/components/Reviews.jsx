@@ -70,7 +70,7 @@ class Reviews extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.reviews}>
         <div className={styles.reviewsBar}>
           <span><button id="all" type="button" className={this.state.button === 'all' ? `${styles.reviewsbtn} ${styles.selectedBtn}` : styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>All</button></span>
           <span><button type="button" className={this.state.button === 'community' ? `${styles.reviewsbtn} ${styles.selectedBtn}` : styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Community</button></span>

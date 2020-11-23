@@ -6,7 +6,7 @@
   position: relative;
   height: 400px;
   width: 100%;
-  margin: 0 auto;
+  margin: auto auto;
   object-fit: cover;
   /* background-color: rgb(0, 173, 187); */
 }
@@ -58,13 +58,13 @@
 }
 
 .carousel-btn-left {
-  left: -5px;
+  left: -9px;
   z-index: 1;
   position: relative;
 }
 
 .carousel-btn-right{
-  right: -5px;
+  right: -9px;
   font-size: 22px;
 }
 .carousel-btn img {
