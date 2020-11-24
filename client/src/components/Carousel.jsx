@@ -123,7 +123,7 @@ class Carousel extends React.Component {
 
 Carousel.propTypes = {
   reviews: PropTypes.array,
-  handleReviewModal: PropTypes.function,
+
 };
 
 export default Carousel;

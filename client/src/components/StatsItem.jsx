@@ -26,7 +26,7 @@ const StatsItem = ({ percentage, details }) => (
 );
 
 StatsItem.propTypes = {
-  percentage: PropTypes.string,
+  percentage: PropTypes.number,
   details: PropTypes.object,
 };
 

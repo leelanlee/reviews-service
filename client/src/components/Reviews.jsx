@@ -55,14 +55,12 @@ class Reviews extends React.Component {
   }
 
   handleButtonOnHover(e) {
-    console.log('on', this.state.button)
     if (e.target.innerHTML.toLowerCase() !== this.state.button) {
       e.target.style.background = 'rgb(222, 224, 227)';
     }
   }
 
   handleButtonOffHover(e) {
-    console.log('off', this.state.button)
     if (e.target.innerHTML.toLowerCase() !== this.state.button) {
       e.target.style.background = 'rgb(245, 246, 247)';
     }

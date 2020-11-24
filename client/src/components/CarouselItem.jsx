@@ -55,7 +55,7 @@ class CarouselItem extends React.Component {
 }
 
 CarouselItem.propTypes = {
-  review: PropTypes.review,
+  review: PropTypes.object,
   color: PropTypes.string,
 };
 
