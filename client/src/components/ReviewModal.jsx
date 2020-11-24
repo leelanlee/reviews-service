@@ -1,4 +1,8 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable max-len */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../styles/ReviewModal.css';
 import ModalItems from './ModalItems';
 
@@ -7,9 +11,8 @@ class ReviewModal extends React.Component {
     super(props);
     this.state = {
       modalHeight: true,
-    }
+    };
   }
-
 
   render() {
     return (
@@ -21,5 +24,10 @@ class ReviewModal extends React.Component {
     );
   }
 }
+
+ReviewModal.propTypes = {
+  toggleReviewModalOff: PropTypes.function,
+  review: PropTypes.object,
+};
 
 export default ReviewModal;

@@ -1,6 +1,8 @@
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable react/self-closing-comp */
 import React from 'react';
-import styles from '../styles/Stats.css';
 import PropTypes from 'prop-types';
+import styles from '../styles/Stats.css';
 
 const StatsItem = ({ percentage, details }) => (
   <div className={`${styles.flexboxItem} ${styles.flexboxItem1}`}>
@@ -22,5 +24,10 @@ const StatsItem = ({ percentage, details }) => (
     </div>
   </div>
 );
+
+StatsItem.propTypes = {
+  percentage: PropTypes.string,
+  details: PropTypes.object,
+};
 
 export default StatsItem;
