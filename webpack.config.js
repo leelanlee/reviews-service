@@ -8,7 +8,7 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'client/public'),
   },
-  watch: true,
+
   module: {
     rules: [
       {
