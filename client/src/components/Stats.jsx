@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
-import styles from '../styles/Stats.css';
 import PropTypes from 'prop-types';
+import styles from '../styles/Stats.css';
 import statsDetails from '../stats';
 import StatsItem from './StatsItem';
 

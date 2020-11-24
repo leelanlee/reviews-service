@@ -1,0 +1,1 @@
+ssh -i "./fec-neighborhood-reviews.pem" ubuntu@ec2-3-138-140-28.us-east-2.compute.amazonaws.com

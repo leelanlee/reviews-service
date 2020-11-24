@@ -2,6 +2,9 @@ client/public/bundle.js
 ## MAC files ##
 .DS_Store
 
+## Key files ##
+*.pem
+
 ## NPM ##
 npm
 npm-debug.log

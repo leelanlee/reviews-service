@@ -1,10 +1,12 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Header from './Header';
 import Stats from './Stats';
 import Reviews from './Reviews';
-import ReviewModal from './ReviewModal.jsx'
+import ReviewModal from './ReviewModal';
 import styles from '../styles/App.css';
 
 class App extends React.Component {
@@ -28,7 +30,7 @@ class App extends React.Component {
       method: 'get',
       url: `${window.location}neighborhood_reviews`,
     })
-      .then(result => {
+      .then((result) => {
         console.log('Get request reviews success');
         this.setState({
           reviewsTotal: result.data.length,
@@ -38,11 +40,11 @@ class App extends React.Component {
           method: 'get',
           url: `${window.location}neighborhood_stats`,
         })
-          .then(result => {
+          .then((res) => {
             console.log('Get request stats success');
             this.setState({
-              neighborhoodName: result.data[0].name,
-              stats: result.data[0].stats,
+              neighborhoodName: res.data[0].name,
+              stats: res.data[0].stats,
             });
           });
       })
@@ -56,25 +58,24 @@ class App extends React.Component {
       reviewColor: color,
     });
   }
+
   toggleReviewModalOff() {
     this.setState({
       reviewModal: false,
-    })
+    });
   }
 
-
   render() {
-    console.log(styles.neighborhood);
     return (
       <div className={styles.neighborhood}>
         <div className={styles.neighborhood}>
-          <Header neighborhoodName={this.state.neighborhoodName} reviewsTotal={this.state.reviewsTotal}/>
+          <Header neighborhoodName={this.state.neighborhoodName} reviewsTotal={this.state.reviewsTotal} />
         </div>
         <div className={styles.stats}>
           <Stats stats={this.state.stats}/>
         </div>
         <Reviews reviews={this.state.reviews} handleReviewModal={this.handleReviewModal} toggle={true}/>
-        {this.state.reviewModal ? <ReviewModal review={this.state.reviewCard} color={this.state.reviewColor} on={this.state.reviewModal} toggleReviewModalOff={this.toggleReviewModalOff}/> : null}
+        {this.state.reviewModal ? <ReviewModal review={this.state.reviewCard} color={this.state.reviewColor} on={this.state.reviewModal} toggleReviewModalOff={this.toggleReviewModalOff} /> : null}
       </div>
     );
   }

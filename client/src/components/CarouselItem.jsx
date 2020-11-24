@@ -1,9 +1,12 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable react/self-closing-comp */
 import React from 'react';
+import TimeAgo from 'react-timeago';
+import PropTypes from 'prop-types';
 import GridModal from './GridModal.jsx'
 import styles from '../styles/CarouselItem.css';
-import modalStyles from '../styles/GridModal.css';
-// import PropTypes from 'prop-types';
-import TimeAgo from 'react-timeago';
 
 class CarouselItem extends React.Component {
   constructor(props) {
@@ -14,14 +17,14 @@ class CarouselItem extends React.Component {
     this.handleModalToggle = this.handleModalToggle.bind(this);
   }
 
-  handleModalToggle(){
+  handleModalToggle() {
     this.setState({
       modal: true,
-    })
+    });
   }
+
   render() {
     return (
-
       <div className={styles['flexbox-item-carousel']} style={{backgroundColor: this.props.color}} onClick={() => this.props.handleReviewModal(this.props.review, this.props.color)}>
         <div className={styles['reviewer-details']}>
           <div className={styles.avatar}>
@@ -47,8 +50,13 @@ class CarouselItem extends React.Component {
         </div>
         {this.state.modal === true ? <GridModal reviews={this.props.review} /> : null}
       </div>
-    )
+    );
   }
+}
+
+CarouselItem.propTypes = {
+  review: PropTypes.object,
+  color: PropTypes.string,
 };
 
 export default CarouselItem;

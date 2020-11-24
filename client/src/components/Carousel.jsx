@@ -1,7 +1,10 @@
+/* eslint-disable react/self-closing-comp */
+/* eslint-disable max-len */
 /* eslint-disable no-console */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable arrow-body-style */
 import React from 'react';
+import PropTypes from 'prop-types';
 import CarouselItem from './CarouselItem';
 import GridModal from './GridModal';
 import styles from '../styles/Carousel.css';
@@ -34,7 +37,7 @@ class Carousel extends React.Component {
     });
   }
 
-  handleRightButtonClick(e) {
+  handleRightButtonClick() {
     // const currentRow = this.state.rowSet[0];
     const nextRow = this.state.rowSet[1];
     const amountToMove = nextRow.style.left;
@@ -53,7 +56,7 @@ class Carousel extends React.Component {
     });
   }
 
-  handleLeftButtonClick(e) {
+  handleLeftButtonClick() {
     // const currentRow = this.state.rowSet[1];
     // const nextRow = this.state.rowSet[0];
     // const amountToMove = nextRow.style.left;
@@ -79,16 +82,18 @@ class Carousel extends React.Component {
     if (this.props.reviews[index] === undefined) {
       return null;
     }
-    return <CarouselItem review={this.props.reviews[index]} color={color} handleReviewModal={this.props.handleReviewModal}/>;
+    return <CarouselItem review={this.props.reviews[index]} color={color} handleReviewModal={this.props.handleReviewModal} />;
   }
 
   render() {
     return (
       <div>
-      <div className={styles.carousel}>
-        <button id="yo" className={this.state.leftButton ? `${styles['carousel-btn']} ${styles['carousel-btn-left']}` : styles.hiddenBtn} onClick={this.handleLeftButtonClick} type="button">
-          <div className={this.state.leftButton ? styles.arrow : styles.hiddenBtn}> <svg viewBox="7 5 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M14.292 16.494l7.147 7.056-1.869 1.893-9.067-8.951 9.069-8.927 1.866 1.896z" fill="#000"></path></svg></div>
-        </button>
+        <div className={styles.carousel}>
+          <button id="yo" className={this.state.leftButton ? `${styles['carousel-btn']} ${styles['carousel-btn-left']}` : styles.hiddenBtn} onClick={this.handleLeftButtonClick} type="button">
+            <div className={this.state.leftButton ? styles.arrow : styles.hiddenBtn}>
+              <svg viewBox="7 5 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M14.292 16.494l7.147 7.056-1.869 1.893-9.067-8.951 9.069-8.927 1.866 1.896z" fill="#000"></path></svg>
+            </div>
+          </button>
           <div className={styles['carousel-container']}>
             <div className={styles.track}>
               <div className={`${styles['flexbox-container-carousel']} ${styles.row}`}>
@@ -105,14 +110,20 @@ class Carousel extends React.Component {
               </div>
             </div>
           </div>
-        <button className={`${styles['carousel-btn']} ${styles['carousel-btn-right']}`} type="button" onClick={this.handleRightButtonClick}>
-        {this.state.moreReviews === false ? <div className={styles.arrow}><svg viewBox="5 5 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.65 16.513l-7.147-7.055 1.868-1.893 9.068 8.951-9.069 8.927-1.866-1.896z" fill="#000"></path></svg></div> : `+` }
-        </button>
-      </div>
-      {this.state.modal === true ? <GridModal reviews={this.props.reviews} toggleModal={this.toggleModal}/> : null}
+          <button className={`${styles['carousel-btn']} ${styles['carousel-btn-right']}`} type="button" onClick={this.handleRightButtonClick}>
+            {this.state.moreReviews === false ? <div className={styles.arrow}>
+              <svg viewBox="5 5 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.65 16.513l-7.147-7.055 1.868-1.893 9.068 8.951-9.069 8.927-1.866-1.896z" fill="#000"></path></svg></div> : `+` }
+          </button>
+        </div>
+        {this.state.modal === true ? <GridModal reviews={this.props.reviews} toggleModal={this.toggleModal} /> : null}
       </div>
     );
   }
 }
+
+Carousel.propTypes = {
+  reviews: PropTypes.array,
+
+};
 
 export default Carousel;

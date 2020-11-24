@@ -1,14 +1,16 @@
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable react/self-closing-comp */
 import React from 'react';
-import styles from '../styles/ModalItems.css';
-import PropTypes from 'prop-types';
 import TimeAgo from 'react-timeago';
+import PropTypes from 'prop-types';
+import styles from '../styles/ModalItems.css';
 
 const ModalItem = (props) => {
-  var styleObj = {};
+  let styleObj = {};
   if (props.height) {
-    styleObj = {backgroundColor: props.color, height: '600px'}
+    styleObj = { backgroundColor: props.color, height: '600px' };
   } else {
-    styleObj = {backgroundColor: props.color}
+    styleObj = { backgroundColor: props.color };
   }
 
   return (
@@ -36,7 +38,12 @@ const ModalItem = (props) => {
         <div className={styles.flag}>Flag</div>
       </div>
     </div>
-  )
+  );
+};
+
+ModalItem.propTypes = {
+  color: PropTypes.string,
+  review: PropTypes.object,
 };
 
 export default ModalItem;
