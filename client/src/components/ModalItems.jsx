@@ -10,17 +10,17 @@ class ModalItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false,
+      flagModal: false,
       likeClick: false,
       like: 0,
     };
-    this.handleModalToggle = this.handleModalToggle.bind(this);
+    this.handleFlagToggle = this.handleFlagToggle.bind(this);
     this.handleLikeClick = this.handleLikeClick.bind(this);
   }
 
-  handleModalToggle() {
+  handleFlagToggle() {
     this.setState({
-      modal: !this.state.modal,
+      flagModal: !this.state.flagModal,
     });
   }
 
@@ -67,9 +67,9 @@ class ModalItem extends React.Component {
             <div><svg className={styles.smile} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M15.96 29.26c-7.345 0-13.3-5.955-13.3-13.3 0-7.345 5.955-13.3 13.3-13.3 7.345 0 13.3 5.955 13.3 13.3 0 7.345-5.955 13.3-13.3 13.3zm0-2.66c5.876 0 10.64-4.764 10.64-10.64S21.836 5.32 15.96 5.32 5.32 10.084 5.32 15.96 10.084 26.6 15.96 26.6zM12.048 9.602a1.995 1.995 0 1 1 0 3.99 1.995 1.995 0 0 1 0-3.99zm7.824 0a1.995 1.995 0 1 1 0 3.99 1.995 1.995 0 0 1 0-3.99zm-11.23 7.174a1.33 1.33 0 0 1 2.66 0 4.658 4.658 0 1 0 9.316 0 1.33 1.33 0 0 1 2.66 0 7.318 7.318 0 0 1-14.636 0z" fill="#F3FFFF"></path></svg></div>
             <div className={styles.likesCount} onClick={() => this.handleLikeClick()}>{this.props.review.likes + this.state.like}</div>
           </div>
-          <div className={styles.flag} onClick={() => this.handleModalToggle()}>Flag</div>
+          <div className={styles.flag} onClick={() => this.handleFlagToggle()}>Flag</div>
         </div>
-          {this.state.modal ? <FlagModal handleModalToggle={this.handleModalToggle}/> : null}
+          {this.state.flagModal ? <FlagModal handleFlagToggle={this.handleFlagToggle}/> : null}
       </div>
     );
   }

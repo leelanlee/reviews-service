@@ -6,6 +6,7 @@ import Header from './Header';
 import Stats from './Stats';
 import Reviews from './Reviews';
 import ReviewModal from './ReviewModal';
+import FlagModal from './FlagModal.jsx';
 import styles from '../styles/App.css';
 
 class App extends React.Component {
@@ -19,9 +20,11 @@ class App extends React.Component {
       reviewModal: false,
       reviewCard: {},
       reviewColor: '',
+      flagModal: false,
     };
     this.handleReviewModal = this.handleReviewModal.bind(this);
     this.toggleReviewModalOff = this.toggleReviewModalOff.bind(this);
+    this.handleFlagToggle = this.handleFlagToggle.bind(this);
   }
 
   componentDidMount() {
@@ -64,6 +67,12 @@ class App extends React.Component {
     });
   }
 
+  handleFlagToggle() {
+    this.setState({
+      flagModal: !this.state.flagModal,
+    });
+  }
+
   render() {
     return (
       <div className={styles.neighborhood}>
@@ -73,8 +82,9 @@ class App extends React.Component {
         <div className={styles.stats}>
           <Stats stats={this.state.stats}/>
         </div>
-        <Reviews reviews={this.state.reviews} handleReviewModal={this.handleReviewModal} toggle={true}/>
-        {this.state.reviewModal ? <ReviewModal review={this.state.reviewCard} color={this.state.reviewColor} on={this.state.reviewModal} toggleReviewModalOff={this.toggleReviewModalOff} /> : null}
+        <Reviews reviews={this.state.reviews} handleReviewModal={this.handleReviewModal} toggle={true} handleFlagToggle={this.handleFlagToggle} />
+        {this.state.reviewModal ? <ReviewModal review={this.state.reviewCard} color={this.state.reviewColor} toggleReviewModalOff={this.toggleReviewModalOff} /> : null}
+        {this.state.flagModal ? <FlagModal handleFlagToggle={this.handleFlagToggle} /> : null}
       </div>
     );
   }

@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
+import Carousel from './Carousel';
 // import PropTypes from 'prop-types';
 import styles from '../styles/Reviews.css';
-import Carousel from './Carousel.jsx';
 
 class Reviews extends React.Component {
   constructor(props) {
@@ -77,7 +77,7 @@ class Reviews extends React.Component {
           <span><button type="button" className={this.state.button === 'commute' ? `${styles.reviewsbtn} ${styles.selectedBtn}` : styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Commute</button></span>
         </div>
         <div>
-          <Carousel reviews={this.state.reviews} handleReviewModal={this.props.handleReviewModal}/>
+          <Carousel reviews={this.state.reviews} handleReviewModal={this.props.handleReviewModal} handleFlagToggle={this.props.handleFlagToggle} />
         </div>
       </div>
     );

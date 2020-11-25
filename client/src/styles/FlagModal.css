@@ -2,7 +2,7 @@
   margin: 0 auto;
   position: fixed;
   width: 100%;
-  height: 1000%;
+  height: 100%;
   top: 0;
   left: 0;
   z-index: 5;
@@ -13,38 +13,15 @@
 }
 
 .flagReviewContainer {
-  max-width: 45%;
+  max-width: 620px;
   max-height: 50%;
   margin: 10% auto;
-  /* left: 88%;
-  top: 80%; */
   position: absolute;
   background-color: white;
   border-radius: 8px;
-  /* transform: translate(115%, 20%); */
   overflow: hidden;
-  /* overflow-y: scroll;
-  overflow-x: auto; */
 }
 
-.closeFlag{
-  color: black;
-  margin-top: 20px;
-  margin-left: 92%;
-  border-radius: 30px;
-  padding: 1px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  border: none;
-  background-color: rgb(205, 209, 212);
-  color: rgb(255, 255, 255);
-  outline: none;
-  box-shadow: none!important;
-}
 .flagContent{
   color: black;
   padding-left: 24px;
@@ -59,11 +36,10 @@ font-size: 16px;
 .flagForm{
   font-size: 16px;
   font-weight: normal;
-  line-height-step: 15px;
   margin-bottom: 16px;
 }
 
-.report{
+.report {
   margin: 0px 0px 16px;
   border-radius: 8px;
   border-width: 1px;
@@ -82,6 +58,8 @@ font-size: 16px;
   border-color: transparent;
   box-shadow: rgba(59, 65, 68, 0.7) 0px 8px 20px -15px;
   width: 20vh;
+  outline: none !;
+  box-shadow: none!important;
 }
 
 .cancel{
@@ -102,4 +80,6 @@ font-size: 16px;
   border-color: rgb(205, 209, 212);
   margin: 0px 0px 0px 1em;
   width: 20vh;
+  outline: none !;
+  box-shadow: none!important;
 }
