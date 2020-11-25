@@ -13,10 +13,11 @@ const FlagModal = (props) => {
     <div className={styles.flagReviewBackground}>
       <div className={styles.flagReviewContainer}>
         <div className={styles.flagContent}>
-          <h2>Report this content</h2>
+          <h4>Report this content</h4>
           <p className={styles.flagGuidelines}>Please refer to Trulia's Community Guidelines and let us know why you think the content you're reporting may violate these guidelines</p>
           <form className={styles.flagForm}>
-            <input type="radio" id="inapproriate" name="report" value="inapproriate"></input>
+            <h3>What's wrong with this content?</h3>
+            <input type="radio" id="inapproriate" name="report" value="inapproriate" checked></input>
             <label>Inapproriate, offensive or unneighborly</label>
             <br></br>
             <input type="radio" id="relevant" name="report" value="relevant"></input>
@@ -28,7 +29,7 @@ const FlagModal = (props) => {
             <input type="radio" id="duplicate" name="report" value="duplicate"></input>
             <label>Duplicate content</label>
           </form>
-          <button type="button" className={styles.report}>Report</button><span><button type="button" className={styles.cancel} onClick={() => props.handleFlagToggle()}>Cancel</button></span>
+          <button type="button" className={styles.report} onClick={() => props.handleFlagToggle()}>Report</button><span><button type="button" className={styles.cancel} onClick={() => props.handleFlagToggle()}>Cancel</button></span>
         </div>
       </div>
     </div>

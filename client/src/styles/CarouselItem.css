@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+
 .flexbox-item-carousel {
   margin: 16px 8px;
   display: flex;
@@ -49,6 +51,7 @@
 
 .residentDetails{
   font-size: 12px;
+  font-weight: 400;
 }
 
 .resident{
@@ -68,7 +71,7 @@
   line-height: 1.2;
   font-style: italic;
   font-size: 22px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.2;
   width: 80%;
 }
@@ -118,6 +121,7 @@
 
 .likesCount{
   font-size: 16px;
+  font-weight: 400;
   line-height: 1.5;
   justify-self: center;
   align-self: center;
@@ -126,6 +130,7 @@
 
 .flag{
   font-size: 16px;
+  font-weight: 400;
   margin: auto auto;
   margin-right: 15%;
   align-self: top;

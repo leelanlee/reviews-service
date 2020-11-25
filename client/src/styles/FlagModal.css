@@ -20,17 +20,24 @@
   background-color: white;
   border-radius: 8px;
   overflow: hidden;
+  animation: pop-out 0.25s;
+}
+
+@keyframes pop-out {
+  0% { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 1; transform: scale(1); }
 }
 
 .flagContent{
   color: black;
   padding-left: 24px;
   padding-right: 24px;
+  font-size: 24px;
 }
 
 .flagGuidelines{
-font-weight: normal;
-font-size: 16px;
+  font-weight: normal;
+  font-size: 16px;
 }
 
 .flagForm{
