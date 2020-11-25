@@ -4,7 +4,7 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable arrow-body-style */
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import CarouselItem from './CarouselItem';
 import GridModal from './GridModal';
 import styles from '../styles/Carousel.css';
@@ -121,9 +121,8 @@ class Carousel extends React.Component {
   }
 }
 
-Carousel.propTypes = {
-  reviews: PropTypes.array,
-
-};
+// Carousel.propTypes = {
+//   reviews: PropTypes.array,
+// };
 
 export default Carousel;

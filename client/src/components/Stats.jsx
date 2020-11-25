@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import styles from '../styles/Stats.css';
 import statsDetails from '../stats';
 import StatsItem from './StatsItem';
@@ -80,8 +80,8 @@ class Stats extends React.Component {
   }
 };
 
-Stats.propTypes = {
-  stats: PropTypes.object,
-};
+// Stats.propTypes = {
+//   stats: PropTypes.object,
+// };
 
 export default Stats;

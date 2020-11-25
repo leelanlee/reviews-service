@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import styles from '../styles/Reviews.css';
 import Carousel from './Carousel.jsx';
 

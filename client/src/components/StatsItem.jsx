@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/self-closing-comp */
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import styles from '../styles/Stats.css';
 
 const StatsItem = ({ percentage, details }) => (
@@ -25,9 +25,9 @@ const StatsItem = ({ percentage, details }) => (
   </div>
 );
 
-StatsItem.propTypes = {
-  percentage: PropTypes.number,
-  details: PropTypes.object,
-};
+// StatsItem.propTypes = {
+//   percentage: PropTypes.number,
+//   details: PropTypes.object,
+// };
 
 export default StatsItem;

@@ -2,7 +2,7 @@
 /* eslint-disable max-len */
 /* eslint-disable class-methods-use-this */
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import styles from '../styles/GridModal.css';
 import ModalItem from './ModalItems';
 import Reviews from './Reviews';
@@ -37,10 +37,10 @@ class Modal extends React.Component {
 
   render() {
     return (
-      <div className={styles.modalBackground} onClick={() => this.props.toggleModal()}>
+      <div className={styles.modalBackground}>
         <div id="fade" className={styles.modalContainer}>
           <div className={styles.navModal}>
-            <button className={styles.modalButtons} type="button" onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover} onClick={() => this.handleModalFadeOut}>X</button>
+            <button className={styles.modalButtons} type="button" onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover} onClick={() => this.handleModalFadeOut} onClick={() => this.props.toggleModal()}>X</button>
           </div>
           <div className={styles.gridContainer}>
             {this.props.reviews.length > 1 ? this.props.reviews.map((review, index) => <ModalItem review={review} key={index} color={this.randomColor()} />) : null}
@@ -51,9 +51,9 @@ class Modal extends React.Component {
   }
 }
 
-Modal.propTypes = {
-  reviews: PropTypes.object,
-  toggleModal: PropTypes.function,
-};
+// Modal.propTypes = {
+//   reviews: PropTypes.object,
+//   toggleModal: PropTypes.function,
+// };
 
 export default Modal;
