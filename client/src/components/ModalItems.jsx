@@ -2,7 +2,7 @@
 /* eslint-disable react/self-closing-comp */
 import React from 'react';
 import TimeAgo from 'react-timeago';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import styles from '../styles/ModalItems.css';
 
 const ModalItem = (props) => {
@@ -41,9 +41,9 @@ const ModalItem = (props) => {
   );
 };
 
-ModalItem.propTypes = {
-  color: PropTypes.string,
-  review: PropTypes.object,
-};
+// ModalItem.propTypes = {
+//   color: PropTypes.string,
+//   review: PropTypes.object,
+// };
 
 export default ModalItem;

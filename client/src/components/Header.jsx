@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable arrow-body-style */
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import styles from '../styles/Header.css';
 
 const Header = ({ neighborhoodName, reviewsTotal }) => {
@@ -19,9 +19,9 @@ const Header = ({ neighborhoodName, reviewsTotal }) => {
   );
 };
 
-Header.propTypes = {
-  neighborhoodName: PropTypes.string,
-  reviewsTotal: PropTypes.number,
-};
+// Header.propTypes = {
+//   neighborhoodName: PropTypes.string,
+//   reviewsTotal: PropTypes.number,
+// };
 
 export default Header;

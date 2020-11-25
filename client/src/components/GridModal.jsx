@@ -2,7 +2,7 @@
 /* eslint-disable max-len */
 /* eslint-disable class-methods-use-this */
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import styles from '../styles/GridModal.css';
 import ModalItem from './ModalItems';
 import Reviews from './Reviews';
@@ -51,9 +51,9 @@ class Modal extends React.Component {
   }
 }
 
-Modal.propTypes = {
-  reviews: PropTypes.object,
-  toggleModal: PropTypes.function,
-};
+// Modal.propTypes = {
+//   reviews: PropTypes.object,
+//   toggleModal: PropTypes.function,
+// };
 
 export default Modal;
