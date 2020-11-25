@@ -42,6 +42,10 @@
   object-fit: cover;
 }
 
+.row2{
+  bottom: 10%;
+}
+
 .carousel-btn {
   position: absolute;
   min-height: 30px;

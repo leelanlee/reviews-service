@@ -102,7 +102,7 @@ class Carousel extends React.Component {
                 {this.renderCarouselItemAtIndex(2, 'rgb(206,182,255)')}
                 {this.renderCarouselItemAtIndex(3, 'rgb(116,6,49)')}
               </div>
-              <div className={`${styles['flexbox-container-carousel']} ${styles.row}`}>
+              <div className={`${styles['flexbox-container-carousel']} ${styles.row} ${styles.row2}`}>
                 {this.renderCarouselItemAtIndex(4, 'rgb(242,196,48)')}
                 {this.renderCarouselItemAtIndex(5, 'rgb(5,34,134)')}
                 {this.renderCarouselItemAtIndex(6, 'rgb(254,94,63)')}
