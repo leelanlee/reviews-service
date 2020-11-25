@@ -100,6 +100,7 @@
   justify-content: left;
   overflow: hidden;
   margin-left: 10%;
+  cursor: pointer;
 }
 
 .smile{
@@ -123,4 +124,5 @@
   margin: auto auto;
   margin-right: 15%;
   align-self: top;
+  cursor: pointer;
 }
