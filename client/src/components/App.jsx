@@ -7,6 +7,8 @@ import Stats from './Stats';
 import Reviews from './Reviews';
 import ReviewModal from './ReviewModal';
 import FlagModal from './FlagModal.jsx';
+import Carousel from './Carousel.jsx';
+import GridModal from './GridModal.jsx'
 import styles from '../styles/App.css';
 
 class App extends React.Component {
@@ -14,17 +16,20 @@ class App extends React.Component {
     super();
     this.state = {
       reviewsTotal: 0,
-      reviews: [],
       neighborhoodName: '',
       stats: {},
       reviewModal: false,
       reviewCard: {},
       reviewColor: '',
       flagModal: false,
+      selectedReviews: [],
+      gridModal: false,
     };
     this.handleReviewModal = this.handleReviewModal.bind(this);
     this.toggleReviewModalOff = this.toggleReviewModalOff.bind(this);
     this.handleFlagToggle = this.handleFlagToggle.bind(this);
+    this.handleSelectedReviews = this.handleSelectedReviews.bind(this);
+    this.toggleGridModal = this.toggleGridModal.bind(this);
   }
 
   componentDidMount() {
@@ -37,6 +42,7 @@ class App extends React.Component {
         this.setState({
           reviewsTotal: result.data.length,
           reviews: result.data,
+          selectedReviews: result.data,
         });
         axios({
           method: 'get',
@@ -53,11 +59,32 @@ class App extends React.Component {
       .catch((err) => console.log(err));
   }
 
+  handleSelectedReviews(selectedCategory) {
+    axios({
+      method: 'get',
+      url: `${window.location}neighborhood_reviews`,
+      params: {
+        category: selectedCategory,
+      },
+    })
+      .then((result) => {
+        this.setState({
+          selectedReviews: result.data,
+        });
+      });
+  }
+
   handleReviewModal(review, color) {
     this.setState({
       reviewModal: true,
       reviewCard: review,
       reviewColor: color,
+    });
+  }
+
+  handleFlagToggle() {
+    this.setState({
+      flagModal: !this.state.flagModal,
     });
   }
 
@@ -67,9 +94,9 @@ class App extends React.Component {
     });
   }
 
-  handleFlagToggle() {
+  toggleGridModal() {
     this.setState({
-      flagModal: !this.state.flagModal,
+      gridModal: !this.state.gridModal,
     });
   }
 
@@ -80,9 +107,11 @@ class App extends React.Component {
           <Header neighborhoodName={this.state.neighborhoodName} reviewsTotal={this.state.reviewsTotal} />
         </div>
         <div className={styles.stats}>
-          <Stats stats={this.state.stats}/>
+          <Stats stats={this.state.stats} />
         </div>
-        <Reviews reviews={this.state.reviews} handleReviewModal={this.handleReviewModal} toggle={true} handleFlagToggle={this.handleFlagToggle} />
+        <Reviews handleSelectedReviews={this.handleSelectedReviews} />
+        <Carousel reviews={this.state.selectedReviews} handleReviewModal={this.handleReviewModal} handleFlagToggle={this.handleFlagToggle} toggleGridModal={this.toggleGridModal} />
+        {this.state.gridModal ? <GridModal reviews={this.state.selectedReviews} toggleGridModal={this.toggleGridModal} /> : null}
         {this.state.reviewModal ? <ReviewModal review={this.state.reviewCard} color={this.state.reviewColor} toggleReviewModalOff={this.toggleReviewModalOff} /> : null}
         {this.state.flagModal ? <FlagModal handleFlagToggle={this.handleFlagToggle} /> : null}
       </div>

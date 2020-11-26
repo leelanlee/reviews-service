@@ -6,11 +6,7 @@ import React from 'react';
 import styles from '../styles/GridModal.css';
 import ModalItem from './ModalItems';
 
-class Modal extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+class GridModal extends React.Component {
   handleModalFadeOut() {
     document.getElementById('#fade').fadeOut('slow');
   }
@@ -27,7 +23,7 @@ class Modal extends React.Component {
       <div className={styles.modalBackground}>
         <div id="fade" className={styles.modalContainer}>
           <div className={styles.navModal}>
-            <button className={styles.modalButtons} type="button" onClick={() => this.handleModalFadeOut} onClick={() => this.props.toggleModal()}>X</button>
+            <button className={styles.modalButtons} type="button" onClick={() => this.handleModalFadeOut} onClick={() => this.props.toggleGridModal()}>X</button>
           </div>
           <div className={styles.gridContainer}>
             {this.props.reviews.length > 1 ? this.props.reviews.map((review, index) => <ModalItem review={review} key={index} color={this.randomColor()} />) : null}
@@ -43,4 +39,4 @@ class Modal extends React.Component {
 //   toggleModal: PropTypes.function,
 // };
 
-export default Modal;
+export default GridModal;

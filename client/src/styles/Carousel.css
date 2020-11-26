@@ -1,6 +1,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
 
+.padding{
+  padding-left: 16px;
+  padding-right: 16px;
+}
 
 .carousel {
   position: relative;

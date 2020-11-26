@@ -8,20 +8,11 @@ class Reviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviews: this.props.reviews,
       button: 'all',
     };
     this.handleReviewsClick = this.handleReviewsClick.bind(this);
     this.handleButtonOnHover = this.handleButtonOnHover.bind(this);
     this.handleButtonOffHover = this.handleButtonOffHover.bind(this);
-  }
-
-  componentDidUpdate(lastProps) {
-    if (lastProps.reviews.length === 0 && this.props.reviews.length !== 0) {
-      this.setState({
-        reviews: this.props.reviews,
-      });
-    }
   }
 
   handleReviewsClick(e) {
@@ -39,19 +30,7 @@ class Reviews extends React.Component {
     } else if (selectedCategory === 'parents') {
       selectedCategory = 'parent';
     }
-
-    axios({
-      method: 'get',
-      url: `${window.location}neighborhood_reviews`,
-      params: {
-        category: selectedCategory,
-      },
-    })
-      .then((result) => {
-        this.setState({
-          reviews: result.data,
-        });
-      });
+   this.props.handleSelectedReviews(selectedCategory);
   }
 
   handleButtonOnHover(e) {
@@ -75,9 +54,6 @@ class Reviews extends React.Component {
           <span><button type="button" className={this.state.button === 'dog owners' ? `${styles.reviewsbtn} ${styles.selectedBtn}` : styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Dog Owners</button></span>
           <span><button type="button" className={this.state.button === 'parents' ? `${styles.reviewsbtn} ${styles.selectedBtn}` : styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Parents</button></span>
           <span><button type="button" className={this.state.button === 'commute' ? `${styles.reviewsbtn} ${styles.selectedBtn}` : styles.reviewsbtn} onClick={this.handleReviewsClick} onMouseEnter={this.handleButtonOnHover} onMouseLeave={this.handleButtonOffHover}>Commute</button></span>
-        </div>
-        <div>
-          <Carousel reviews={this.state.reviews} handleReviewModal={this.props.handleReviewModal} handleFlagToggle={this.props.handleFlagToggle} />
         </div>
       </div>
     );
