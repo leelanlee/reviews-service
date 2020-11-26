@@ -6,7 +6,6 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import styles from '../styles/FlagModal.css';
-import ModalItems from './ModalItems';
 
 const FlagModal = (props) => {
   return (

@@ -2,7 +2,7 @@
 /* eslint-disable react/self-closing-comp */
 import React from 'react';
 import TimeAgo from 'react-timeago';
-import FlagModal from './FlagModal.jsx';
+import FlagModal from './FlagModal';
 // import PropTypes from 'prop-types';
 import styles from '../styles/ModalItems.css';
 
@@ -58,6 +58,7 @@ class ModalItem extends React.Component {
               <span><TimeAgo date={this.props.review.review_date}></TimeAgo></span>
             </div>
           </div>
+          {this.props.button ? <span><button className={styles.modalOffButton} onClick={() => this.props.toggleReviewModalOff()}>X</button></span> : null}
         </div>
         <div className={this.props.height ? `${styles.text} ${styles.textModal} ${styles.fade}` : `${styles.text} ${styles.fade}`}>
           "{this.props.review.full_text}"

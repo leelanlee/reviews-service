@@ -9,9 +9,9 @@ import ModalItems from './ModalItems';
 
 const ReviewModal = (props) => {
   return (
-    <div className={styles.modalReviewBackground} onClick={() => props.toggleReviewModalOff()}>
+    <div className={styles.modalReviewBackground}>
       <div className={styles.modalReviewContainer}>
-        <ModalItems review={props.review} color={props.color} height={true}/>
+        <ModalItems review={props.review} color={props.color} height={true} button={true} toggleReviewModalOff={props.toggleReviewModalOff}/>
       </div>
     </div>
   );

@@ -5,13 +5,11 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import styles from '../styles/GridModal.css';
 import ModalItem from './ModalItems';
-import Reviews from './Reviews';
 
 class Modal extends React.Component {
   constructor(props) {
     super(props);
   }
-
 
   handleModalFadeOut() {
     document.getElementById('#fade').fadeOut('slow');

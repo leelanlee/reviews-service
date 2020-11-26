@@ -5,7 +5,6 @@
 import React from 'react';
 import TimeAgo from 'react-timeago';
 // import PropTypes from 'prop-types';
-import FlagModal from './FlagModal.jsx'
 import styles from '../styles/CarouselItem.css';
 
 class CarouselItem extends React.Component {
