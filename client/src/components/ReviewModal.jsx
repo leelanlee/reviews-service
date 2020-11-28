@@ -7,11 +7,11 @@ import React from 'react';
 import styles from '../styles/ReviewModal.css';
 import ModalItems from './ModalItems';
 
-const ReviewModal = (props) => {
+const ReviewModal = ({ review, color, toggleReviewModalOff }) => {
   return (
     <div className={styles.modalReviewBackground}>
       <div className={styles.modalReviewContainer}>
-        <ModalItems review={props.review} color={props.color} height={true} button={true} toggleReviewModalOff={props.toggleReviewModalOff}/>
+        <ModalItems review={review} color={color} height={true} button={true} toggleReviewModalOff={toggleReviewModalOff} />
       </div>
     </div>
   );

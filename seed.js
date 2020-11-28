@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const LorenIpsum = require('lorem-ipsum').LoremIpsum;
 const faker = require('faker');
 const db = require('./db/connection.js');
@@ -7,27 +8,27 @@ const db = require('./db/connection.js');
 // create a neighborhoods stats generator
 const neighborhoodStatsGenerator = function() {
   return {
-    'dog_friendly': Math.random().toFixed(2),
-    'grocery_stores': Math.random().toFixed(2),
-    'neighbors_friendly': Math.random().toFixed(2),
-    'parking_easy': Math.random().toFixed(2),
-    'yard': Math.random().toFixed(2),
-    'community_events': Math.random().toFixed(2),
-    'sidewalks': Math.random().toFixed(2),
-    'walk_night': Math.random().toFixed(2),
-    'five_years': Math.random().toFixed(2),
-    'kids_outside': Math.random().toFixed(2),
-    'car': Math.random().toFixed(2),
-    'restaurants': Math.random().toFixed(2),
-    'streets': Math.random().toFixed(2),
-    'holiday': Math.random().toFixed(2),
-    'quiet': Math.random().toFixed(2),
-    'wildlife': Math.random().toFixed(2),
+    dog_friendly: Math.random().toFixed(2),
+    grocery_stores: Math.random().toFixed(2),
+    neighbors_friendly: Math.random().toFixed(2),
+    parking_easy: Math.random().toFixed(2),
+    yard: Math.random().toFixed(2),
+    community_events: Math.random().toFixed(2),
+    sidewalks: Math.random().toFixed(2),
+    walk_night: Math.random().toFixed(2),
+    five_years: Math.random().toFixed(2),
+    kids_outside: Math.random().toFixed(2),
+    car: Math.random().toFixed(2),
+    restaurants: Math.random().toFixed(2),
+    streets: Math.random().toFixed(2),
+    holiday: Math.random().toFixed(2),
+    quiet: Math.random().toFixed(2),
+    wildlife: Math.random().toFixed(2),
   };
 };
 
 // generate randomDate
-const randomDate = function() {
+const randomDate = function () {
   var start = new Date(2015, 0, 1);
   var end = new Date();
   return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toLocaleDateString('en-US');
@@ -37,70 +38,68 @@ const randomDate = function() {
 const textGenerator = new LorenIpsum({
   sentencesPerParagraph: {
     max: 4,
-    min: 2
+    min: 2,
   },
   wordsPerSentence: {
     max: 16,
-    min: 4
-  }
+    min: 4,
+  },
 });
 
 //************ Generating dummy data per schema table ********************************************************/
 
-
 // create array of 10 neighborhoods
 const neighborhood = [
   {
-    'name': 'SoMA',
-    'stats': neighborhoodStatsGenerator()
+    name: 'SoMA',
+    stats: neighborhoodStatsGenerator(),
   },
   {
-    'name': 'Pacific Heights',
-    'stats': neighborhoodStatsGenerator()
+    name: 'Pacific Heights',
+    stats: neighborhoodStatsGenerator(),
   },
   {
-    'name': 'Castro',
-    'stats': neighborhoodStatsGenerator()
+    name: 'Castro',
+    stats: neighborhoodStatsGenerator(),
   },
   {
-    'name': 'Chinatown',
-    'stats': neighborhoodStatsGenerator()
+    name: 'Chinatown',
+    stats: neighborhoodStatsGenerator(),
   },
   {
-    'name': 'Marina',
-    'stats': neighborhoodStatsGenerator()
+    name: 'Marina',
+    stats: neighborhoodStatsGenerator(),
   },
   {
-    'name': 'Hayes Valley',
-    'stats': neighborhoodStatsGenerator()
+    name: 'Hayes Valley',
+    stats: neighborhoodStatsGenerator(),
   },
   {
 
-    'name': 'Bayview',
-    'stats': neighborhoodStatsGenerator()
+    name: 'Bayview',
+    stats: neighborhoodStatsGenerator(),
   },
   {
-    'name': 'Mission',
-    'stats': neighborhoodStatsGenerator()
+    name: 'Mission',
+    stats: neighborhoodStatsGenerator(),
   },
   {
-    'name': 'Outer Richmond',
-    'stats': neighborhoodStatsGenerator()
+    name: 'Outer Richmond',
+    stats: neighborhoodStatsGenerator(),
   },
   {
-    'name': 'Noe Valley',
-    'stats': neighborhoodStatsGenerator()
-  }
+    name: 'Noe Valley',
+    stats: neighborhoodStatsGenerator(),
+  },
 ];
 // console.log('neighborhood array', neighborhoods);
-
 
 // create 100 listings LINKING random neighboorhoods
 const generateListings = function() {
   var listings = [];
   for (var i = 1; i < 101; i++) {
     var listing = {
-      'neighboorhood_id': Math.floor(Math.random() * (10 - 1 + 1)) + 1,
+      neighboorhood_id: Math.floor(Math.random() * (10 - 1 + 1)) + 1,
     };
     listings.push(listing);
   }
@@ -108,15 +107,14 @@ const generateListings = function() {
 };
 // console.log('listing array', generateListings());
 
-
 // create list of 50 users
 const generateUsers = function() {
   var users = [];
   for (var i = 1; i < 51; i++) {
     var user = {
       name: faker.name.findName(),
-      'user_type': 'Resident',
-      'dog_owner': Math.random() < 0.5,
+      user_type: 'Resident',
+      dog_owner: Math.random() < 0.5,
       parent: Math.random() < 0.5,
     };
     users.push(user);
@@ -125,17 +123,15 @@ const generateUsers = function() {
 };
 // console.log('generate users', generateUsers());
 
-
-
 // create list of reviews
 const generateReviews = function(neighborhoodID, number) {
   const reviews = [];
   for (var i = 1; i < number; i++) {
     var review = {
-      'user_id': Math.floor(Math.random() * (50 - 1 + 1)) + 1,
-      'neighborhood_id': neighborhoodID,
-      'review_date': randomDate(),
-      'full_text': textGenerator.generateParagraphs(1),
+      user_id: Math.floor(Math.random() * (50 - 1 + 1)) + 1,
+      neighborhood_id: neighborhoodID,
+      review_date: randomDate(),
+      full_text: textGenerator.generateParagraphs(1),
       likes: Math.floor(Math.random() * (150 - 1 + 1)) + 1,
       community: Math.random() < 0.5,
       commute: Math.random() < 0.5,

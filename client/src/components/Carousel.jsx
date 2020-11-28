@@ -15,14 +15,12 @@ class Carousel extends React.Component {
     this.state = {
       rowSet: [],
       container: [],
-      modal: false,
       leftButton: false,
       carousel: 1,
       moreReviews: false,
     };
     this.handleRightButtonClick = this.handleRightButtonClick.bind(this);
     this.handleLeftButtonClick = this.handleLeftButtonClick.bind(this);
-    this.toggleModal = this.toggleModal.bind(this);
   }
 
   componentDidMount() {
@@ -44,6 +42,7 @@ class Carousel extends React.Component {
     this.state.container.style.transform = `translateX(-${amountToMove})`;
 
     if (this.state.carousel === 2) {
+      this.props.toggleGridModal();
       this.setState({
         modal: true,
         leftButton: true,
@@ -72,12 +71,6 @@ class Carousel extends React.Component {
     }
   }
 
-  toggleModal() {
-    this.setState({
-      modal: false,
-    });
-  }
-
   renderCarouselItemAtIndex(index, color) {
     if (this.props.reviews[index] === undefined) {
       return null;
@@ -87,7 +80,7 @@ class Carousel extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.padding}>
         <div className={styles.carousel}>
           <button id="yo" className={this.state.leftButton ? `${styles['carousel-btn']} ${styles['carousel-btn-left']}` : styles.hiddenBtn} onClick={this.handleLeftButtonClick} type="button">
             <div className={this.state.leftButton ? styles.arrow : styles.hiddenBtn}>
@@ -115,7 +108,6 @@ class Carousel extends React.Component {
               <svg viewBox="5 5 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.65 16.513l-7.147-7.055 1.868-1.893 9.068 8.951-9.069 8.927-1.866-1.896z" fill="#000"></path></svg></div> : `+` }
           </button>
         </div>
-        {this.state.modal === true ? <GridModal reviews={this.props.reviews} toggleModal={this.toggleModal} /> : null}
       </div>
     );
   }
