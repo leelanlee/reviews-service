@@ -41,7 +41,6 @@ class App extends React.Component {
         console.log('Get request reviews success');
         this.setState({
           reviewsTotal: result.data.length,
-          reviews: result.data,
           selectedReviews: result.data,
         });
         axios({
