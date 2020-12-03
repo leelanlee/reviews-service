@@ -1,11 +1,11 @@
 # Neighborhood Reviews Service
 
 ## Table of contents
-* [BackGround](#background)
+* [Background](#background)
 * [Related Projects](#related-projects)
 * [Setup](#setup)
 
-## General Info
+## Background
 	This service is a mock version of Trulia's reviews module. It displays the stats of amenities of the house listing's
 	neighborhood. Additionally, it displays crowd sourced reviews that are categorized and can be filtered by Community, 
 	Dog Owners, Parents, and Commute.
@@ -34,7 +34,7 @@ $ npm start
 
 ### Read API
 * GET neighborhood stats
-	* GET/listing/:listing_id/stats
+	* GET/listing/:listing_id/neighborhood_stats
 	* Request params
 	
 			{
@@ -42,6 +42,7 @@ $ npm start
 			}
 		
 	* Reponse Success (200)
+	* Reponse Success (404)
 	* Reponse Body
 	
 			{ 
@@ -66,38 +67,49 @@ $ npm start
 					 quiet: 0.93,
 					 wildlife: 0.57 
 				}
-
-* GET Reviews
-
-		[
-			{
-				id: 11,
-				userid: 11,
-				neighborhood_id: 6,
-				review_date: '10/22/2018',
-				full_text:
-				 'Excepteur nostrud ipsum commodo. Sunt excepteur culpa proident aute non reprehenderit Lorem fugiat exercitation sint excepteur ullamco occaecat minim.',
-				likes: 97,
-				community: 0,
-				commute: 0,
-				name: 'Mrs. Joanne Schoen',
-				user_type: 'Resident',
-				dog_owner: 0,
-				parent: 0 
-			},
-			{
-				id: 11,
-				userid: 11,
-				neighborhood_id: 6,
-				review_date: '10/22/2018',
-				full_text:
-				 'Excepteur nostrud ipsum commodo. Sunt excepteur culpa proident aute non reprehenderit Lorem fugiat exercitation sint excepteur ullamco occaecat minim.',
-				likes: 97,
-				community: 0,
-				commute: 0,
-				name: 'Mrs. Joanne Schoen',
-				user_type: 'Resident',
-				dog_owner: 0,
-				parent: 0 
 			}
-		]
+
+* GET neighborhood reviews
+	* GET/listing/:listing_id/neighborhood_reviews
+	* Request params
+	
+			{
+			listing_id: 2
+			}
+		
+	* Reponse Success (200)
+	* Reponse Success (404)
+	* Reponse Body
+
+			[
+				{
+					id: 11,
+					userid: 11,
+					neighborhood_id: 6,
+					review_date: '10/22/2018',
+					full_text:
+					 'Excepteur nostrud ipsum commodo. Sunt excepteur culpa proident aute non reprehenderit Lorem fugiat exercitation sint excepteur ullamco occaecat minim.',
+					likes: 97,
+					community: 0,
+					commute: 0,
+					name: 'Mrs. Joanne Schoen',
+					user_type: 'Resident',
+					dog_owner: 0,
+					parent: 0 
+				},
+				{
+					id: 11,
+					userid: 11,
+					neighborhood_id: 6,
+					review_date: '10/22/2018',
+					full_text:
+					 'Excepteur nostrud ipsum commodo. Sunt excepteur culpa proident aute non reprehenderit Lorem fugiat exercitation sint excepteur ullamco occaecat minim.',
+					likes: 97,
+					community: 0,
+					commute: 0,
+					name: 'Mrs. Joanne Schoen',
+					user_type: 'Resident',
+					dog_owner: 0,
+					parent: 0 
+				}
+			]
