@@ -60,6 +60,7 @@ $ npm start
 					 quiet: 0.93,
 					 wildlife: 0.44 
 				}
+			}
 		
 	* Reponse Success (201)
 	* Reponse Failure (404)
@@ -124,6 +125,7 @@ $ npm start
 					 quiet: 0.93,
 					 wildlife: 0.44 
 				}
+			}
 		
 
 * GET neighborhood reviews
@@ -202,6 +204,7 @@ $ npm start
 						 quiet: 0.93,
 						 wildlife: 0.44 
 					}
+				}
 * Reponse Success (201)
 * Reponse Failure (404)
 		
