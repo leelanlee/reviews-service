@@ -28,30 +28,23 @@ $ npm start
 
 ## CRUD API Endpoints
 
-### Create API
+### CREATE API
 * POST neighborhood stats
-	*
-
-### Read API
-* GET neighborhood stats
-	* GET/listing/:listing_id/neighborhood_stats
+	* Post/listing/:listing_id/neighborhood_stats
 	* Request params
 	
 			{
 			listing_id: 2
 			}
-		
-	* Reponse Success (200)
-	* Reponse Success (404)
-	* Reponse Body
+	* Request Body
 	
 			{ 
-				id: 6,
+				neighborhood_id: 6,
 				name: 'Hayes Valley',
 				stats:
 				 { 
 					 dog_friendly: 0.38,
-					 grocery_stores: 0.89,
+					 grocery_stores: 0.88,
 					 neighbors_friendly: 0.24,
 					 parking_easy: 0.68,
 					 yard: 0.24,
@@ -61,13 +54,77 @@ $ npm start
 					 five_years: 0.34,
 					 kids_outside: 0.82,
 					 car: 0.89,
-					 restaurants: 0.74,
+					 restaurants: 0.55,
 					 streets: 0.17,
-					 holiday: 0.54,
+					 holiday: 0.77,
 					 quiet: 0.93,
-					 wildlife: 0.57 
+					 wildlife: 0.44 
 				}
+		
+	* Reponse Success (201)
+	* Reponse Failure (404)
+	
+
+* POST neighborhood review
+	* POST/listing/:listing_id/neighborhood_reviews/:userId
+	* Request params
+	
+			{
+			listing_id: 2
+			userId: 11
 			}
+	* Request Body 
+	
+		{
+			id: 11,
+			userid: 11,
+			neighborhood_id: 6,
+			review_date: '10/22/2018',
+			full_text:
+			 'Excepteur nostrud ipsum commodo. Sunt excepteur culpa proident aute non reprehenderit Lorem fugiat exercitation sint excepteur ullamco occaecat minim.',
+			likes: 97,
+			community: 0,
+			commute: 0,
+		}
+	* Reponse Success (201)
+	* Reponse Failure (404)
+
+### READ API
+* GET neighborhood stats
+	* GET/listing/:listing_id/neighborhood_stats
+	* Request params
+	
+			{
+			listing_id: 2
+			}
+		
+	* Reponse Success (201)
+	* Reponse Failure (404)
+	* Reponse Body
+	
+			{ 
+				neighborhood_id: 6,
+				name: 'Hayes Valley',
+				stats:
+				 { 
+					 dog_friendly: 0.38,
+					 grocery_stores: 0.88,
+					 neighbors_friendly: 0.24,
+					 parking_easy: 0.68,
+					 yard: 0.24,
+					 community_events: 0.49,
+					 sidewalks: 0.72,
+					 walk_night: 0.74,
+					 five_years: 0.34,
+					 kids_outside: 0.82,
+					 car: 0.89,
+					 restaurants: 0.55,
+					 streets: 0.17,
+					 holiday: 0.77,
+					 quiet: 0.93,
+					 wildlife: 0.44 
+				}
+		
 
 * GET neighborhood reviews
 	* GET/listing/:listing_id/neighborhood_reviews
@@ -79,7 +136,7 @@ $ npm start
 		
 	* Reponse Success (200)
 	* Reponse Success (404)
-	* Reponse Body
+	* Reponse Body: JSON object
 
 			[
 				{
@@ -88,7 +145,7 @@ $ npm start
 					neighborhood_id: 6,
 					review_date: '10/22/2018',
 					full_text:
-					 'Excepteur nostrud ipsum commodo. Sunt excepteur culpa proident aute non reprehenderit Lorem fugiat exercitation sint excepteur ullamco occaecat minim.',
+					 'I like this parl.',
 					likes: 97,
 					community: 0,
 					commute: 0,
@@ -103,7 +160,7 @@ $ npm start
 					neighborhood_id: 6,
 					review_date: '10/22/2018',
 					full_text:
-					 'Excepteur nostrud ipsum commodo. Sunt excepteur culpa proident aute non reprehenderit Lorem fugiat exercitation sint excepteur ullamco occaecat minim.',
+					 'This is one review.',
 					likes: 97,
 					community: 0,
 					commute: 0,
@@ -113,3 +170,33 @@ $ npm start
 					parent: 0 
 				}
 			]
+### UPDATE API
+	* PATCH neighborhood stats
+		* PATCH/listing/:listing_id/neighborhood_stats/
+		
+	
+	* PATCH neighborhood review
+		* PATCH/listing/:listing_id/neighborhood_reviews/:userId
+		* Request params
+
+				{
+				listing_id: 2
+				userId: 11
+				}
+		* Request Body 
+
+			{
+				id: 11,
+				userid: 11,
+				neighborhood_id: 6,
+				review_date: '10/22/2018',
+				full_text:
+				 'This is a change.',
+				likes: 97,
+				community: 0,
+				commute: 0,
+			}
+		* Reponse Success (200)
+		* Reponse Failure (404)
+		
+### DELETE API
