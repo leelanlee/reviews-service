@@ -236,8 +236,8 @@ $ npm start
 		
 ### DELETE API
 * DELETE neighborhood stats
-		* DELETE/neighborhood/:neighborhood_id/neighborhood_stats/
-		* Request params
+	* DELETE/neighborhood/:neighborhood_id/neighborhood_stats/
+	* Request params
 
 				{
 				neighborhood_id: 2
@@ -247,8 +247,8 @@ $ npm start
 	* Reponse Failure (404)
 
 * DELETE neighborhood reviews
-		* DELETE/neighborhood/:neighborhood_id/neighborhood_reviews/:review_id
-		* Request params
+	* DELETE/neighborhood/:neighborhood_id/neighborhood_reviews/:review_id
+	* Request params
 
 				{
 				neighborhood_id: 2,
