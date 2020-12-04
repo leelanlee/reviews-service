@@ -34,7 +34,7 @@ $ npm start
 	* Request params
 	
 			{
-			listing_id: 2
+			neighborhood_id: 2
 			}
 	* Request Body
 	
@@ -72,7 +72,7 @@ $ npm start
 	
 			{
 			listing_id: 2
-			userId: 11
+			user_I-: 11
 			}
 	* Request Body 
 	
