@@ -200,20 +200,20 @@ writeNumNeighborhoods(1000000, writeNeighborhoods, 'utf-8', (err, data) => {
   }
 })
 
-writeNumUsers(50000000, writeUsers, 'utf-8', (err, data) => {
+writeNumUsers(5000000, writeUsers, 'utf-8', (err, data) => {
   if (err) {
     console.log(err);
   } else {
     var now = new Date();
     // convert date to a string in UTC timezone format:
     console.log(now.toUTCString());
-    console.log('success writing neighborhoods');
-    writeNeighborhoods.end();
+    console.log('success writing users');
+    writeUsers.end();
   }
 })
 
 
-writeNumReviews(100000000, 50000000, 1000000, writeReviews, 'utf-8', (err, data) => {
+writeNumReviews(50000000, 5000000, 1000000, writeReviews, 'utf-8', (err, data) => {
   if (err) {
     console.log(err);
   } else {
