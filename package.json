@@ -12,7 +12,8 @@
     "start": "nodemon server/server.js",
     "webpack:dev": "webpack --watch",
     "webpack:prod": "webpack",
-    "test": "jest"
+    "test": "jest",
+    "postgres-csv": "node BACK-END/seeding/postgresSeed/createPostgresCSV.js"
   },
   "dependencies": {
     "axios": "^0.21.0",

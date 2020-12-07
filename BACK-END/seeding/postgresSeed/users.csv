@@ -1,0 +1,51 @@
+user_id,name,user_type,dog_owner,parent
+1,Ms. Miranda Ryan,Resident,false,true
+2,Mrs. Jenna Mitchell,Resident,false,false
+3,Steve Brakus II,Resident,true,true
+4,Dwight McDermott,Resident,true,false
+5,Kent Adams,Resident,false,true
+6,Zachary Connelly,Resident,false,true
+7,Lisa Keeling,Resident,false,false
+8,Lionel Gislason,Resident,true,false
+9,Hattie Trantow,Resident,false,false
+10,Cesar Schinner Sr.,Resident,false,false
+11,Timothy Walter,Resident,false,false
+12,Keith Tillman,Resident,false,true
+13,Natalie Collier,Resident,true,true
+14,Justin Bailey,Resident,true,false
+15,Ignacio Purdy,Resident,true,true
+16,Dr. Alfonso Ward,Resident,true,true
+17,Arthur Marks,Resident,false,true
+18,Erick Feeney I,Resident,true,true
+19,Jose Torp,Resident,false,false
+20,Lindsay Bauch,Resident,false,false
+21,Manuel Wiegand,Resident,true,false
+22,Hugo Walsh,Resident,true,true
+23,Faith Kassulke,Resident,false,false
+24,Arnold Gerhold,Resident,false,true
+25,Andrea Gottlieb,Resident,true,false
+26,Clayton Hamill,Resident,true,true
+27,Kristy Dietrich,Resident,false,true
+28,Delores Heidenreich,Resident,true,false
+29,Ellis Tillman,Resident,false,true
+30,Laurie Bayer,Resident,true,false
+31,Fernando Lind,Resident,false,false
+32,Clara Bayer,Resident,true,false
+33,Wanda Anderson,Resident,true,true
+34,Alison Rath PhD,Resident,false,false
+35,Anne Upton,Resident,true,false
+36,Ms. Mabel Grimes,Resident,true,false
+37,Jimmie Harvey,Resident,false,true
+38,Mandy Bahringer,Resident,false,false
+39,Ernest Wilkinson,Resident,false,false
+40,Tabitha Renner,Resident,false,false
+41,Miss Dexter McLaughlin,Resident,false,false
+42,Misty Marquardt,Resident,false,true
+43,Laverne Hills,Resident,true,true
+44,Jennie Keebler,Resident,false,false
+45,Dianna Jones,Resident,true,true
+46,Herman Rowe,Resident,true,false
+47,Clinton Shanahan,Resident,true,false
+48,Gregory Price,Resident,false,false
+49,Cristina Davis,Resident,true,true
+50,Juanita Ondricka,Resident,true,true

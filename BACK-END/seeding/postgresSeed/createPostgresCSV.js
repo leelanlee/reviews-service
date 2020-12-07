@@ -33,16 +33,17 @@ const neigLength = neighNames.length
 
 //************ CSV Functions ******************************************************************/
 
-writeNeighborhoods = fs.createWriteStream('neighborhoods.csv');
+writeNeighborhoods = fs.createWriteStream('BACK-END/seeding/postgresSeed/neighborhoods.csv');
 writeNeighborhoods.write('neighborhood_id,name,dog_friendly,grocery_stores,neighbors_friendly,parking_easy,yard,community_events,sidewalks,walk_night,five_years,kids_outside,car,restaurants,streets,holiday,quiet,wildlife\n', 'utf-8')
 
-writeListings = fs.createWriteStream('listings.csv');
+writeListings = fs.createWriteStream('BACK-END/seeding/postgresSeed/listings.csv');
 writeListings.write('listing_id,neighborhood_id\n', 'utf-8')
 
-writeUsers = fs.createWriteStream('users.csv');
+writeUsers = fs.createWriteStream('BACK-END/seeding/postgresSeed/users.csv');
 writeUsers.write('user_id,name,user_type,dog_owner,parent\n', 'utf-8')
 
-// reviewsWriter = csvWriter();
+writeReviews = fs.createWriteStream('BACK-END/seeding/postgresSeed/reviews.csv');
+writeReviews.write('review_id,user_id,neighborhood_id,review_date,review_text,likes,community,commute\n', 'utf-8')
 
 
 
@@ -137,11 +138,42 @@ const writeNumUsers = (numUsers, writer, encoding, callback) => {
   write();
 }
 
+const writeNumReviews = (numReviews, numUsers, numNeighborhoods, writer, encoding, callback) => {
+  let i = numReviews;
+  let id = 0;
+  const write = () => {
+    let ok = true;
+    do {
+      i -= 1;
+      id += 1;
+      let user_id = Math.ceil(Math.random() * numUsers);
+      let neighborhood_id = Math.ceil(Math.random() * numNeighborhoods);
+      let review_date = randomDate()
+      let full_text = textGenerator.generateParagraphs(1)
+      let likes = Math.floor(Math.random() * (150 - 1 + 1))
+      let community = Math.random() < 0.5
+      let commute = Math.random() < 0.5
+      const user  = `${id},${user_id},${neighborhood_id},${review_date},${full_text},${likes}, ${community},${commute}\n`
+      if (i === 0) {
+        writer.write(user, encoding, callback);
+      } else {
+        ok = writer.write(user, encoding);
+      }
+    } while (i > 0 && ok);
+    if (i > 0) {
+      writer.once('drain', write);
+    }
+  }
+  write();
+}
 
 
 
 
-writeNumListings(100000, 1000, writeListings, 'utf-8', (err, data) => {
+
+
+
+writeNumListings(100, 10, writeListings, 'utf-8', (err, data) => {
   var now = new Date();
     // convert date to a string in UTC timezone format:
     console.log(now.toUTCString());
@@ -156,7 +188,7 @@ writeNumListings(100000, 1000, writeListings, 'utf-8', (err, data) => {
   }
 })
 
-writeNumNeighborhoods(1000, writeNeighborhoods, 'utf-8', (err, data) => {
+writeNumNeighborhoods(10, writeNeighborhoods, 'utf-8', (err, data) => {
   if (err) {
     console.log(err);
   } else {
@@ -168,7 +200,7 @@ writeNumNeighborhoods(1000, writeNeighborhoods, 'utf-8', (err, data) => {
   }
 })
 
-writeNumUsers(1000, writeUsers, 'utf-8', (err, data) => {
+writeNumUsers(50, writeUsers, 'utf-8', (err, data) => {
   if (err) {
     console.log(err);
   } else {
@@ -177,6 +209,19 @@ writeNumUsers(1000, writeUsers, 'utf-8', (err, data) => {
     console.log(now.toUTCString());
     console.log('success writing neighborhoods');
     writeNeighborhoods.end();
+  }
+})
+
+
+writeNumReviews(1000, 50, 10, writeReviews, 'utf-8', (err, data) => {
+  if (err) {
+    console.log(err);
+  } else {
+    var now = new Date();
+    // convert date to a string in UTC timezone format:
+    console.log(now.toUTCString());
+    console.log('success writing reviews');
+    writeReviews.end();
   }
 })
 
