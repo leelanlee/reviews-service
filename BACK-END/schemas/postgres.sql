@@ -4,18 +4,18 @@ CREATE DATABASE neighborhoodReviews;
 USE neighborhoodReviews;
 
 CREATE TABLE neighborhoods (
-  id INT NOT NULL SERIAL PRIMARY KEY,
+  neighborhood_id INT NOT NULL PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
-  dogFriendly DECIMAL(3, 2) NOT NULL,
-  groceryStores DECIMAL(3, 2) NOT NULL,
-  neighborsFriendly DECIMAL(3, 2) NOT NULL,
-  parkingEasy DECIMAL(3, 2) NOT NULL,
+  dog_friendly DECIMAL(3, 2) NOT NULL,
+  grocery_stores DECIMAL(3, 2) NOT NULL,
+  neighbors_friendly DECIMAL(3, 2) NOT NULL,
+  parking_easy DECIMAL(3, 2) NOT NULL,
   yard DECIMAL(3, 2) NOT NULL,
-  communityEvents DECIMAL(3, 2) NOT NULL,
+  community_events DECIMAL(3, 2) NOT NULL,
   sidewalks DECIMAL(3, 2) NOT NULL,
-  walkNight DECIMAL(3, 2) NOT NULL,
-  fiveYears DECIMAL(3, 2) NOT NULL,
-  kidsOutside DECIMAL(3, 2) NOT NULL,
+  walk_night DECIMAL(3, 2) NOT NULL,
+  five_years DECIMAL(3, 2) NOT NULL,
+  kids_outside DECIMAL(3, 2) NOT NULL,
   car DECIMAL(3, 2) NOT NULL,
   restaurants DECIMAL(3, 2) NOT NULL,
   streets DECIMAL(3, 2) NOT NULL,
@@ -25,28 +25,28 @@ CREATE TABLE neighborhoods (
 );
 
 CREATE TABLE listings (
-  id INT NOT NULL SERIAL PRIMARY KEY,
-  neighborhoodId INT NOT NULL,
-  FOREIGN KEY (neighborhoodId) REFERENCES neighborhoods(id)
+  listing_id INT NOT NULL PRIMARY KEY,
+  neighborhood_id INT NOT NULL,
+  FOREIGN KEY (neighborhood_id) REFERENCES neighborhoods(neighborhood_id)
 );
 
 CREATE TABLE users (
-  id INT NOT NULL SERIAL PRIMARY KEY,
+  user_id INT NOT NULL PRIMARY KEY,
   name VARCHAR(45) NOT NULL,
-  userType VARCHAR(15) NOT NULL,
-  dogOwner BOOLEAN NOT NULL,
+  user_type VARCHAR(15) NOT NULL,
+  dog_owner BOOLEAN NOT NULL,
   parent BOOLEAN NOT NULL
 );
 
 CREATE TABLE reviews (
-  id INT NOT NULL SERIAL PRIMARY KEY,
-  userId INT NOT NULL,
-  neighborhoodId INT NOT NULL,
-  reviewDate VARCHAR(15) NOT NULL,
-  reviewText LONGTEXT NOT NULL,
+  review_id INT NOT NULL PRIMARY KEY,
+  user_id INT NOT NULL,
+  neighborhood_id INT NOT NULL,
+  review_date VARCHAR(15) NOT NULL,
+  review_text TEXT NOT NULL,
   likes INT NOT NULL,
   community BOOLEAN NOT NULL,
   commute BOOLEAN NOT NULL,
-  FOREIGN KEY (neighborhoodId) REFERENCES neighborhoods(id),
-  FOREIGN KEY (userId) REFERENCES users(id)
+  FOREIGN KEY (neighborhood_Id) REFERENCES neighborhoods(neighborhood_id),
+  FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
