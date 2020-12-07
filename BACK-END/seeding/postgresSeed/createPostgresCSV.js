@@ -173,7 +173,7 @@ const writeNumReviews = (numReviews, numUsers, numNeighborhoods, writer, encodin
 
 
 
-writeNumListings(100, 10, writeListings, 'utf-8', (err, data) => {
+writeNumListings(10000000, 1000000, writeListings, 'utf-8', (err, data) => {
   var now = new Date();
     // convert date to a string in UTC timezone format:
     console.log(now.toUTCString());
@@ -188,7 +188,7 @@ writeNumListings(100, 10, writeListings, 'utf-8', (err, data) => {
   }
 })
 
-writeNumNeighborhoods(10, writeNeighborhoods, 'utf-8', (err, data) => {
+writeNumNeighborhoods(1000000, writeNeighborhoods, 'utf-8', (err, data) => {
   if (err) {
     console.log(err);
   } else {
@@ -200,7 +200,7 @@ writeNumNeighborhoods(10, writeNeighborhoods, 'utf-8', (err, data) => {
   }
 })
 
-writeNumUsers(50, writeUsers, 'utf-8', (err, data) => {
+writeNumUsers(50000000, writeUsers, 'utf-8', (err, data) => {
   if (err) {
     console.log(err);
   } else {
@@ -213,7 +213,7 @@ writeNumUsers(50, writeUsers, 'utf-8', (err, data) => {
 })
 
 
-writeNumReviews(1000, 50, 10, writeReviews, 'utf-8', (err, data) => {
+writeNumReviews(100000000, 50000000, 1000000, writeReviews, 'utf-8', (err, data) => {
   if (err) {
     console.log(err);
   } else {
