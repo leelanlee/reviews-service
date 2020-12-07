@@ -50,3 +50,49 @@ CREATE TABLE reviews (
   FOREIGN KEY (neighborhood_Id) REFERENCES neighborhoods(neighborhood_id),
   FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+
+---------------------- Delete foreign keys--------------------
+--ALTER TABLE listings DELETE CONSTRAINT listings_neighborhood_id_fkey
+
+--ALTER TABLE reviews DELETE CONSTRAINT reviews_neighborhood_id_fkey
+
+--ALTER TABLE reviews DELETE CONSTRAINT reviews_user_id_fkey
+
+
+---------------------- Add foreign keys --------------------------
+--ALTER TABLE listings ADD CONSTRAINT listings_neighborhood_id_fkey  FOREIGN KEY (neighborhood_id) REFERENCES neighborhoods (neighborhood_id);
+
+--ALTER TABLE reviews ADD CONSTRAINT reviews_neighborhood_id_fkey FOREIGN KEY (neighborhood_id) REFERENCES neighborhoods(neighborhood_id);
+
+--ALTER TABLE reviews ADD CONSTRAINT reviews_user_id_fkey FOREIGN KEY (user_id) REFERENCES users(user_id);
+
+
+----------------------import csv --------------------------------
+-- COPY listings(listing_id, neighborhood_id)
+-- FROM '/home/lillian/HackReactor/SDC/neighborhood-reviews/BACK-END/seeding/postgresSeed/listings.csv'
+-- DELIMITER ','
+-- CSV HEADER;
+
+
+-- COPY neighborhoods(neighborhood_id, name, dog_friendly, grocery_stores, neighbors_friendly, parking_easy, yard, community_events, sidewalks, walk_night, five_years, kids_outside, car, restaurants, streets, holiday, quiet, wildlife)
+-- FROM '/home/lillian/HackReactor/SDC/neighborhood-reviews/BACK-END/seeding/postgresSeed/neighborhoods.csv'
+-- DELIMITER ','
+-- CSV HEADER;
+
+-- COPY users(user_id, name, user_type, dog_owner, parent)
+-- FROM '/home/lillian/HackReactor/SDC/neighborhood-reviews/BACK-END/seeding/postgresSeed/users.csv'
+-- DELIMITER ','
+-- CSV HEADER;
+
+-- COPY reviews(review_id, user_id, neighborhood_id, review_date, review_text, likes, community, commute)
+-- FROM '/home/lillian/HackReactor/SDC/neighborhood-reviews/BACK-END/seeding/postgresSeed/reviews.csv'
+-- DELIMITER ','
+-- CSV HEADER;
+
+
+
+
+
+
+
