@@ -46,4 +46,4 @@ CREATE TABLE listings.neighborhoodReviews (
   commute boolean,
   PRIMARY KEY ((neighborhood_id), reviewDate) )
   WITH comment = 'Q2. Find reviews about neighborhood from listing id'
-  AND CLUSTERING ORDER BY (review_date ASC) ;
+  AND CLUSTERING ORDER BY (review_date ASC);

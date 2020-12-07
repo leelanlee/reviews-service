@@ -1,43 +1,14 @@
 /* eslint-disable max-len */
 const LorenIpsum = require('lorem-ipsum').LoremIpsum;
 const faker = require('faker');
-const db = require('./db/connection.js');
-const csvWriter = require('csv-writer-stream')
+// const csvWriter = require('csv-write-stream')
+const fs = require('fs')
 
-// csv writer functions
-neighborhoodsWriter = csvWriter();
-listingsWriter = csvWriter();
-usersWriter = csvWriter();
-reviewsWriter = csvWriter();
 
 //************ Helper Functions ******************************************************************/
 
 
-
-
-// create a neighborhoods stats generator
-const neighborhoodStatsGenerator = function() {
-  return {
-    dog_friendly: Math.random().toFixed(2),
-    grocery_stores: Math.random().toFixed(2),
-    neighbors_friendly: Math.random().toFixed(2),
-    parking_easy: Math.random().toFixed(2),
-    yard: Math.random().toFixed(2),
-    community_events: Math.random().toFixed(2),
-    sidewalks: Math.random().toFixed(2),
-    walk_night: Math.random().toFixed(2),
-    five_years: Math.random().toFixed(2),
-    kids_outside: Math.random().toFixed(2),
-    car: Math.random().toFixed(2),
-    restaurants: Math.random().toFixed(2),
-    streets: Math.random().toFixed(2),
-    holiday: Math.random().toFixed(2),
-    quiet: Math.random().toFixed(2),
-    wildlife: Math.random().toFixed(2),
-  };
-};
-
-// generate randomDate
+// // generate randomDate
 const randomDate = function () {
   var start = new Date(2015, 0, 1);
   var end = new Date();
@@ -56,7 +27,160 @@ const textGenerator = new LorenIpsum({
   },
 });
 
-const generateNeighborhoods = function (numNeigh) {
+const neighNames = ['Hills', 'Downtown', 'Uptown', 'Promenade', 'Financial District', 'OceanView', 'Oceanside', 'Soma', 'Western Addition', 'Chinatown', 'Japantown', 'Little Italy', 'Live View', 'Galvanize'];
 
+const neigLength = neighNames.length
+
+//************ CSV Functions ******************************************************************/
+
+writeNeighborhoods = fs.createWriteStream('neighborhoods.csv');
+writeNeighborhoods.write('neighborhood_id,name,dog_friendly,grocery_stores,neighbors_friendly,parking_easy,yard,community_events,sidewalks,walk_night,five_years,kids_outside,car,restaurants,streets,holiday,quiet,wildlife\n', 'utf-8')
+
+writeListings = fs.createWriteStream('listings.csv');
+writeListings.write('listing_id,neighborhood_id\n', 'utf-8')
+
+writeUsers = fs.createWriteStream('users.csv');
+writeUsers.write('user_id,name,user_type,dog_owner,parent\n', 'utf-8')
+
+// reviewsWriter = csvWriter();
+
+
+
+//
+
+const writeNumListings = (numListings, numNeighborhoods, writer, encoding, callback) => {
+  let i = numListings;
+  let id = 0;
+  const write = () => {
+    let ok = true;
+    do {
+      i -= 1;
+      id += 1;
+      const neighborhood_id = Math.ceil(Math.random() * numNeighborhoods);
+      const listing = `${id},${neighborhood_id}\n`
+      if (i === 0) {
+        writer.write(listing, encoding, callback);
+      } else {
+        ok = writer.write(listing, encoding);
+      }
+    } while (i > 0 && ok);
+    if (i > 0) {
+      writer.once('drain', write);
+    }
+  }
+  write();
 }
+
+const writeNumNeighborhoods = (numNeighborhoods, writer, encoding, callback) => {
+  let i = numNeighborhoods;
+  let id = 0;
+  const write = () => {
+    let ok = true;
+    do {
+      i -= 1;
+      id += 1;
+      let name = neighNames[ id % neigLength - 1]
+      let dog_friendly = Math.random().toFixed(2);
+      let grocery_stores = Math.random().toFixed(2);
+      let neighbors_friendly = Math.random().toFixed(2);
+      let parking_easy = Math.random().toFixed(2);
+      let yard= Math.random().toFixed(2);
+      let community_events = Math.random().toFixed(2);
+      let sidewalks = Math.random().toFixed(2);
+      let walk_night = Math.random().toFixed(2);
+      let five_years = Math.random().toFixed(2);
+      let kids_outside = Math.random().toFixed(2);
+      let car = Math.random().toFixed(2);
+      let restaurants = Math.random().toFixed(2);
+      let streets = Math.random().toFixed(2);
+      let holiday = Math.random().toFixed(2);
+      let quiet = Math.random().toFixed(2);
+      let wildlife = Math.random().toFixed(2);
+      let neighborhood = `${id},${name},${dog_friendly},${grocery_stores},${neighbors_friendly},${parking_easy},${yard},${community_events},${sidewalks},${walk_night},${five_years},${kids_outside},${car},${restaurants},${streets},${holiday},${quiet},${wildlife}\n`
+      if (i === 0) {
+        writer.write(neighborhood, encoding, callback);
+      } else {
+        ok = writer.write(neighborhood, encoding);
+      }
+    } while (i > 0 && ok);
+    if (i > 0) {
+      writer.once('drain', write);
+    }
+  }
+  write();
+}
+
+
+const writeNumUsers = (numUsers, writer, encoding, callback) => {
+  let i = numUsers;
+  let id = 0;
+  const write = () => {
+    let ok = true;
+    do {
+      i -= 1;
+      id += 1;
+      let name= faker.name.findName();
+      let user_type = 'Resident';
+      let dog_owner = Math.random() < 0.5;
+      let parent = Math.random() < 0.5;
+      const user = `${id},${name},${user_type},${dog_owner},${parent}\n`
+      if (i === 0) {
+        writer.write(user, encoding, callback);
+      } else {
+        ok = writer.write(user, encoding);
+      }
+    } while (i > 0 && ok);
+    if (i > 0) {
+      writer.once('drain', write);
+    }
+  }
+  write();
+}
+
+
+
+
+
+writeNumListings(100000, 1000, writeListings, 'utf-8', (err, data) => {
+  var now = new Date();
+    // convert date to a string in UTC timezone format:
+    console.log(now.toUTCString());
+  if (err) {
+    console.log(err);
+  } else {
+    var now = new Date();
+    // convert date to a string in UTC timezone format:
+    console.log(now.toUTCString());
+    console.log('success writing listings');
+    writeListings.end();
+  }
+})
+
+writeNumNeighborhoods(1000, writeNeighborhoods, 'utf-8', (err, data) => {
+  if (err) {
+    console.log(err);
+  } else {
+    var now = new Date();
+    // convert date to a string in UTC timezone format:
+    console.log(now.toUTCString());
+    console.log('success writing neighborhoods');
+    writeNeighborhoods.end();
+  }
+})
+
+writeNumUsers(1000, writeUsers, 'utf-8', (err, data) => {
+  if (err) {
+    console.log(err);
+  } else {
+    var now = new Date();
+    // convert date to a string in UTC timezone format:
+    console.log(now.toUTCString());
+    console.log('success writing neighborhoods');
+    writeNeighborhoods.end();
+  }
+})
+
+
+
+
 
