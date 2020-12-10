@@ -2,10 +2,13 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
-const controller = require('./controllers.js');
+//const controller = require('./controllers.js');
+const controller = require('../final-db/cassandraControllers.js');
+
 const port = 8010;
 
-const db = require('../db/connection.js');
+// const db = require('../db/connection.js');
+const client = require('../final-db/connection.js').client;
 
 const publicDir = path.join(__dirname, '../client/public');
 
