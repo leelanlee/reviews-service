@@ -37,6 +37,7 @@ CREATE TABLE neighborhoods (
 
 // dsbulk-1.7.0/bin/dsbulk load -url '\/home\/lillian\/HackReactor\/SDC\/neighborhood-reviews\/BACK-END\/seeding\/cassandraSeed\/neighborhoods.csv' -k listings -t neighborhoods -delim ‘,’ -m 'listing_id=listing_id, neighborhood_id=neighborhood_id, name=name, dog_friendly=dog_friendly, grocery_stores=grocery_stores, neighbors_friendly=neighbors_friendly, parking_easy=parking_easy, yard=yard, community_events=community_events, sidewalks=sidewalks, walk_night=walk_night, five_years=five_years, kids_outside=kids_outside, car=car, restaurants=restaurants, streets=streets, holiday=holiday, quiet=quiet, wildlife=wildlife';
 
+dsbulk-1.7.0/bin/dsbulk load -url '\/home\/lillian\/HackReactor\/SDC\/neighborhood-reviews\/BACK-END\/seeding\/cassandraSeed\/reviews.csv' -k listings -t neighborhood_reviews -delim ‘,’
 
 
 CREATE TABLE neighborhood_reviews (
