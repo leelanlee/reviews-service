@@ -4,7 +4,7 @@ CREATE DATABASE neighborhoodReviews;
 USE neighborhoodReviews;
 
 CREATE TABLE neighborhoods (
-  neighborhood_id INT NOT NULL PRIMARY KEY,
+  neighborhood_id SERIAL NOT NULL PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
   dog_friendly DECIMAL(3, 2) NOT NULL,
   grocery_stores DECIMAL(3, 2) NOT NULL,
@@ -25,13 +25,13 @@ CREATE TABLE neighborhoods (
 );
 
 CREATE TABLE listings (
-  listing_id INT NOT NULL PRIMARY KEY,
+  listing_id SERIAL NOT NULL PRIMARY KEY,
   neighborhood_id INT NOT NULL,
   FOREIGN KEY (neighborhood_id) REFERENCES neighborhoods(neighborhood_id)
 );
 
 CREATE TABLE users (
-  user_id INT NOT NULL PRIMARY KEY,
+  user_id SERIAL NOT NULL PRIMARY KEY,
   name VARCHAR(45) NOT NULL,
   user_type VARCHAR(15) NOT NULL,
   dog_owner BOOLEAN NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE reviews (
-  review_id INT NOT NULL PRIMARY KEY,
+  review_id SERIAL NOT NULL PRIMARY KEY,
   user_id INT NOT NULL,
   neighborhood_id INT NOT NULL,
   review_date VARCHAR(15) NOT NULL,
@@ -53,11 +53,11 @@ CREATE TABLE reviews (
 
 
 ---------------------- Delete foreign keys--------------------
---ALTER TABLE listings DELETE CONSTRAINT listings_neighborhood_id_fkey
+ALTER TABLE listings drop CONSTRAINT listings_neighborhood_id_fkey;
 
---ALTER TABLE reviews DELETE CONSTRAINT reviews_neighborhood_id_fkey
+ALTER TABLE reviews DROP CONSTRAINT reviews_neighborhood_id_fkey;
 
---ALTER TABLE reviews DELETE CONSTRAINT reviews_user_id_fkey
+ALTER TABLE reviews DROP CONSTRAINT reviews_user_id_fkey
 
 
 ---------------------- Add foreign keys --------------------------
@@ -69,26 +69,38 @@ CREATE TABLE reviews (
 
 
 ----------------------import csv --------------------------------
--- COPY listings(listing_id, neighborhood_id)
--- FROM '/home/lillian/HackReactor/SDC/neighborhood-reviews/BACK-END/seeding/postgresSeed/listings.csv'
--- DELIMITER ','
--- CSV HEADER;
+COPY listings(listing_id, neighborhood_id)
+FROM '/home/lillian/HackReactor/SDC/neighborhood-reviews/BACK-END/seeding/postgresSeed/listings.csv'
+DELIMITER ','
+CSV HEADER;
 
 
--- COPY neighborhoods(neighborhood_id, name, dog_friendly, grocery_stores, neighbors_friendly, parking_easy, yard, community_events, sidewalks, walk_night, five_years, kids_outside, car, restaurants, streets, holiday, quiet, wildlife)
--- FROM '/home/lillian/HackReactor/SDC/neighborhood-reviews/BACK-END/seeding/postgresSeed/neighborhoods.csv'
--- DELIMITER ','
--- CSV HEADER;
+COPY neighborhoods(neighborhood_id, name, dog_friendly, grocery_stores, neighbors_friendly, parking_easy, yard, community_events, sidewalks, walk_night, five_years, kids_outside, car, restaurants, streets, holiday, quiet, wildlife)
+FROM '/home/lillian/HackReactor/SDC/neighborhood-reviews/BACK-END/seeding/postgresSeed/neighborhoods.csv'
+DELIMITER ','
+CSV HEADER;
 
--- COPY users(user_id, name, user_type, dog_owner, parent)
--- FROM '/home/lillian/HackReactor/SDC/neighborhood-reviews/BACK-END/seeding/postgresSeed/users.csv'
--- DELIMITER ','
--- CSV HEADER;
+COPY users(user_id, name, user_type, dog_owner, parent)
+FROM '/home/lillian/HackReactor/SDC/neighborhood-reviews/BACK-END/seeding/postgresSeed/users.csv'
+DELIMITER ','
+CSV HEADER;
 
--- COPY reviews(review_id, user_id, neighborhood_id, review_date, review_text, likes, community, commute)
--- FROM '/home/lillian/HackReactor/SDC/neighborhood-reviews/BACK-END/seeding/postgresSeed/reviews.csv'
--- DELIMITER ','
--- CSV HEADER;
+COPY reviews(review_id, user_id, neighborhood_id, review_date, review_text, likes, community, commute)
+FROM '/home/lillian/HackReactor/SDC/neighborhood-reviews/BACK-END/seeding/postgresSeed/reviews.csv'
+DELIMITER ','
+CSV HEADER;
+
+
+----------------------------- Optimize ----------------------------------
+
+-- add indexes to reviews
+-- CREATE INDEX ON reviews (neighborhood_id);
+-- CREATE UNIQUE INDEX ON listings (listing_id);
+-- CREATE INDEX ON reviews (user_id);
+-- CREATE INDEX ON users (user_id)
+
+
+
 
 
 

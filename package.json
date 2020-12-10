@@ -13,7 +13,8 @@
     "webpack:dev": "webpack --watch",
     "webpack:prod": "webpack",
     "test": "jest",
-    "postgres-csv": "node BACK-END/seeding/postgresSeed/createPostgresCSV.js"
+    "postgres-csv": "node BACK-END/seeding/postgresSeed/createPostgresCSV.js",
+    "cassandra-csv": "node BACK-END/seeding/cassandraSeed/createCassandraCSV.js"
   },
   "dependencies": {
     "axios": "^0.21.0",
@@ -28,6 +29,7 @@
     "jest-enzyme": "^7.1.2",
     "lorem-ipsum": "^2.0.3",
     "mysql": "^2.18.1",
+    "nodemon": "^2.0.6",
     "pg": "^8.5.1",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",

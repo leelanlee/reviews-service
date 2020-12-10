@@ -29,5 +29,5 @@ build/
 dist/
 
 # Datasets
-
+.csv
 
