@@ -19,10 +19,10 @@ const randomDate = function () {
 const textGenerator = new LorenIpsum({
   sentencesPerParagraph: {
     max: 4,
-    min: 2,
+    min: 1,
   },
   wordsPerSentence: {
-    max: 16,
+    max: 12,
     min: 4,
   },
 });
@@ -213,7 +213,7 @@ writeNumUsers(5000000, writeUsers, 'utf-8', (err, data) => {
 })
 
 
-writeNumReviews(50000000, 5000000, 1000000, writeReviews, 'utf-8', (err, data) => {
+writeNumReviews(40000000, 5000000, 1000000, writeReviews, 'utf-8', (err, data) => {
   if (err) {
     console.log(err);
   } else {
