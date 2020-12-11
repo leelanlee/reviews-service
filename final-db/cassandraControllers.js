@@ -21,15 +21,15 @@ module.exports = {
             yard: Number(result.rows[0].yard),
             community_events: Number(result.rows[0].community_events),
             sidewalks: Number(result.rows[0].sidewalks),
-            walk_night: result.rows[0].walk_night,
+            walk_night: Number(result.rows[0].walk_night),
             five_years: Number(result.rows[0].five_years),
             kids_outside: Number(result.rows[0].kids_outside),
-            car: Number(result.rows[0].car),
+            car: (result.rows[0].car),
             restaurants: Number(result.rows[0].restaurants),
             streets: Number(result.rows[0].streets),
             holiday: Number(result.rows[0].holiday),
             quiet: Number(result.rows[0].quiet),
-            wildlife: Number(result.rows[0].wildlife),
+            wildlife:Number(result.rows[0].wildlife),
           },
         }]
         res.send(stats)
@@ -38,6 +38,24 @@ module.exports = {
         console.log('getAllStats error', err);
         res.status(404).json(err);
       })
+    },
+
+    postReview: (req, res) => {
+      let query = "insert into neighborhood_reviews (review_id, user_id, neighborhood_id, username, user_type, review_date, review_text, likes, community, commute, dog_owner, parent) values (?,?,?,?,?,?,?,?,?,?,?,?)"
+      let data = req.body;
+      let neigborhood_id = req.params.id
+      let review_id = Math.random() * (200000000 - 100000004) + 100000004;
+      let params = [review_id, data.user_id, neigborhood_id, data.username, data.user_type, data.review_date, data.review_text, data.likes, data.community, data.commute, dog_owner, parent]
+
+      client.execute(query, params, { prepare : true })
+        .then( result => {
+          console.log(result)
+          res.sendStatus(201)
+        })
+        .catch (err => {
+          res.sendStatus(404)
+        })
+
     },
 
     getAllReviews: (req, res) => {

@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -18,6 +19,8 @@ app.use('/reviews/:id', express.static(publicDir));
 app.get('*/:id/neighborhood_stats', controller.getAllStats);
 
 app.get('*/:id/neighborhood_reviews', controller.getAllReviews);
+
+app.post('*/:id/neighborhood_reviews', controller.postReview);
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
