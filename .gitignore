@@ -31,3 +31,5 @@ dist/
 # Datasets
 .csv
 
+# new relic
+newrelic.js
