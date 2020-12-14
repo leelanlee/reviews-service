@@ -24,7 +24,7 @@ module.exports = {
             walk_night: Number(result.rows[0].walk_night),
             five_years: Number(result.rows[0].five_years),
             kids_outside: Number(result.rows[0].kids_outside),
-            car: (result.rows[0].car),
+            car: Number(result.rows[0].car),
             restaurants: Number(result.rows[0].restaurants),
             streets: Number(result.rows[0].streets),
             holiday: Number(result.rows[0].holiday),
