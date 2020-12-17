@@ -10,7 +10,7 @@ import FlagModal from './FlagModal.jsx';
 import Carousel from './Carousel.jsx';
 import GridModal from './GridModal.jsx'
 import styles from '../styles/App.css';
-import key from './KEYS.js'
+//import key from './KEY.js'
 
 class App extends React.Component {
   constructor() {
@@ -36,7 +36,7 @@ class App extends React.Component {
   componentDidMount() {
     axios({
       method: 'get',
-      url: `${key}${window.location.pathname}neighborhood_reviews`,
+      url: `${window.location.pathname}neighborhood_reviews`,
     })
       .then((result) => {
         console.log('Get request reviews success');
@@ -46,7 +46,7 @@ class App extends React.Component {
         });
         axios({
           method: 'get',
-          url: `${key}${window.location.pathname}neighborhood_stats`,
+          url: `${window.location.pathname}neighborhood_stats`,
         })
           .then((res) => {
             console.log('Get request stats success');
