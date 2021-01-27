@@ -2,6 +2,7 @@
 
 ## Table of contents
 * [Background](#background)
+* [Technologies Used](#technologies-used)
 * [Related Projects](#related-projects)
 * [Setup](#setup)
 * [CRUD API Endpoints](#crud-api-endpoints)
@@ -11,9 +12,19 @@
 	* [Delete APIs](delete-apis)
 
 ## Backgound
-	This service is a mock version of Trulia's reviews module. It displays the stats of amenities of the house listing's
-	neighborhood. Additionally, it displays crowd sourced reviews that are categorized and can be filtered by Community,
-	Dog Owners, Parents, and Commute.
+	This service is a mock version of Trulia's reviews module. It displays the stats of amenities of the house 
+	listing's neighborhood. Additionally, it displays crowd sourced reviews that are categorized and can be 
+	filtered by Community, Dog Owners, Parents, and Commute.
+	
+	Purpose of this project is to scale the backend of this microservice to handle high amount of traffic.
+	
+
+## Technologies Used
+	Node js
+	nginx
+	AWS
+	Postgres
+	Cassandra	
 
 ## Related Projects
   * https://github.com/twoLA/main_gallery_sdc
